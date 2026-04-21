@@ -82,7 +82,7 @@ const Testimonials = () => {
     //   </style>
     // </>
       <section className="">
-        <div className="w-full mx-auto">
+        <div className="w-full">
           <h1 className="text-neutral-900 font-medium text-4xl md:text-[40px] text-center md:text-left">
             Loved by 10k+ People
           </h1>
