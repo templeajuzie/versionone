@@ -48,7 +48,7 @@ const places = [
 
 const PlacesYouMayLike = () => {
   return (
-    <section className="mb-20">
+    <section className="">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl font-bold text-gray-900">
           Places you may like

@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
 import Footer from "@/components/Footer";
-import {Header} from "@/components/Header";
+import { Header } from "@/components/Header";
 import TravelHero from "@/components/TravelHero";
 import SupportFloating from "@/components/SupportFloating";
 import PromoCarousel from "@/components/PromoCarousel";
@@ -17,18 +17,17 @@ export default function Home() {
       <Header />
       <main className="">
         <TravelHero />
-        
+
         {/* Main Content Area with Premium Overlap */}
-        <div className="max-w-7xl mx-auto -mt-10 sm:-mt-16 md:-mt-24 relative z-20 flex flex-col gap-16 md:gap-24 pb-24 px-4 md:px-6 lg:px-8">
-            <InspirationSection />
-          
-          <div className="flex flex-col gap-20">
+        <div className="max-w-7xl mx-auto -mt-30 sm:-mt-30 md:-mt-30 relative z-20 flex flex-col gap-16 md:gap-24 px-4 md:px-6 lg:px-8">
+          <InspirationSection />
+        </div>
+        <div className="flex flex-col gap-20 max-w-7xl mx-auto mb-20">
           {/* <PromoCarousel /> */}
-            <PlacesYouMayLike />
-            <Testimonials />
-            <ContactSnipet />
-            <GallerySnippet />
-          </div>
+          <PlacesYouMayLike />
+          <Testimonials />
+          <ContactSnipet />
+          <GallerySnippet />
         </div>
       </main>
       <Footer />
