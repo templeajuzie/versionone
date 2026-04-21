@@ -139,39 +139,30 @@ const TravelHero = () => {
       </div>
 
       {/* Content Overlay */}
-      <section className="relative z-10 max-w-6xl sm:pt-20 md:pt-28 text-center mr-auto ml-auto pt-14 pb-12 w-full mt-14">
+      <section className="relative z-10 max-w-6xl sm:pt-20 md:pt-28 text-center mr-auto ml-auto pt-14 pb-12 w-full mt-14 justify-center">
         {/* Social proof */}
-        <div className="mb-6 flex-col mlg:flex items-center justify-center gap-4 mt-10">
-          {/* ... existing social proof content ... */}
+        <div className="mb-6 flex flex-col lg:flex-row items-center justify-center gap-4 mt-10 mx-auto w-full">
+          {/* Avatar stack */}
           <div className="flex -space-x-3">
-            <img
-              src="https://i.pinimg.com/736x/8f/e2/79/8fe279b786f81b6fb18f27c59efd43c2.jpg"
-              alt="Client 1"
-              className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
-            />
-            <img
-              src="https://i.pinimg.com/736x/83/1a/d3/831ad35f453c799b257ef08941d2814d.jpg"
-              alt="Client 2"
-              className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
-            />
-            <img
-              src="https://i.pinimg.com/736x/ec/6a/80/ec6a80f3565d3936d355036109f5fece.jpg"
-              alt="Client 3"
-              className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
-            />
-            <img
-              src="https://i.pinimg.com/736x/73/61/d2/7361d2e649742a9693acb3b25fb1770d.jpg"
-              alt="Client 4"
-              className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
-            />
-            <img
-              src="https://i.pinimg.com/736x/3e/f0/ce/3ef0ce379294c7a841107328f2134af0.jpg"
-              alt="Client 5"
-              className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
-            />
+            {[
+              "https://i.pinimg.com/736x/8f/e2/79/8fe279b786f81b6fb18f27c59efd43c2.jpg",
+              "https://i.pinimg.com/736x/83/1a/d3/831ad35f453c799b257ef08941d2814d.jpg",
+              "https://i.pinimg.com/736x/ec/6a/80/ec6a80f3565d3936d355036109f5fece.jpg",
+              "https://i.pinimg.com/736x/73/61/d2/7361d2e649742a9693acb3b25fb1770d.jpg",
+              "https://i.pinimg.com/736x/3e/f0/ce/3ef0ce379294c7a841107328f2134af0.jpg",
+            ].map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`Client ${i + 1}`}
+                className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
+              />
+            ))}
           </div>
-          <div className="flex flex-col items-start translate-y-1">
-            <div className="flex items-center -space-x-0.5">
+
+          {/* Text + stars */}
+          <div className="flex flex-col items-center lg:items-start">
+            <div className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
@@ -186,7 +177,8 @@ const TravelHero = () => {
                 </svg>
               ))}
             </div>
-            <p className="text-[10px] uppercase font-bold text-white tracking-widest leading-none mt-1">
+
+            <p className="text-[10px] uppercase font-bold text-white tracking-widest leading-none mt-1 text-center lg:text-left">
               Trusted by 10k+ Travelers
             </p>
           </div>
@@ -200,7 +192,8 @@ const TravelHero = () => {
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
             Version
-          </span> Of Travel
+          </span>{" "}
+          Of Travel
         </h1>
         <p className="max-w-2xl text-lg text-white/80 font-geist mt-8 mr-auto ml-auto leading-relaxed">
           We curate the perfect journey for your next adventure.
