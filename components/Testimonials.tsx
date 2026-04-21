@@ -7,41 +7,41 @@ const Testimonials = () => {
     {
       id: 1,
       date: "Jun 10, 2026",
-      text: "“PrebuiltUI has completely changed the way I write code. The components are clean, modern and production-ready.”",
-      name: "James Bond",
-      role: "Amazon.com, Inc.",
+      text: "“VersionOne Travel has completely changed the way I explore the world. Their hotel selections are always spot on and the booking process is seamless.”",
+      name: "James Anderson",
+      role: "Frequent Flyer",
       img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
     },
     {
       id: 2,
-      date: "Jun 10, 2026",
-      text: "“The components are beautifully designed and incredibly. PrebuiltUI fits perfectly into my React workflow.”",
+      date: "Jun 15, 2026",
+      text: "“Found my dream Maldives escape through VersionOne. The exclusive rewards and ease of use make it my go-to for every vacation.”",
       name: "Emily Rodriguez",
-      role: "The Walt Disney Company",
+      role: "Travel Blogger",
       img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
     },
     {
       id: 3,
-      date: "Jun 10, 2026",
-      text: "“PrebuiltUI is like having a professional design ready. It’s become an essential part of my coding journey.”",
-      name: "Jack",
-      role: "Facebook, Inc.",
+      date: "Jul 02, 2026",
+      text: "“The customer support is incredible. They helped me rebook a flight in minutes during a strike. Trusted partners indeed!”",
+      name: "Jack Harrison",
+      role: "Business Traveler",
       img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
     },
     {
       id: 4,
       date: "Jul 12, 2026",
-      text: "“PrebuiltUI makes building polished interfaces effortless. The components feel thoughtfully designed, easy to customize.”",
+      text: "“I love the 'Inspiration' section. It helped me discover hidden gems in Eastern Europe that I never would have thought to visit.”",
       name: "Sarah Williams",
-      role: "Spotify",
+      role: "Adventure Enthusiast",
       img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
     },
     {
       id: 5,
-      date: "Jul 12, 2026",
-      text: "“PrebuiltUI delivers a perfect balance between design and development. It helps me move faster, keep my UI consistent.”",
+      date: "Aug 05, 2026",
+      text: "“VersionOne delivers a perfect balance of luxury and value. Their 'Best Price Guarantee' actually works! Highly recommended.”",
       name: "Michael Chen",
-      role: "Google LLC",
+      role: "Family Traveler",
       img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
     },
   ];
@@ -72,16 +72,17 @@ const Testimonials = () => {
   }, [isMobile, testimonials.length]);
 
   return (
-    <>
-      <style>
-        {`
-                    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-                    *{
-                        font-family: "Poppins", sans-serif;
-                    }`}
-      </style>
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-6xl mx-auto">
+    // <>
+    //   <style>
+    //     {`
+    //                 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    //                 *{
+    //                     font-family: "Poppins", sans-serif;
+    //                 }`}
+    //   </style>
+    // </>
+      <section className="">
+        <div className="w-full mx-auto">
           <h1 className="text-neutral-900 font-medium text-4xl md:text-[40px] text-center md:text-left">
             Loved by 10k+ People
           </h1>
@@ -189,7 +190,7 @@ const Testimonials = () => {
               ))}
           </div>
         </div>
-        <div className="hidden max-[768px]:flex items-center justify-center mt-5 space-x-2">
+        <div className="flex items-center justify-center mt-5 space-x-2">
           {testimonials.map((_, index) => (
             <span
               key={index}
@@ -201,7 +202,6 @@ const Testimonials = () => {
           ))}
         </div>
       </section>
-    </>
   );
 };
 

@@ -3,6 +3,8 @@ import React from 'react'
 const ServicesSnipet = () => {
   return (
     <div>
+    
+
       <div className="grid border rounded-lg max-w-7xl mx-auto border-gray-200/70 grid-cols-1 divide-y divide-gray-200/70 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
         <div className="flex flex-col items-start gap-4 hover:bg-gray-50 transition duration-300 p-8 pb-14">
           <img
