@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import {Header} from "@/components/Header";
 import ServicesSnipet from "@/components/Services";
+import Link from "next/link";
 import React from "react";
 
 const Services = () => {
@@ -284,10 +285,9 @@ const Services = () => {
                   PrebuiltUI empowers you to build beautifully and scale
                   effortlessly.
                 </p>
-                <a
+                <Link
                   href="/"
-                  className="group flex items-center gap-2 mt-4 text-indigo-600 hover:text-indigo-700 transition"
-                >
+                  className="group flex items-center gap-2 mt-4 text-indigo-600 hover:text-indigo-700 transition">
                   Learn more about the product
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -305,7 +305,7 @@ const Services = () => {
                     <path d="M7 7h10v10"></path>
                     <path d="M7 17 17 7"></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
