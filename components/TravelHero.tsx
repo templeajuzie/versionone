@@ -141,7 +141,7 @@ const TravelHero = () => {
       {/* Content Overlay */}
       <section className="relative z-10 max-w-6xl sm:pt-20 md:pt-28 text-center mr-auto ml-auto pt-14 pb-12 w-full mt-14">
         {/* Social proof */}
-        <div className="mb-6 flex items-center justify-center gap-4 mt-10">
+        <div className="mb-6 flex-col mlg:flex items-center justify-center gap-4 mt-10">
           {/* ... existing social proof content ... */}
           <div className="flex -space-x-3">
             <img
@@ -203,8 +203,7 @@ const TravelHero = () => {
           </span> Of Travel
         </h1>
         <p className="max-w-2xl text-lg text-white/80 font-geist mt-8 mr-auto ml-auto leading-relaxed">
-          From hidden gems to iconic landmarks, we curate the perfect <br /> journey
-          for your next adventure.
+          We curate the perfect journey for your next adventure.
         </p>
       </section>
     </section>
