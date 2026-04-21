@@ -184,7 +184,7 @@ const TravelHero = () => {
           </div>
         </div>
 
-        <h1 className="max-w-4xl text-3xl sm:text-5xl md:text-7xl tracking-tighter font-geist mr-auto ml-auto text-white leading-[1.1] md:leading-[0.9] font-bold px-4">
+        <h1 className="max-w-4xl text-3xl sm:text-6xl md:text-7xl tracking-tighter font-geist mr-auto ml-auto text-white leading-[1.1] md:leading-[0.9] font-bold px-4">
           Experience a new ,
           <br />
           <span
