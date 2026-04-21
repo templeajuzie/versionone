@@ -125,7 +125,7 @@ const TravelHero = () => {
   const [tripType, setTripType] = useState("round-trip");
 
   return (
-    <section className="relative w-full min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-start px-4 md:px-0">
+    <section className="relative w-full min-h-[550px] md:min-h-[700px] flex flex-col items-center justify-start px-4 md:px-0">
       {/* Background with Overlay */}
       <div className="absolute inset-0 -z-20">
         <Image
