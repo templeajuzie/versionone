@@ -13,15 +13,15 @@ const destinations = [
     special: true,
   },
   {
-    id: "owerri",
-    name: "Owerri",
+    id: "amsterdam",
+    name: "Amsterdam",
     tag: "Short haul",
     image:
       "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600",
   },
   {
-    id: "nairobi",
-    name: "Nairobi",
+    id: "germany",
+    name: "Germany",
     tag: "Medium haul",
     image:
       "https://i.pinimg.com/736x/ae/12/f9/ae12f9dc43e37b7a1b6f7cccc678874c.jpg",
@@ -34,8 +34,8 @@ const destinations = [
       "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=600",
   },
   {
-    id: "warri",
-    name: "Warri",
+    id: "canada",
+    name: "Canada",
     tag: "Short haul",
     image:
       "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600",
