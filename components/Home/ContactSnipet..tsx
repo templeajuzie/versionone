@@ -41,7 +41,7 @@ const ContactSnipet = () => {
                   <path d="M3 10h18" className="" />
                   <path d="M8 2v4" className="" />
                 </svg>
-                Schedule cleaning
+                Schedule Appointment
               </a>
               <a
                 href="#"
