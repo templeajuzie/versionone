@@ -44,24 +44,19 @@ const Brands = () => {
                 }
             `}
       </style>
-      <h3 className="text-base text-center text-slate-400 pb-14 font-medium">
+      <h3 className="pb-14 text-center text-base font-medium text-slate-400">
         Trusting by leading brands, including —
       </h3>
-      <div className="overflow-hidden w-full relative max-w-5xl mx-auto select-none">
-        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent" />
+      <div className="relative mx-auto w-full max-w-5xl overflow-hidden select-none">
+        <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent" />
 
-        <div className="flex marquee-inner will-change-transform max-w-5xl mx-auto">
+        <div className="marquee-inner mx-auto flex max-w-5xl will-change-transform">
           {[...companiesLogo, ...companiesLogo].map((company, index) => (
-            <img
-              key={index}
-              className="mx-11"
-              src={company.logo}
-              alt={company.name}
-            />
+            <img key={index} className="mx-11" src={company.logo} alt={company.name} />
           ))}
         </div>
 
-        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent" />
+        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent md:w-40" />
       </div>
     </>
   );

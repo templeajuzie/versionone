@@ -1,19 +1,20 @@
 "use client";
+import { useEffect, useState } from "react";
+
 import {
-  Navbar,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavMenu,
+  MobileNavToggle,
   NavBody,
   NavItems,
-  MobileNav,
-  NavbarLogo,
+  Navbar,
   NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
+  NavbarLogo,
 } from "@/components/ui/resizable-navbar";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { useState, useEffect } from "react";
 import { CirclePower } from "lucide-react";
+import Image from "next/image";
 
 export function Header() {
   const navItems = [
@@ -26,9 +27,7 @@ export function Header() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [yOffset, setYOffset] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1200,
-  );
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -62,7 +61,7 @@ export function Header() {
     <Navbar>
       {/* Desktop Navigation */}
       <NavBody>
-        <div className="w-fit px-2 py-0.5 bg-white rounded-lg">
+        <div className="w-fit rounded-lg bg-white px-2 py-0.5">
           <NavbarLogo />
         </div>
         <NavItems items={navItems} />
@@ -74,19 +73,13 @@ export function Header() {
       {/* Mobile Navigation */}
       <MobileNav>
         <MobileNavHeader>
-          <div className="w-fit px-2 py-0.5 bg-white rounded-lg">
+          <div className="w-fit rounded-lg bg-white px-2 py-0.5">
             <NavbarLogo />
           </div>
-          <MobileNavToggle
-            isOpen={isMobileMenuOpen}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          />
+          <MobileNavToggle isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
         </MobileNavHeader>
 
-        <MobileNavMenu
-          isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
-        >
+        <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
           {navItems.map((item, idx) => (
             <a
               key={`mobile-link-${idx}`}
@@ -98,11 +91,7 @@ export function Header() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
+            <NavbarButton onClick={() => setIsMobileMenuOpen(false)} variant="primary" className="w-full">
               Book a call
             </NavbarButton>
           </div>

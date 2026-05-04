@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+
 import Image from "next/image";
 
 const tabs = [
@@ -8,12 +9,7 @@ const tabs = [
     id: "hotels",
     label: "Hotels & Homes",
     icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -27,18 +23,8 @@ const tabs = [
     id: "flights",
     label: "Flights",
     icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-        />
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
       </svg>
     ),
   },
@@ -46,12 +32,7 @@ const tabs = [
     id: "trains",
     label: "Trains",
     icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -65,18 +46,8 @@ const tabs = [
     id: "cars",
     label: "Cars",
     icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-        />
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
       </svg>
     ),
   },
@@ -84,18 +55,8 @@ const tabs = [
     id: "tours",
     label: "Attractions & Tours",
     icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-        />
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
       </svg>
     ),
   },
@@ -103,18 +64,8 @@ const tabs = [
     id: "flight-hotel",
     label: "Flight + Hotel",
     icon: (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-        />
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
       </svg>
     ),
   },
@@ -125,7 +76,7 @@ const TravelHero = () => {
   const [tripType, setTripType] = useState("round-trip");
 
   return (
-    <section className="relative w-full min-h-[550px] md:min-h-[700px] flex flex-col items-center justify-start px-4 md:px-0">
+    <section className="relative flex min-h-[550px] w-full flex-col items-center justify-start px-4 md:min-h-[700px] md:px-0">
       {/* Background with Overlay */}
       <div className="absolute inset-0 -z-20">
         <Image
@@ -139,9 +90,9 @@ const TravelHero = () => {
       </div>
 
       {/* Content Overlay */}
-      <section className="relative z-10 max-w-6xl sm:pt-20 md:pt-28 text-center mr-auto ml-auto pt-14 pb-12 w-full mt-14 justify-center">
+      <section className="relative z-10 mt-14 mr-auto ml-auto w-full max-w-6xl justify-center pt-14 pb-12 text-center sm:pt-20 md:pt-28">
         {/* Social proof */}
-        <div className="mb-6 flex flex-col lg:flex-row items-center justify-center gap-4 mt-10 mx-auto w-full">
+        <div className="mx-auto mt-10 mb-6 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
           {/* Avatar stack */}
           <div className="flex -space-x-3">
             {[
@@ -155,7 +106,7 @@ const TravelHero = () => {
                 key={i}
                 src={src}
                 alt={`Client ${i + 1}`}
-                className="h-9 w-9 rounded-full ring-2 ring-black/60 object-cover"
+                className="h-9 w-9 rounded-full object-cover ring-2 ring-black/60"
               />
             ))}
           </div>
@@ -178,24 +129,24 @@ const TravelHero = () => {
               ))}
             </div>
 
-            <p className="text-[10px] uppercase font-bold text-white tracking-widest leading-none mt-1 text-center lg:text-left">
+            <p className="mt-1 text-center text-[10px] leading-none font-bold tracking-widest text-white uppercase lg:text-left">
               Trusted by 10k+ Travelers
             </p>
           </div>
         </div>
 
-        <h1 className="max-w-4xl text-3xl sm:text-6xl md:text-7xl tracking-tighter font-geist mr-auto ml-auto text-white leading-[1.1] md:leading-[0.9] font-bold px-4">
+        <h1 className="font-geist mr-auto ml-auto max-w-4xl px-4 text-3xl leading-[1.1] font-bold tracking-tighter text-white sm:text-6xl md:text-7xl md:leading-[0.9]">
           Experience a new ,
           <br />
           <span
-            className="italic text-blue-400 underline-offset-8 transition-all hover:text-blue-300"
+            className="text-blue-400 italic underline-offset-8 transition-all hover:text-blue-300"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
             Version
           </span>{" "}
           Of Travel
         </h1>
-        <p className="max-w-2xl text-lg text-white/80 font-geist mt-8 mr-auto ml-auto leading-relaxed">
+        <p className="font-geist mt-8 mr-auto ml-auto max-w-2xl text-lg leading-relaxed text-white/80">
           We curate the perfect journey for your next adventure.
         </p>
       </section>

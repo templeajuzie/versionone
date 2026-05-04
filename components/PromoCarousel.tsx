@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import Image from "next/image";
 
 const promoCards = [
@@ -83,34 +84,34 @@ const PromoCarousel = () => {
   };
 
   return (
-    <section 
+    <section
       className="relative mb-12 select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Featured Promotions</h2>
-          <p className="text-gray-500 text-sm mt-1">Handpicked deals just for you</p>
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">Featured Promotions</h2>
+          <p className="mt-1 text-sm text-gray-500">Handpicked deals just for you</p>
         </div>
-        
+
         {/* Navigation Arrows */}
         <div className="flex gap-3">
-          <button 
+          <button
             onClick={prevSlide}
-            className="p-3 rounded-full border border-gray-100 bg-white hover:bg-gray-50 transition-all shadow-sm hover:shadow active:scale-90"
+            className="rounded-full border border-gray-100 bg-white p-3 shadow-sm transition-all hover:bg-gray-50 hover:shadow active:scale-90"
             aria-label="Previous slide"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button 
+          <button
             onClick={nextSlide}
-            className="p-3 rounded-full border border-gray-100 bg-white hover:bg-gray-50 transition-all shadow-sm hover:shadow active:scale-90"
+            className="rounded-full border border-gray-100 bg-white p-3 shadow-sm transition-all hover:bg-gray-50 hover:shadow active:scale-90"
             aria-label="Next slide"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -118,8 +119,8 @@ const PromoCarousel = () => {
       </div>
 
       {/* Carousel Container */}
-      <div className="relative overflow-hidden rounded-3xl group">
-        <div 
+      <div className="group relative overflow-hidden rounded-3xl">
+        <div
           className="flex transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           onTouchStart={onTouchStart}
@@ -127,31 +128,34 @@ const PromoCarousel = () => {
           onTouchEnd={onTouchEnd}
         >
           {promoCards.map((promo) => (
-            <div 
-              key={promo.id}
-              className="min-w-full relative aspect-[21/9] md:aspect-[24/8] lg:aspect-[32/10]"
-            >
-              <Image
-                src={promo.image}
-                alt={promo.title}
-                fill
-                priority={promo.id === 1}
-                className="object-cover"
-              />
+            <div key={promo.id} className="relative aspect-[21/9] min-w-full md:aspect-[24/8] lg:aspect-[32/10]">
+              <Image src={promo.image} alt={promo.title} fill priority={promo.id === 1} className="object-cover" />
               <div className={`absolute inset-0 bg-gradient-to-r ${promo.color} md:w-2/3 lg:w-1/2`} />
-              
-              <div className="absolute inset-0 p-8 md:p-12 lg:p-16 flex flex-col justify-center z-10">
+
+              <div className="absolute inset-0 z-10 flex flex-col justify-center p-8 md:p-12 lg:p-16">
                 <div className="max-w-xl">
-                  <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-widest mb-4">
+                  <span className="mb-4 inline-block rounded-full bg-white/20 px-3 py-1 text-[10px] font-bold tracking-widest text-white uppercase backdrop-blur-md">
                     {promo.subtitle}
                   </span>
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 drop-shadow-lg leading-tight">
+                  <h3 className="mb-6 text-4xl leading-tight font-black text-white drop-shadow-lg md:text-5xl lg:text-6xl">
                     {promo.title}
                   </h3>
-                  <button className="group/btn relative px-8 py-4 bg-white text-gray-900 rounded-xl font-bold shadow-2xl hover:bg-blue-50 transition-all active:scale-95 overflow-hidden">
+                  <button className="group/btn relative overflow-hidden rounded-xl bg-white px-8 py-4 font-bold text-gray-900 shadow-2xl transition-all hover:bg-blue-50 active:scale-95">
                     <span className="relative z-10 flex items-center gap-2">
                       {promo.buttonText}
-                      <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                      <svg
+                        className="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
                     </span>
                   </button>
                 </div>
@@ -161,7 +165,7 @@ const PromoCarousel = () => {
         </div>
 
         {/* Dot Indicators Overlay */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-3">
           {promoCards.map((_, index) => (
             <button
               key={index}

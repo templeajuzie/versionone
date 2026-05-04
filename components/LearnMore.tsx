@@ -9,21 +9,21 @@ export default function LearnMore() {
                 }
             `}</style>
       <div className="px-4 py-20">
-        <div className="w-full max-w-5xl bg-linear-to-b from-violet-100 to-[#FFE8E9] rounded-3xl px-6 pt-20 md:p-18 mx-auto flex flex-col md:flex-row justify-between items-center md:items-center relative overflow-hidden h-fit">
-          <div className="flex-1 px-2 md:pl-5 mb-8 md:mb-0 md:mt-4 text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl/12 font-medium text-gray-900 text-balance">
+        <div className="relative mx-auto flex h-fit w-full max-w-5xl flex-col items-center justify-between overflow-hidden rounded-3xl bg-linear-to-b from-violet-100 to-[#FFE8E9] px-6 pt-20 md:flex-row md:items-center md:p-18">
+          <div className="mb-8 flex-1 px-2 text-center md:mt-4 md:mb-0 md:pl-5 md:text-left">
+            <h1 className="text-3xl font-medium text-balance text-gray-900 md:text-4xl/12">
               Meet the team Shaping the future.
             </h1>
-            <p className="text-sm/6 text-gray-700 max-w-full md:max-w-sm mt-3 mx-auto md:mx-0">
-              Our diverse team of engineers and designers are dedicated to
-              building AI agents that simplify work and empower businesses.
+            <p className="mx-auto mt-3 max-w-full text-sm/6 text-gray-700 md:mx-0 md:max-w-sm">
+              Our diverse team of engineers and designers are dedicated to building AI agents that simplify work and
+              empower businesses.
             </p>
-            <button className="bg-white hover:bg-gray-50 px-6 md:px-8 py-2.5 md:py-3 rounded-full text-sm text-gray-700 mt-6 md:mt-8 cursor-pointer">
+            <button className="mt-6 cursor-pointer rounded-full bg-white px-6 py-2.5 text-sm text-gray-700 hover:bg-gray-50 md:mt-8 md:px-8 md:py-3">
               Join our team
             </button>
           </div>
 
-          <div className="shrink-0 md:-mr-18 -mb-6 md:-mb-23 md:mt-4 w-full md:w-auto">
+          <div className="-mb-6 w-full shrink-0 md:mt-4 md:-mr-18 md:-mb-23 md:w-auto">
             {/* <img
               className="w-full md:w-[490px] h-auto rounded-tr-3xl md:rounded-tr-none rounded-br-none md:rounded-br-3xl rounded-bl-none"
               src="https://i.pinimg.com/736x/af/85/f4/af85f4dda2777b40253c02d87fee9e80.jpg"
