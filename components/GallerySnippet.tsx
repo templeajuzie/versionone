@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,44 +35,38 @@ const galleryImages = [
 const GallerySnippet = () => {
   return (
     <section className="">
-      <div className="flex flex-col md:flex-row items-end justify-between mb-10 gap-6">
+      <div className="mb-10 flex flex-col items-end justify-between gap-6 md:flex-row">
         <div className="max-w-xl">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+          <h2 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
             Traveler <span className="text-blue-600">Moments</span>
           </h2>
-          <p className="text-gray-500 leading-relaxed">
-            Every journey tells a story. Explore our collection of breathtaking moments captured by travelers across the globe.
+          <p className="leading-relaxed text-gray-500">
+            Every journey tells a story. Explore our collection of breathtaking moments captured by travelers across the
+            globe.
           </p>
         </div>
-        <Link 
-          href="/gallery" 
-          className="px-6 py-3 border-2 border-slate-900 rounded-xl font-bold hover:bg-slate-900 hover:text-white transition-all active:scale-95"
+        <Link
+          href="/gallery"
+          className="rounded-xl border-2 border-slate-900 px-6 py-3 font-bold transition-all hover:bg-slate-900 hover:text-white active:scale-95"
         >
           View Full Gallery
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {galleryImages.map((item) => (
-          <div 
-            key={item.id} 
-            className="group relative h-96 rounded-3xl overflow-hidden shadow-lg"
-          >
+          <div key={item.id} className="group relative h-96 overflow-hidden rounded-3xl shadow-lg">
             <Image
               src={item.url}
               alt={item.title}
               fill
-              className="object-cover group-hover:scale-110 transition-transform duration-700"
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">
-                {item.location}
-              </p>
-              <h3 className="text-white text-xl font-bold">
-                {item.title}
-              </h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+            <div className="absolute right-0 bottom-0 left-0 translate-y-4 p-6 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              <p className="mb-1 text-xs font-bold tracking-widest text-blue-400 uppercase">{item.location}</p>
+              <h3 className="text-xl font-bold text-white">{item.title}</h3>
             </div>
           </div>
         ))}

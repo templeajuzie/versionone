@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,12 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Version One | Travel and Explore the World",
-  description: "Experience a new version of travel with Version One. From hidden gems to iconic landmarks, we curate the perfect journey for your next adventure.",
+  description:
+    "Experience a new version of travel with Version One. From hidden gems to iconic landmarks, we curate the perfect journey for your next adventure.",
   openGraph: {
     type: "website",
     siteName: "Version One Travel",
     title: "Version One | Travel and Explore the World",
-    description: "Experience a new version of travel with Version One. Discover destinations that stay with you forever.",
+    description:
+      "Experience a new version of travel with Version One. Discover destinations that stay with you forever.",
     locale: "en_US",
     images: [
       {
@@ -33,7 +36,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Version One | Travel and Explore the World",
-    description: "Experience a new version of travel with Version One. Discover destinations that stay with you forever.",
+    description:
+      "Experience a new version of travel with Version One. Discover destinations that stay with you forever.",
     images: ["/OG-image.jpg"],
   },
   robots: {
@@ -49,11 +53,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
     </html>
   );
 }
