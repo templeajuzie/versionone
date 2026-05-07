@@ -203,7 +203,7 @@ export const MobileNavToggle = ({ isOpen, onClick }: { isOpen: boolean; onClick:
 export const NavbarLogo = () => {
   return (
     <Link href="/" className="flex items-center gap-2">
-      {/* <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg">
+      {/* <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
         <svg
           className="w-6 h-6 text-blue-500"
           fill="none"

@@ -34,7 +34,7 @@ export function Header() {
   const navLinks = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
-    { name: "Services", link: "#", hasMegaMenu: true },
+    { name: "Services", link: "/services", hasMegaMenu: true },
     { name: "Success Stories", link: "/success-story" },
     { name: "Blogs", link: "/blogs" },
     { name: "Job Offers", link: "/job-offers" },
@@ -45,7 +45,7 @@ export function Header() {
       {/* Top Utility Bar */}
       <div
         className={cn(
-          "hidden items-center justify-between bg-[#2D3E75] px-4 py-1.5 text-[10px] text-white transition-all duration-300 sm:flex md:px-8 md:text-xs lg:text-sm",
+          "w-full bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A] px-2 py-2.5 text-center text-sm font-medium text-white",
           isScrolled && "h-0 overflow-hidden py-0 opacity-0"
         )}
       >
@@ -93,8 +93,8 @@ export function Header() {
       {/* Main Nav Bar */}
       <nav
         className={cn(
-          "flex items-center justify-between bg-white px-4 transition-all duration-300 md:px-8",
-          isScrolled ? "py-2 shadow-lg" : "py-3"
+          "bg-background flex items-center justify-between px-4 transition-all duration-300 md:px-8",
+          isScrolled ? "py-2 shadow-sm" : "py-3"
         )}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
@@ -232,7 +232,7 @@ export function Header() {
                   <SheetClose asChild>
                     <Link
                       href="/contact"
-                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#2D3E75] px-6 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-[#1a2a5c] active:scale-[0.98]"
+                      className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#2D3E75] px-6 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-[#1a2a5c] active:scale-[0.98]"
                     >
                       Contact Us
                       <ArrowUpRight size={16} />

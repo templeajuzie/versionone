@@ -1,16 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
-import {useAuth} from "@/hooks/useAuth";
-
 
 export default function CreateAccountPage() {
-  const {handleGoogleSignIn} = useAuth();
+  const { handleGoogleSignIn } = useAuth();
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-linear-to-br from-amber-100 via-orange-50 to-teal-100 p-4 md:p-6 lg:p-8">
-      <div className=" bg-transparent w-full max-w-130 overflow-hidden  shadow-none md:rounded-[2.5rem]">
+      <div className="w-full max-w-130 overflow-hidden bg-transparent shadow-none md:rounded-[2.5rem]">
         <div className="grid min-h-175 gap-0 lg:grid-cols-1">
           <div className="relative m-0 overflow-hidden lg:m-4 lg:rounded-4xl">
             <Image
@@ -22,7 +21,7 @@ export default function CreateAccountPage() {
             />
 
             {/* Bottom Caption/Description Card */}
-            <div className="bg-background absolute right-6 bottom-6 left-6 space-y-3 rounded-2xl p-4 shadow-lg">
+            <div className="bg-background absolute right-6 bottom-6 left-6 space-y-3 rounded-lg p-4 shadow-lg">
               <div className="flex flex-col items-center justify-center p-6 lg:p-10">
                 <div className="w-full max-w-[420px] space-y-6">
                   <div className="text-left">
@@ -33,7 +32,7 @@ export default function CreateAccountPage() {
                     {/* Google Sign Up Button */}
                     <Button
                       variant="outline"
-                      className="bg-muted hover:bg-muted/80 text-foreground border-border h-12.5 w-full rounded-xl border font-normal"
+                      className="bg-muted hover:bg-muted/80 text-foreground border-border h-12.5 w-full rounded-lg border font-normal"
                       onClick={handleGoogleSignIn}
                     >
                       <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
