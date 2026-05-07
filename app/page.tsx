@@ -5,29 +5,28 @@ import GallerySnippet from "@/components/GallerySnippet";
 import { Header } from "@/components/Header";
 import ContactSnipet from "@/components/Home/ContactSnipet.";
 import InspirationSection from "@/components/InspirationSection";
-import PlacesYouMayLike from "@/components/PlacesYouMayLike";
+import OurServices from "@/components/OurServices";
+import SupportFloating from "@/components/SupportFloating";
 import Testimonials from "@/components/Testimonials";
 import TravelHero from "@/components/TravelHero";
+import About from "./about/page";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="">
       <Header />
-      <main className="">
-        <TravelHero />
+      <TravelHero />
 
-        {/* Main Content Area with Premium Overlap */}
-        <div className="relative z-20 mx-auto -mt-30 flex max-w-7xl flex-col gap-16 px-4 sm:-mt-30 md:-mt-30 md:gap-24 md:px-6 lg:px-8">
-          <InspirationSection />
-        </div>
-        <div className="mx-auto mb-20 flex max-w-7xl flex-col gap-20 px-4 md:px-6 lg:px-8">
-          {/* <PromoCarousel /> */}
-          <PlacesYouMayLike />
-          <Testimonials />
-          <ContactSnipet />
-          <GallerySnippet />
-        </div>
-      </main>
+      <div className="mx-auto my-20 flex max-w-7xl flex-col gap-28 px-4 md:px-6 lg:px-8">
+        <About />
+        <OurServices />
+        <InspirationSection />
+      </div>
+      <Testimonials />
+      <div className="mx-auto my-20 flex max-w-7xl flex-col gap-28 px-4 md:px-6 lg:px-8">
+        <ContactSnipet />
+        <GallerySnippet />
+      </div>
       <Footer />
     </div>
   );

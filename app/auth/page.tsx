@@ -21,7 +21,7 @@ export default function CreateAccountPage() {
             />
 
             {/* Bottom Caption/Description Card */}
-            <div className="bg-background absolute right-6 bottom-6 left-6 space-y-3 rounded-2xl p-4 shadow-lg">
+            <div className="bg-background absolute right-6 bottom-6 left-6 space-y-3 rounded-lg p-4 shadow-lg">
               <div className="flex flex-col items-center justify-center p-6 lg:p-10">
                 <div className="w-full max-w-[420px] space-y-6">
                   <div className="text-left">
@@ -32,7 +32,7 @@ export default function CreateAccountPage() {
                     {/* Google Sign Up Button */}
                     <Button
                       variant="outline"
-                      className="bg-muted hover:bg-muted/80 text-foreground border-border h-12.5 w-full rounded-xl border font-normal"
+                      className="bg-muted hover:bg-muted/80 text-foreground border-border h-12.5 w-full rounded-lg border font-normal"
                       onClick={handleGoogleSignIn}
                     >
                       <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">

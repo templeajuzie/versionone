@@ -2,92 +2,134 @@
 
 import React from "react";
 
+
+
 import Image from "next/image";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const destinations = [
   {
-    id: "anywhere",
-    name: "Anywhere",
-    tag: null,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600",
-    special: true,
+    id: "canada",
+    name: "Canada",
+    tag: "Express Entry",
+    image: "https://i.pinimg.com/1200x/5d/e0/c2/5de0c2101aa515a64822a371aff16fe3.jpg",
   },
   {
-    id: "amsterdam",
-    name: "Amsterdam",
-    tag: "Short haul",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600",
+    id: "uk",
+    name: "United Kingdom",
+    tag: "Skilled Worker",
+    image: "https://i.pinimg.com/1200x/8b/66/3f/8b663fec9b665e460239e93f47e09006.jpg",
+  },
+  {
+    id: "australia",
+    name: "Australia",
+    tag: "PR Pathways",
+    image: "https://i.pinimg.com/736x/cf/85/97/cf8597ac0daad255fd5c635047351897.jpg",
   },
   {
     id: "germany",
     name: "Germany",
-    tag: "Medium haul",
-    image: "https://i.pinimg.com/736x/ae/12/f9/ae12f9dc43e37b7a1b6f7cccc678874c.jpg",
+    tag: "Job Seeker",
+    image: "https://i.pinimg.com/736x/9b/47/10/9b4710a9a31a3fa5c2007f0f663dc2b9.jpg",
   },
   {
-    id: "london",
-    name: "London",
-    tag: "Long haul",
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=600",
-  },
-  {
-    id: "canada",
-    name: "Canada",
-    tag: "Short haul",
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600",
+    id: "usa",
+    name: "USA",
+    tag: "EB-5 / H1-B",
+    image: "https://i.pinimg.com/736x/0c/25/df/0c25dfc2de5521c3b3522e6700739763.jpg",
   },
 ];
 
 const InspirationSection = () => {
   return (
-    <section className="mt-16 mb-16">
+    <section className="">
+      <div className="mb-10 text-center md:text-left">
+        <h2 className="text-3xl font-black text-zinc-900 md:text-4xl">
+          Top <span className="text-blue-600">Destinations</span> for Migration
+        </h2>
+        <p className="mt-2 text-zinc-500 max-w-2xl">
+          Discover the most popular countries for skilled workers, investors, and students. 
+          Your journey to a new life starts here.
+        </p>
+      </div>
+
       <div className="scrollbar-hide -mx-4 flex flex-nowrap gap-4 overflow-x-auto px-4 pb-8 md:mx-0 md:grid md:grid-cols-5 md:px-0">
         {destinations.map((dest) => (
           <div
             key={dest.id}
-            className={`group relative aspect-[4/3] min-w-[240px] cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl md:min-w-0 ${
-              dest.special
-                ? "border-blue-500 bg-blue-600 shadow-lg shadow-blue-500/20"
-                : "border-gray-100 bg-white shadow-sm"
-            }`}
+            className="group relative aspect-[4/5] min-w-[240px] cursor-pointer overflow-hidden rounded-xl border border-zinc-100 bg-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 md:min-w-0 shadow-lg"
           >
-            {dest.image && (
-              <Image
-                src={dest.image}
-                alt={dest.name}
-                fill
-                className={`object-cover transition-transform duration-500 group-hover:scale-110 ${dest.special ? "opacity-40 mix-blend-overlay" : ""}`}
-              />
-            )}
+            <Image
+              src={dest.image}
+              alt={dest.name}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
 
             {/* Tag */}
-            {dest.tag && (
-              <div className="absolute top-2 left-2 z-10 cursor-default rounded bg-white/90 px-2 py-0.5 text-[10px] font-bold tracking-wider text-gray-500 uppercase backdrop-blur-sm">
-                {dest.tag}
-              </div>
-            )}
+            {/* <div className="absolute top-4 left-4 z-10 rounded-md bg-blue-600 px-3 py-1 text-[10px] font-black tracking-widest text-white uppercase shadow-lg">
+              {dest.tag}
+            </div> */}
 
-            {/* Earth Icon for Anywhere */}
-            {dest.special && (
-              <div className="absolute inset-0 flex items-center justify-center opacity-80">
-                <svg className="h-20 w-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9-3-9m-9 9a9 9 0 019-9"
-                  />
-                </svg>
-              </div>
-            )}
-
-            <div className="absolute bottom-4 left-4 z-10 w-full pr-8">
-              <span className={`text-lg font-bold ${dest.special ? "text-white" : "text-white drop-shadow-md"}`}>
+            <div className="absolute bottom-6 left-6 z-10">
+              <span className="text-2xl font-black text-white drop-shadow-lg">
                 {dest.name}
               </span>
-              {dest.special && (
-                <div className="absolute bottom-[-10px] left-8 h-0 w-0 border-t-[10px] border-r-[10px] border-l-[10px] border-t-white border-r-transparent border-l-transparent" />
-              )}
+              <div className="mt-2 flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-wider">
+                View Pathways
+                <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
             </div>
           </div>
         ))}

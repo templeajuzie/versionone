@@ -1,99 +1,87 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import Image from "next/image";
 
-const tabs = [
+const heroSlides = [
   {
-    id: "hotels",
-    label: "Hotels & Homes",
-    icon: (
-      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-        />
-      </svg>
-    ),
+    src: "/images/img1.png",
+    alt: "Scenic travel destination with boats on water",
   },
   {
-    id: "flights",
-    label: "Flights",
-    icon: (
-      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-      </svg>
-    ),
+    src: "/images/img2.png",
+    alt: "Beautiful tropical beach with palm trees",
   },
   {
-    id: "trains",
-    label: "Trains",
-    icon: (
-      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
-        />
-      </svg>
-    ),
+    src: "/images/img3.png",
+    alt: "Mountain landscape with reflective lake",
   },
   {
-    id: "cars",
-    label: "Cars",
-    icon: (
-      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-      </svg>
-    ),
+    src: "/images/img4.png",
+    alt: "Road trip through scenic countryside",
   },
   {
-    id: "tours",
-    label: "Attractions & Tours",
-    icon: (
-      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-      </svg>
-    ),
+    src: "/images/img5.png",
+    alt: "Historic European cityscape at golden hour",
   },
   {
-    id: "flight-hotel",
-    label: "Flight + Hotel",
-    icon: (
-      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-      </svg>
-    ),
+    src: "/images/img6.png",
+    alt: "Historic European cityscape at golden hour",
+  },
+  {
+    src: "/images/img7.png",
+    alt: "Historic European cityscape at golden hour",
   },
 ];
 
+const SLIDE_INTERVAL = 6000;
+
 const TravelHero = () => {
-  const [activeTab, setActiveTab] = useState("flights");
-  const [tripType, setTripType] = useState("round-trip");
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
   return (
-    <section className="relative flex min-h-[550px] w-full flex-col items-center justify-start px-4 md:min-h-[700px] md:px-0">
-      {/* Background with Overlay */}
-      <div className="absolute inset-0 -z-20">
-        <Image
-          src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Travel Hero"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply" />
+    <section className="relative mx-auto mt-28 flex min-h-[300px] w-full max-w-7xl flex-col items-center justify-start px-4 md:min-h-[500px] md:px-0">
+      {/* Background Slider */}
+      <div className="absolute inset-0 -z-20 overflow-hidden rounded-lg shadow-xl">
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-[1500ms] ease-in-out"
+            style={{ opacity: index === activeSlide ? 1 : 0 }}
+          >
+            <Image src={slide.src} alt={slide.alt} fill className="object-cover" priority={index === 0} sizes="100vw" />
+          </div>
+        ))}
+        {/* Dark Overlay for Text Readability */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/60 mix-blend-multiply" />
       </div>
 
-      {/* Content Overlay */}
-      <section className="relative z-10 mt-14 mr-auto ml-auto w-full max-w-6xl justify-center pt-14 pb-12 text-center sm:pt-20 md:pt-28">
-        {/* Social proof */}
-        <div className="mx-auto mt-10 mb-6 flex w-full flex-col items-center justify-center gap-4 lg:flex-row">
-          {/* Avatar stack */}
+      {/* Slide Indicators */}
+      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveSlide(index)}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              index === activeSlide ? "w-8 bg-white" : "w-1.5 bg-white/40 hover:bg-white/60"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      <section className="absolute bottom-4 z-10 mt-14 mr-auto ml-2 w-full max-w-6xl justify-start pt-14 pb-12 text-start lg:bottom-32 lg:ml-auto">
+        <div className="mx-auto mt-10 mb-6 flex w-full justify-start gap-4 lg:flex-row">
           <div className="flex -space-x-3">
             {[
               "https://i.pinimg.com/736x/8f/e2/79/8fe279b786f81b6fb18f27c59efd43c2.jpg",
@@ -111,8 +99,7 @@ const TravelHero = () => {
             ))}
           </div>
 
-          {/* Text + stars */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="hidden flex-col items-center md:flex lg:items-start">
             <div className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
                 <svg
@@ -135,7 +122,7 @@ const TravelHero = () => {
           </div>
         </div>
 
-        <h1 className="font-geist mr-auto ml-auto max-w-4xl px-4 text-3xl leading-[1.1] font-bold tracking-tighter text-white sm:text-6xl md:text-7xl md:leading-[0.9]">
+        <h1 className="font-geist mr-auto max-w-4xl text-3xl leading-[1.1] font-bold tracking-tighter text-white md:text-5xl md:leading-[0.9]">
           Experience a new ,
           <br />
           <span
@@ -146,7 +133,7 @@ const TravelHero = () => {
           </span>{" "}
           Of Travel
         </h1>
-        <p className="font-geist mt-8 mr-auto ml-auto max-w-2xl text-lg leading-relaxed text-white/80">
+        <p className="font-geist mt-3 max-w-2xl text-sm text-white/80">
           We curate the perfect journey for your next adventure.
         </p>
       </section>

@@ -47,7 +47,7 @@ const GallerySnippet = () => {
         </div>
         <Link
           href="/gallery"
-          className="rounded-xl border-2 border-slate-900 px-6 py-3 font-bold transition-all hover:bg-slate-900 hover:text-white active:scale-95"
+          className="rounded-lg border-2 border-slate-900 px-6 py-3 font-bold transition-all hover:bg-slate-900 hover:text-white active:scale-95"
         >
           View Full Gallery
         </Link>
