@@ -1,22 +1,23 @@
-import {config} from "dotenv";
-import "dotenv/config"
-import {drizzle} from "drizzle-orm/postgres-js";
 import { AsyncLocalStorage } from "async_hooks";
+import { config } from "dotenv";
+import "dotenv/config";
+import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import * as schema from "./schema";
-config({ path: ".env" })
 
+import * as schema from "./schema";
+
+config({ path: ".env" });
 
 export const txContext = new AsyncLocalStorage<unknown>();
 
-const client = postgres(process.env.DATABASE_URL!)
+const client = postgres(process.env.DATABASE_URL!);
 
-export const rawDb = drizzle({client, schema});
+export const rawDb = drizzle({ client, schema });
 export * from "./schema";
 
 export const db = new Proxy(rawDb, {
-    get(target, prop){
-        const activeTx = txContext.getStore();
-        return Reflect.get(activeTx ?? target, prop)
-    }
+  get(target, prop) {
+    const activeTx = txContext.getStore();
+    return Reflect.get(activeTx ?? target, prop);
+  },
 }) as typeof rawDb;

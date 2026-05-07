@@ -1,8 +1,9 @@
+import { Account } from "@/db";
 import { setCookies } from "@/integration/cookiemanager";
 import { signJwt } from "@/integration/jwt";
 import bcrypt from "bcryptjs";
-import { postAccount, putAccount, retrieveAccount, postAuth } from "./account";
-import { Account } from "@/db";
+
+import { postAccount, postAuth, putAccount, retrieveAccount } from "./account";
 
 const BCRYPT_SALT_ROUNDS = 10;
 
@@ -19,9 +20,6 @@ const generateAndSetSession = async (account: { id: string; email: string }) => 
 
   return { accessToken, refreshToken };
 };
-
-
-  
 
 export const accountValidator = async (
   email: string,
