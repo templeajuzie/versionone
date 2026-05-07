@@ -6,7 +6,6 @@ import { Header } from "@/components/Header";
 import ContactSnipet from "@/components/Home/ContactSnipet.";
 import InspirationSection from "@/components/InspirationSection";
 import OurServices from "@/components/OurServices";
-import SupportFloating from "@/components/SupportFloating";
 import Testimonials from "@/components/Testimonials";
 import TravelHero from "@/components/TravelHero";
 import About from "./about/page";
