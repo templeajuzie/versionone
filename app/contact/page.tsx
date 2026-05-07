@@ -1,127 +1,139 @@
+"use client";
+
 import React from "react";
 
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { Clock, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
 
 const Contact = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-white">
       <Header />
 
-      <>
-        <style>
-          {`
-                    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-                    * {
-                        font-family: "Poppins", sans-serif;
-                    }
-                `}
-        </style>
-
-        <section className="flex items-center justify-center px-4 py-12">
-          <div className="grid w-full max-w-7xl items-center md:grid-cols-2 md:gap-10 lg:gap-20">
-            <div className="p-5">
-              <h1 className="mb-3 text-center text-3xl font-semibold tracking-tight text-gray-900 md:text-start">
-                Get in touch
+      <main className="pt-32 pb-20">
+        <section className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="flex flex-col gap-16 lg:flex-row">
+            {/* Contact Info */}
+            <div className="lg:w-1/3">
+              <h1 className="mb-6 text-4xl font-black text-[#2D3E75]">
+                Get in <span className="text-[#D32F2F]">Touch</span>
               </h1>
-              <p className="mx-auto mb-8 max-w-[400px] text-center text-sm/6 leading-relaxed text-gray-600 md:mx-0 md:text-start">
-                Have a question or idea? Our approachable team would love to connect and support you.
+              <p className="mb-10 leading-relaxed text-gray-600">
+                Have questions about your immigration process? Our expert consultants are here to help you navigate
+                through every step.
               </p>
 
-              <form>
-                <div className="mb-5 grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="mb-2 block text-sm text-gray-500">First name</label>
-                    <input
-                      type="text"
-                      placeholder="David"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-3 text-sm transition-colors outline-none focus:border-indigo-500"
-                    />
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-lg bg-red-50 p-3 text-[#D32F2F]">
+                    <MapPin size={24} />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm text-gray-500">Last name</label>
-                    <input
-                      type="text"
-                      placeholder="Andrew"
-                      className="w-full rounded-lg border border-gray-300 px-3 py-3 text-sm transition-colors outline-none focus:border-indigo-500"
-                    />
+                    <h3 className="mb-1 font-bold text-[#2D3E75]">Our Location</h3>
+                    <p className="text-sm text-gray-600">Al Ghaith Tower, 17th Floor Hamdan Street, Abu Dhabi, UAE</p>
                   </div>
                 </div>
 
-                <div className="mb-5">
-                  <label className="mb-2 block text-sm text-gray-500">Email id</label>
-                  <input
-                    type="email"
-                    placeholder="david@company.com"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-3 text-sm transition-colors outline-none focus:border-indigo-500"
-                  />
-                </div>
-
-                <div className="mb-5">
-                  <label className="mb-2 block text-sm text-gray-500">Phone number</label>
-                  <div className="flex overflow-hidden rounded-lg border border-gray-300 transition-colors focus-within:border-indigo-500">
-                    <select className="cursor-pointer border-r border-gray-300 bg-white px-3 py-3 text-sm text-gray-500 outline-none">
-                      <option>US</option>
-                      <option>UK</option>
-                      <option>IN</option>
-                      <option>CA</option>
-                    </select>
-                    <input type="tel" placeholder="+1 342 123-456" className="flex-1 px-3 py-3 text-sm outline-none" />
+                <div className="flex items-start gap-4">
+                  <div className="rounded-lg bg-blue-50 p-3 text-blue-600">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <h3 className="mb-1 font-bold text-[#2D3E75]">Phone Numbers</h3>
+                    <p className="text-sm text-gray-600">+971 52 907 5570 (WhatsApp)</p>
+                    <p className="text-sm text-gray-600">+971 58 874 4312 (Sales)</p>
                   </div>
                 </div>
 
-                <div className="mb-5">
-                  <label className="mb-2 block text-sm text-gray-500">Message</label>
-                  <textarea
-                    rows={4}
-                    className="w-full resize-y rounded-lg border border-gray-300 px-3 py-3 text-sm transition-colors outline-none focus:border-indigo-500"
-                  />
+                <div className="flex items-start gap-4">
+                  <div className="rounded-lg bg-green-50 p-3 text-green-600">
+                    <Mail size={24} />
+                  </div>
+                  <div>
+                    <h3 className="mb-1 font-bold text-[#2D3E75]">Email Support</h3>
+                    <p className="text-sm text-gray-600">sales@flyhighabroad.ae</p>
+                    <p className="text-sm text-gray-600">info@flyhighabroad.ae</p>
+                  </div>
                 </div>
 
-                <div className="mb-6 flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    className="h-5 w-5 cursor-pointer rounded-[5px] text-gray-300 accent-indigo-500"
-                  />
-                  <label className="cursor-pointer text-sm text-gray-500">
-                    You agree to our <span className="underline">terms</span> and{" "}
-                    <span className="underline">privacy policy</span>.
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full cursor-pointer rounded-lg bg-linear-to-br from-indigo-500 to-purple-600 py-3.5 text-sm text-white transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(99,102,241,0.3)]"
-                >
-                  Send message
-                </button>
-              </form>
-            </div>
-
-            <div className="relative hidden min-h-[662px] w-full max-w-[520px] flex-col justify-between overflow-hidden rounded-3xl p-10 md:flex">
-              <img
-                src={"https://i.pinimg.com/736x/ed/1c/5a/ed1c5a086f9d3db8a21c35582ad98601.jpg"}
-                alt="3D shapes"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-
-              <div className="relative z-10 mt-auto">
-                <p className="mb-5 max-w-[400px] text-sm/6 text-white">
-                  Stop spending hours recreating layouts - with <strong>PrebuiltUI</strong> you can copy, customize and
-                  launch stunning UIs in minutes.
-                </p>
-                <p className="mb-4 text-right text-sm text-white">━ Emily Rodriguez</p>
-
-                <div className="flex items-center justify-end gap-2">
-                  <div className="h-2.5 w-2.5 rounded-full bg-white"></div>
-                  <div className="h-2.5 w-2.5 rounded-full bg-white"></div>
-                  <div className="h-2.5 w-2.5 rounded-full bg-gray-400"></div>
+                <div className="flex items-start gap-4">
+                  <div className="rounded-lg bg-purple-50 p-3 text-purple-600">
+                    <Clock size={24} />
+                  </div>
+                  <div>
+                    <h3 className="mb-1 font-bold text-[#2D3E75]">Working Hours</h3>
+                    <p className="text-sm text-gray-600">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                    <p className="text-sm text-gray-600">Sunday: Closed</p>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Contact Form */}
+            <div className="rounded-[2.5rem] border border-gray-100 bg-gray-50 p-8 shadow-sm md:p-12 lg:w-2/3">
+              <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold text-[#2D3E75]">
+                <MessageSquare className="text-red-500" />
+                Send us a Message
+              </h2>
+              <form className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold tracking-wider text-[#2D3E75] uppercase">Full Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold tracking-wider text-[#2D3E75] uppercase">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold tracking-wider text-[#2D3E75] uppercase">Phone Number</label>
+                  <input
+                    type="tel"
+                    placeholder="Enter phone number"
+                    className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold tracking-wider text-[#2D3E75] uppercase">
+                    Service of Interest
+                  </label>
+                  <select className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none">
+                    <option>Skilled Immigration</option>
+                    <option>Work Permits</option>
+                    <option>Permanent Residency</option>
+                    <option>Business Immigration</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-xs font-bold tracking-wider text-[#2D3E75] uppercase">Your Message</label>
+                  <textarea
+                    rows={5}
+                    placeholder="How can we help you?"
+                    className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                  ></textarea>
+                </div>
+                <div className="pt-4 md:col-span-2">
+                  <button className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#D32F2F] py-4 font-bold text-white shadow-lg transition-all hover:bg-[#B71C1C] hover:shadow-xl active:scale-95">
+                    <Send size={18} />
+                    Submit Application
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </section>
-      </>
+      </main>
+
       <Footer />
     </div>
   );

@@ -1,186 +1,161 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import React, { useCallback, useSyncExternalStore } from "react";
+
+import Image from "next/image";
+
+const testimonials = [
+  {
+    id: 1,
+    text: "Fly High Abroad made my Canadian PR process seamless. Their experts are truly knowledgeable and supportive throughout.",
+    name: "James Anderson",
+    role: "Software Engineer",
+    img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+  },
+  {
+    id: 2,
+    text: "The best immigration consultants I've worked with. They helped me secure my UK Skilled Worker visa in record time!",
+    name: "Emily Rodriguez",
+    role: "Project Manager",
+    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
+  },
+  {
+    id: 3,
+    text: "Professional, transparent, and efficient. I highly recommend Fly High for anyone looking to migrate to Australia.",
+    name: "Jack Harrison",
+    role: "Operations Lead",
+    img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+  },
+  {
+    id: 4,
+    text: "They handled my family's Portuguese Golden Visa with absolute care. We are now enjoying our new life in Lisbon.",
+    name: "Sarah Williams",
+    role: "Entrepreneur",
+    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
+  },
+  {
+    id: 5,
+    text: "Exceptional service! Their job seeker visa assistance for Germany was top-notch. I found a job within 3 months.",
+    name: "Michael Chen",
+    role: "Data Analyst",
+    img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200",
+  },
+  {
+    id: 6,
+    text: "A truly global agency. Their knowledge of Middle Eastern work permits is unmatched. Highly professional team.",
+    name: "Maya Khan",
+    role: "Consultant",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
+  },
+];
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      date: "Jun 10, 2026",
-      text: "“VersionOne Travel has completely changed the way I explore the world. Their hotel selections are always spot on and the booking process is seamless.”",
-      name: "James Anderson",
-      role: "Frequent Flyer",
-      img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
-    },
-    {
-      id: 2,
-      date: "Jun 15, 2026",
-      text: "“Found my dream Maldives escape through VersionOne. The exclusive rewards and ease of use make it my go-to for every vacation.”",
-      name: "Emily Rodriguez",
-      role: "Travel Blogger",
-      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
-    },
-    {
-      id: 3,
-      date: "Jul 02, 2026",
-      text: "“The customer support is incredible. They helped me rebook a flight in minutes during a strike. Trusted partners indeed!”",
-      name: "Jack Harrison",
-      role: "Business Traveler",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
-    },
-    {
-      id: 4,
-      date: "Jul 12, 2026",
-      text: "“I love the 'Inspiration' section. It helped me discover hidden gems in Eastern Europe that I never would have thought to visit.”",
-      name: "Sarah Williams",
-      role: "Adventure Enthusiast",
-      img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200",
-    },
-    {
-      id: 5,
-      date: "Aug 05, 2026",
-      text: "“VersionOne delivers a perfect balance of luxury and value. Their 'Best Price Guarantee' actually works! Highly recommended.”",
-      name: "Michael Chen",
-      role: "Family Traveler",
-      img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
-    },
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const isMobile = useMediaQuery("(max-width: 767px)");
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 3 >= testimonials.length ? 0 : prev + 3));
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 3 < 0 ? Math.max(testimonials.length - 3, 0) : prev - 3));
-  };
-
-  useEffect(() => {
-    if (!isMobile) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1 >= testimonials.length ? 0 : prev + 1));
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [isMobile, testimonials.length]);
-
   return (
-    <section className="">
-      <div className="w-full">
-        <h1 className="text-4xl font-medium text-neutral-900 md:text-left md:text-[40px]">Loved by 10k+ People</h1>
-        <p className="mt-4 max-w-96 text-sm/6 text-neutral-800 md:text-left">
-          Every single testimonial is a testament to the profound impact we strive to create every single day.
+    <section className="overflow-hidden bg-black py-10">
+      <div className="container mx-auto mb-16 px-4 text-center">
+        <h2 className="mb-6 text-4xl font-black tracking-tight text-white md:text-5xl">
+          Trusted by <span className="text-blue-500">10,000+</span> Global Citizens
+        </h2>
+        <p className="mx-auto max-w-2xl text-lg text-zinc-400">
+          Join thousands of successful migrants who&#39;ve transformed their lives with Fly High Abroad. Real stories
+          from real people.
         </p>
+      </div>
 
-        <div className="mt-4 hidden justify-end gap-2 md:flex">
-          <div
-            onClick={handlePrev}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-500 transition-all hover:bg-neutral-200"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-arrow-left-icon lucide-arrow-left"
-            >
-              <path d="m12 19-7-7 7-7" />
-              <path d="M19 12H5" />
-            </svg>
-          </div>
-          <div
-            onClick={handleNext}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-500 transition-all hover:bg-neutral-200"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-arrow-right-icon lucide-arrow-right"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
+      <div className="relative flex flex-col gap-8">
+        {/* Row 1: Right to Left */}
+        <div className="group flex overflow-hidden">
+          <div className="animate-marquee-left group-hover:pause flex gap-6">
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <TestimonialCard key={`${t.id}-1-${i}`} {...t} />
+            ))}
           </div>
         </div>
 
-        <div className="mx-auto mt-12 grid grid-cols-1 gap-6 md:mt-6 md:grid-cols-2 md:px-0 lg:grid-cols-3 lg:px-8">
-          {testimonials.slice(currentIndex, isMobile ? currentIndex + 1 : currentIndex + 3).map((item) => (
-            <div
-              key={item.id}
-              className="space-y-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex">
-                  {Array(5)
-                    .fill(0)
-                    .map((_, i) => (
-                      <svg
-                        key={i}
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="15"
-                        height="15"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="lucide lucide-star fill-[#FF8F20] text-transparent"
-                        aria-hidden="true"
-                      >
-                        <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
-                      </svg>
-                    ))}
-                </div>
-                <p className="text-xs text-neutral-500">{item.date}</p>
-              </div>
-
-              <p className="text-sm/6 text-neutral-600">{item.text}</p>
-
-              <div className="mt-4 flex items-center gap-4">
-                <img src={item.img} alt="User Avatar" className="h-13 w-13 rounded-full object-cover" />
-                <div>
-                  <p className="text-sm text-neutral-700">{item.name}</p>
-                  <p className="text-xs font-medium text-neutral-500">{item.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Row 2: Left to Right */}
+        <div className="group flex overflow-hidden">
+          <div className="animate-marquee-right group-hover:pause flex gap-6">
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <TestimonialCard key={`${t.id}-2-${i}`} {...t} />
+            ))}
+          </div>
         </div>
+
+        {/* Side Fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-black to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-black to-transparent" />
       </div>
-      <div className="mt-5 flex items-center justify-center space-x-2">
-        {testimonials.map((_, index) => (
-          <span
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-3 w-3 rounded-full transition-all ${
-              index === currentIndex ? "bg-neutral-800" : "bg-neutral-300"
-            }`}
-          ></span>
-        ))}
-      </div>
+
+      <style jsx global>{`
+        @keyframes marquee-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        @keyframes marquee-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        .animate-marquee-left {
+          animation: marquee-left 40s linear infinite;
+        }
+        .animate-marquee-right {
+          animation: marquee-right 40s linear infinite;
+        }
+        .pause {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 };
 
+const TestimonialCard = ({ text, name, role, img }: any) => (
+  <div className="w-[300px] shrink-0 rounded-lg border border-zinc-800/60 bg-zinc-900/70 p-5 backdrop-blur-md transition-all duration-300 hover:bg-zinc-900 md:w-[320px]">
+    <div className="mb-3 flex gap-0.5">
+      {[...Array(5)].map((_, i) => (
+        <span key={i} className="text-sm text-yellow-500">
+          ★
+        </span>
+      ))}
+    </div>
+
+    <p className="mb-5 text-sm leading-6 text-zinc-300">"{text}"</p>
+
+    <div className="flex items-center gap-3">
+      <div className="relative h-10 w-10 shrink-0">
+        <Image
+          src={img}
+          alt={name}
+          fill
+          className="rounded-full object-cover grayscale transition-all duration-300 hover:grayscale-0"
+        />
+      </div>
+
+      <div>
+        <h4 className="text-sm leading-none font-semibold text-white">{name}</h4>
+
+        <p className="mt-1 text-xs text-zinc-500">{role}</p>
+      </div>
+    </div>
+  </div>
+);
+
+export default Testimonials;
+
 const useMediaQuery = (query: string) => {
   const subscribe = useCallback(
     (callback: () => void) => {
+      if (typeof window === "undefined") return () => {};
       const matchMedia = window.matchMedia(query);
       matchMedia.addEventListener("change", callback);
       return () => matchMedia.removeEventListener("change", callback);
@@ -189,14 +164,8 @@ const useMediaQuery = (query: string) => {
   );
 
   const getSnapshot = () => {
-    return window.matchMedia(query).matches;
+    return typeof window !== "undefined" ? window.matchMedia(query).matches : false;
   };
 
-  const getServerSnapshot = () => {
-    return false;
-  };
-
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  return useSyncExternalStore(subscribe, getSnapshot);
 };
-
-export default Testimonials;

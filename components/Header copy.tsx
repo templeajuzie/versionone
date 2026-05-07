@@ -33,7 +33,7 @@ const Header = () => {
       <nav className="flex h-fit items-center justify-between px-6 py-2 transition-all md:px-16 lg:px-24 xl:px-32">
         <Link href="/" className={`flex items-center gap-2 ${isScrolled ? "text-gray-900" : "text-white"}`}>
           <div
-            className={`flex h-10 w-10 items-center justify-center rounded-xl shadow-lg ${isScrolled ? "bg-gray-800" : "bg-white"}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-lg shadow-lg ${isScrolled ? "bg-gray-800" : "bg-white"}`}
           >
             <svg
               className={`h-6 w-6 ${isScrolled ? "text-white" : "text-black"}`}
