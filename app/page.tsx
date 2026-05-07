@@ -6,8 +6,6 @@ import { Header } from "@/components/Header";
 import ContactSnipet from "@/components/Home/ContactSnipet.";
 import InspirationSection from "@/components/InspirationSection";
 import PlacesYouMayLike from "@/components/PlacesYouMayLike";
-import PromoCarousel from "@/components/PromoCarousel";
-import SupportFloating from "@/components/SupportFloating";
 import Testimonials from "@/components/Testimonials";
 import TravelHero from "@/components/TravelHero";
 

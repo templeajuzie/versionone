@@ -1,16 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
-import {useAuth} from "@/hooks/useAuth";
-
 
 export default function CreateAccountPage() {
-  const {handleGoogleSignIn} = useAuth();
+  const { handleGoogleSignIn } = useAuth();
 
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-linear-to-br from-amber-100 via-orange-50 to-teal-100 p-4 md:p-6 lg:p-8">
-      <div className=" bg-transparent w-full max-w-130 overflow-hidden  shadow-none md:rounded-[2.5rem]">
+      <div className="w-full max-w-130 overflow-hidden bg-transparent shadow-none md:rounded-[2.5rem]">
         <div className="grid min-h-175 gap-0 lg:grid-cols-1">
           <div className="relative m-0 overflow-hidden lg:m-4 lg:rounded-4xl">
             <Image

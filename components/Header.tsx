@@ -12,9 +12,6 @@ import {
   NavbarButton,
   NavbarLogo,
 } from "@/components/ui/resizable-navbar";
-import { motion } from "framer-motion";
-import { CirclePower } from "lucide-react";
-import Image from "next/image";
 
 export function Header() {
   const navItems = [

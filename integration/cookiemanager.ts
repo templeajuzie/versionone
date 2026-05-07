@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-type CookieKey = "accessToken" | "refreshToken" | "selectedOrg";
+type CookieKey = "accessToken" | "refreshToken";
 
 const BASE_OPTIONS = {
   httpOnly: true,

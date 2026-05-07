@@ -1,6 +1,6 @@
 import { AuthProvider, authProviderEnum as authProviderEnum$1 } from "@/types/schema.client";
 import { InferSelectModel } from "drizzle-orm";
-import { boolean, jsonb, pgEnum, pgTable, serial, text, timestamp, integer } from "drizzle-orm/pg-core";
+import { boolean, integer, jsonb, pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
 export const roleEnum = pgEnum("role", ["admin", "superadmin"]);
 export const jobTypeEnum = pgEnum("job_type", ["full-time", "part-time", "contract", "internship", "freelance"]);
@@ -52,7 +52,7 @@ export const auth = pgTable("auth", {
 });
 
 export const Jobs = pgTable("jobs", {
-  id: serial("id").primaryKey(),
+  id: text("id").primaryKey(),
   user_id: text("user_id")
     .notNull()
     .references(() => accounts.id),
@@ -61,18 +61,22 @@ export const Jobs = pgTable("jobs", {
   company: text("company").notNull(),
   location: text("location").notNull(),
   job_type: jobTypeEnum("job_type").notNull().default("full-time"),
-  salary_range: text("salary_range"),
+  salaryMin: integer("salaryMin"),
+  salaryMax: integer("salaryMax"),
   is_remote: boolean("is_remote").notNull().default(false),
   requirements: text("requirements"),
   benefits: text("benefits"),
   status: jobStatusEnum("status").notNull().default("open"),
+  isSponsored: boolean("isSponsored").notNull().default(false),
+  isCVRequired: boolean("isCVRequired").notNull().default(false),
+  isCoverletterRequired: boolean("isCoverletterRequired").notNull().default(false),
   created_at: timestamp("created_at").defaultNow(),
   updated_at: timestamp("updated_at").defaultNow(),
 });
 
 export const Applications = pgTable("applications", {
-  id: serial("id").primaryKey(),
-  job_id: integer("job_id")         // ← was text("job_id")
+  id: text("id").primaryKey(),
+  job_id: text("job_id") // ← was text("job_id")
     .notNull()
     .references(() => Jobs.id),
   applicant_id: text("applicant_id")
@@ -85,3 +89,5 @@ export const Applications = pgTable("applications", {
 });
 export type Account = InferSelectModel<typeof accounts>;
 export type Auth = InferSelectModel<typeof auth>;
+export type Job = InferSelectModel<typeof Jobs>;
+export type Application = InferSelectModel<typeof Applications>;
