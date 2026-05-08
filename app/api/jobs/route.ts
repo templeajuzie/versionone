@@ -1,4 +1,4 @@
-import { GetJobs, PostJob } from "@/actions/jobs";
+import { DeleteJob, GetJobs, PostJob, UpdateJob } from "@/actions/jobs";
 import { apiHandler } from "@/lib/api-handler";
 import { Result } from "better-result";
 
@@ -14,7 +14,6 @@ export const POST = apiHandler({
   },
 });
 
-
 export const GET = apiHandler({
   handler: async () => {
     try {
@@ -26,4 +25,24 @@ export const GET = apiHandler({
   },
 });
 
+export const PATCH = apiHandler({
+  handler: async ({ body }) => {
+    try {
+      const response = await UpdateJob(body);
+      return Result.ok(response);
+    } catch (error) {
+      return Result.err(error instanceof Error ? error : new Error("Failed to update job"));
+    }
+  },
+});
 
+export const DELETE = apiHandler({
+  handler: async ({ body }) => {
+    try {
+      const response = await DeleteJob(body);
+      return Result.ok(response);
+    } catch (error) {
+      return Result.err(error instanceof Error ? error : new Error("Failed to delete job"));
+    }
+  },
+});

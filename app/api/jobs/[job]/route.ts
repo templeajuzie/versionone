@@ -4,10 +4,8 @@ import { Result } from "better-result";
 
 export const GET = apiHandler({
   handler: async ({ params }) => {
-
     try {
-      console.log("Received GET request for job with params:", params);
-      const { id } = params;
+      const id = params.job;
       if (!id) return Result.err(new Error("Job ID is required"));
       const job = await GetSingleJob(id);
       if (!job) return Result.err(new Error("Job not found"));
