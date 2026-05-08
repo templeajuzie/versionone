@@ -1,3 +1,4 @@
+import Chatbot from "@/components/Chatbot";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { JobProvider } from "@/context/JobContext";
 import { ReactQueryProvider } from "@/provider/QueryClientProvider";
@@ -63,6 +64,7 @@ export default function RootLayout({
             <TooltipProvider>{children}</TooltipProvider>
           </JobProvider>
         </ReactQueryProvider>
+        <Chatbot />
         <Toaster />
       </body>
     </html>
