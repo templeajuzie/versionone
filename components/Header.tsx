@@ -2,22 +2,37 @@
 
 import { useEffect, useState } from "react";
 
+
+
 import { immigrationMegaMenu } from "@/data/headerData";
 import { cn } from "@/lib/utils";
-import {
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandWhatsapp,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconBrandYoutube } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ChevronDown, ChevronRight, Mail, Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 
+
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { NavbarLogo } from "./ui/resizable-navbar";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -316,7 +331,8 @@ export function Header() {
                           Book Consultation
                         </a>
                         <a
-                          href="#"
+                          href="https://wa.me/2348170000169"
+                          target="_blank"
                           className="font-geist text-primary inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium transition-all hover:bg-zinc-50"
                         >
                           <IconBrandWhatsapp className="text-green-600" />

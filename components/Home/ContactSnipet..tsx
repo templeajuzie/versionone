@@ -12,6 +12,16 @@ import { IconBrandWhatsapp } from "@tabler/icons-react";
 
 
 
+
+
+
+
+
+
+
+
+
+
 const ContactSnipet = () => {
   return (
     <section className="relative w-full">
@@ -50,7 +60,8 @@ const ContactSnipet = () => {
                 Book Consultation
               </a>
               <a
-                href="#"
+                href="https://wa.me/2348170000169"
+                target="_blank"
                 className="font-geist text-primary inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium transition-all hover:bg-zinc-50"
               >
                 <IconBrandWhatsapp className="text-green-600" />
