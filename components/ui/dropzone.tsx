@@ -14,8 +14,10 @@ import {
   FileRejection,
   useDropzone as rootUseDropzone,
 } from "react-dropzone";
-import { Button, ButtonProps } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
+type ButtonProps = React.ComponentProps<typeof Button>;
+  
 type DropzoneResult<TUploadRes, TUploadError> =
   | {
       status: "pending";
@@ -247,6 +249,7 @@ const useDropzone = <TUploadRes, TUploadError = string>(
       if (result.status === "error") {
         if (autoRetry === true && tries < (maxRetryCount ?? Infinity)) {
           dispatch({ type: "update-status", id, status: "pending" });
+          // eslint-disable-next-line react-hooks/immutability
           return _uploadFile(file, id, tries + 1);
         }
 
@@ -646,7 +649,7 @@ const DropzoneMessage = forwardRef<HTMLParagraphElement, DropzoneMessageProps>(
       >
         {body}
       </p>
-    );
+    )
   },
 );
 DropzoneMessage.displayName = "DropzoneMessage";

@@ -15,13 +15,36 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
 import { useJob } from "@/context/JobContext";
+import { useApplication } from "@/context/applicationContext";
 import { applicationFormSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowLeft, Briefcase, Building2, Clock, DollarSign, MapPin, Share2 } from "lucide-react";
+import { 
+  ArrowLeft, 
+  Briefcase, 
+  Building2, 
+  Clock, 
+  DollarSign, 
+  MapPin, 
+  Share2,
+  Upload,
+  FileText,
+  X,
+  AlertCircle
+} from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
+import { 
+  Dropzone, 
+  DropZoneArea, 
+  DropzoneDescription, 
+  DropzoneFileList, 
+  DropzoneFileListItem, 
+  DropzoneMessage, 
+  DropzoneTrigger, 
+  useDropzone 
+} from "@/components/ui/dropzone";
 
 const formatCurrency = (amount: number | null | undefined) => {
   if (!amount) return null;
@@ -37,6 +60,7 @@ export default function PublicJobDetailsPage() {
   const router = useRouter();
   const jobId = params.id as string; 
   const { getJobById } = useJob();
+  const { createApplication } = useApplication();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [job, setJob] = useState<any>(null);
@@ -44,6 +68,27 @@ export default function PublicJobDetailsPage() {
   const [isApplying, setIsApplying] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [countryCodeVal, setCountryCodeVal] = useState("");
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+
+  const dropzone = useDropzone({
+    onDropFile: async (file) => {
+      setResumeFile(file);
+      return { status: "success", result: file.name };
+    },
+    validation: {
+      accept: {
+        "application/pdf": [".pdf"],
+        "application/msword": [".doc"],
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": [".docx"],
+      },
+      maxSize: 5 * 1024 * 1024, // 5MB
+      maxFiles: 1,
+    },
+    onRemoveFile: () => {
+      setResumeFile(null);
+    },
+    shapeUploadError: (err) => String(err),
+  });
 
   const form = useForm({
     resolver: zodResolver(applicationFormSchema),
@@ -79,24 +124,30 @@ export default function PublicJobDetailsPage() {
     setIsModalOpen(true);
   };
 
-  const onSubmitApplication = (values: z.infer<typeof applicationFormSchema>) => {
-    if (job?.isCVRequired && !values.resume_url) {
-      form.setError("resume_url", { message: "Resume URL is required for this role" });
-      return;
-    }
-    if (job?.isCoverletterRequired && !values.cover_letter) {
-      form.setError("cover_letter", { message: "Cover letter is required for this role" });
+  const onSubmitApplication = async (values: z.infer<typeof applicationFormSchema>) => {
+    if (job?.isCVRequired && !resumeFile) {
+      toast.error("Please upload your resume");
       return;
     }
 
     setIsApplying(true);
-    // Simulate application process
-    setTimeout(() => {
-      setIsApplying(false);
+    try {
+      await createApplication(
+        {
+          ...values,
+          job_id: jobId,
+        },
+        resumeFile || undefined
+      );
       setIsModalOpen(false);
-      toast.success("Application submitted successfully! Check your email for next steps.");
       form.reset();
-    }, 1500);
+      setResumeFile(null);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      console.error("Application failed", err);
+    } finally {
+      setIsApplying(false);
+    }
   };
 
   const handleShare = () => {
@@ -420,13 +471,77 @@ export default function PublicJobDetailsPage() {
                 <FormField
                   control={form.control}
                   name="resume_url"
-                  render={({ field }) => (
+                  render={() => (
                     <FormItem>
                       <FormLabel>
-                        Resume URL {job?.isCVRequired && <span className="text-destructive">*</span>}
+                        Resume / CV {job?.isCVRequired && <span className="text-destructive">*</span>}
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="https://link-to-your-resume.com" {...field} />
+                        <div className="space-y-4">
+                          <Dropzone {...dropzone}>
+                            <DropZoneArea className="border-dashed py-10 transition-colors hover:border-primary/50 hover:bg-primary/5">
+                              <div className="flex flex-col items-center gap-2 text-center">
+                                <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-full text-primary">
+                                  <Upload className="h-6 w-6" />
+                                </div>
+                                <div className="space-y-1">
+                                  <DropzoneTrigger className="text-primary hover:underline">
+                                    Click to upload
+                                  </DropzoneTrigger>{" "}
+                                  <span className="text-muted-foreground">or drag and drop</span>
+                                </div>
+                                <DropzoneDescription className="text-xs">
+                                  PDF, DOC, or DOCX (max 5MB)
+                                </DropzoneDescription>
+                              </div>
+                            </DropZoneArea>
+                            <DropzoneMessage className="mt-2" />
+                            
+                            <DropzoneFileList className="mt-4">
+                              {dropzone.fileStatuses.map((fileStatus) => (
+                                <DropzoneFileListItem key={fileStatus.id} file={fileStatus}>
+                                  <div className="flex items-center gap-3">
+                                    <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg text-primary">
+                                      <FileText className="h-5 w-5" />
+                                    </div>
+                                    <div className="flex-1 overflow-hidden">
+                                      <p className="truncate text-sm font-medium">
+                                        {fileStatus.fileName}
+                                      </p>
+                                      <p className="text-muted-foreground text-xs">
+                                        {(fileStatus.file.size / (1024 * 1024)).toFixed(2)} MB
+                                      </p>
+                                    </div>
+                                    <button
+                                      type="button"
+                                      onClick={() => dropzone.onRemoveFile(fileStatus.id)}
+                                      className="text-muted-foreground hover:text-destructive transition-colors"
+                                    >
+                                      <X className="h-4 w-4" />
+                                    </button>
+                                  </div>
+                                </DropzoneFileListItem>
+                              ))}
+                            </DropzoneFileList>
+                          </Dropzone>
+
+                          {/* Fallback URL input for those who prefer links */}
+                          <div className="relative">
+                            <div className="absolute inset-0 flex items-center">
+                              <span className="w-full border-t" />
+                            </div>
+                            <div className="relative flex justify-center text-xs uppercase">
+                              <span className="bg-background text-muted-foreground px-2">
+                                Or provide a link
+                              </span>
+                            </div>
+                          </div>
+
+                          <Input 
+                            placeholder="https://link-to-your-resume.com" 
+                            {...form.register("resume_url")}
+                          />
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

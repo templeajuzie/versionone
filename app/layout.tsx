@@ -1,6 +1,7 @@
 import Chatbot from "@/components/Chatbot";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { JobProvider } from "@/context/JobContext";
+import { ApplicationContextProvider } from "@/context/applicationContext";
 import { ReactQueryProvider } from "@/provider/QueryClientProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -61,7 +62,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ReactQueryProvider>
           <JobProvider>
-            <TooltipProvider>{children}</TooltipProvider>
+            <ApplicationContextProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </ApplicationContextProvider>
           </JobProvider>
         </ReactQueryProvider>
         <Chatbot />
