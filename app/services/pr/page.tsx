@@ -116,7 +116,7 @@ export default function PermanentResidencyPage() {
 
               <ChevronRight size={12} />
 
-              <span className="text-white">{content.title}</span>
+              <span className="text-white">{activeCat.title}</span>
             </nav>
 
             <motion.h1
@@ -125,10 +125,10 @@ export default function PermanentResidencyPage() {
               transition={{ duration: 0.6 }}
               className="text-5xl leading-[0.95] font-black tracking-tight text-white md:text-7xl"
             >
-              {content.title}
+              {activeCat.title}
             </motion.h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">{content.description}</p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">{categoryMeta.description}</p>
           </div>
         </div>
       </section>
@@ -180,3 +180,20 @@ export default function PermanentResidencyPage() {
     </div>
   );
 }
+
+const ChevronRight = ({ className, size }: { className?: string; size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="m9 18 6-6-6-6" />
+  </svg>
+);

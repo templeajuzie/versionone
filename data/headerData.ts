@@ -1,3 +1,5 @@
+export const rootUrl = "https://www.globalworkgate.com"
+
 export const immigrationMegaMenu = [
   {
     title: "Skilled Immigration",
