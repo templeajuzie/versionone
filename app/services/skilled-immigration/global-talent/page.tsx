@@ -1,12 +1,296 @@
-export default function GlobalTalentExceptionalTalentVisaPage() {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
+import React from "react";
+
+import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  FileText,
+  Globe2,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+import Link from "next/link";
+
+const globalTalentContent = {
+  title: "Global Talent Visa",
+  description:
+    "An elite immigration pathway designed for highly skilled and accomplished professionals to live and work in leading countries like United Kingdom, Australia, Canada, and Germany. This route targets top talent in fields such as technology, science, engineering, arts, and academia—offering fast-track entry and flexible career opportunities without the need for a traditional job offer.",
+  types: [
+    "Global Talent Visa",
+    "Exceptional Talent Visa",
+    "Distinguished Talent Visa",
+    "High Potential Individual (HPI) Visa",
+    "Talent Stream Programs",
+    "Researcher / Academic Talent Visa",
+  ],
+  process: [
+    "Eligibility Assessment (skills, achievements, recognition)",
+    "Endorsement / Nomination (where required)",
+    "Visa Application Submission",
+    "Document Verification (portfolio, achievements, references)",
+    "Biometrics & Background Checks",
+    "Visa Approval",
+  ],
+  howToApply: [
+    "Demonstrate proven expertise or exceptional ability",
+    "Gather evidence (awards, publications, portfolio, experience)",
+    "Apply for endorsement (if required by country)",
+    "Submit visa application",
+    "Provide biometrics and supporting documents",
+    "Receive visa approval and relocate",
+  ],
+  timeline: "2 – 12 weeks (fast-track options available)",
+  benefits: [
+    "No job offer required",
+    "Fast-track visa processing",
+    "Flexible employment (work for any employer or self-employed)",
+    "High earning potential",
+    "Ability to relocate with family",
+    "Direct pathway to permanent residency",
+    "Global recognition and career advancement",
+  ],
+  countries: [
+    {
+      name: "United Kingdom",
+      points: [
+        "Global Talent Visa with endorsement bodies",
+        "No job offer required",
+        "Flexible work options",
+        "Fast-track to settlement (3–5 years)",
+      ],
+    },
+    {
+      name: "Australia",
+      points: [
+        "Distinguished Talent Visa (subclass 858)",
+        "For internationally recognized individuals",
+        "Direct Permanent Residency",
+      ],
+    },
+    {
+      name: "Canada",
+      points: [
+        "Global Talent Stream (work permit route)",
+        "Fast processing (as little as 2 weeks)",
+        "Transition to PR via Express Entry",
+      ],
+    },
+    {
+      name: "Germany",
+      points: [
+        "EU Blue Card & research-based talent pathways",
+        "Focus on highly qualified professionals",
+        "PR eligibility after a few years",
+      ],
+    },
+  ],
+  who: [
+    "Top professionals in tech, science, engineering, arts",
+    "Individuals with international recognition",
+    "Researchers, innovators, and experts",
+    "High achievers seeking global career expansion",
+  ],
+};
+
+const GridPattern = () => (
+  <svg
+    className="absolute inset-0 -z-10 h-full w-full [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-zinc-200"
+    aria-hidden="true"
+  >
+    <defs>
+      <pattern id="grid-pattern-talent" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
+        <path d="M.5 200V.5H200" fill="none" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" strokeWidth={0} fill="url(#grid-pattern-talent)" />
+  </svg>
+);
+
+export default function GlobalTalentVisaPage() {
   return (
-    <main className="min-h-screen pt-32">
-      <div className="mx-auto max-w-7xl px-4 py-20">
-        <h1 className="mb-8 text-4xl font-bold text-[#2D3E75] uppercase">Global Talent / Exceptional Talent Visa</h1>
-        <div className="flex min-h-[400px] items-center justify-center rounded-lg border border-gray-100 bg-white p-8 text-gray-400 shadow-xl">
-          Content for Global Talent / Exceptional Talent Visa is coming soon...
+    <div className="min-h-screen bg-white">
+      <Header />
+
+      <section className="relative overflow-hidden border-b border-zinc-100 pt-44 pb-20">
+        <GridPattern />
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="flex flex-col gap-6">
+            <nav className="flex items-center gap-2 text-[10px] font-black tracking-widest text-zinc-400 uppercase">
+              <Link href="/services" className="hover:text-blue-600">
+                Services
+              </Link>
+              <ChevronRight size={10} />
+              <Link href="/services/skilled-immigration" className="hover:text-blue-600">
+                Skilled Immigration
+              </Link>
+              <ChevronRight size={10} />
+              <span className="text-zinc-900">Global Talent</span>
+            </nav>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-4xl text-4xl leading-tight font-black text-zinc-900 md:text-6xl"
+            >
+              {globalTalentContent.title}
+            </motion.h1>
+            <p className="max-w-3xl text-lg leading-relaxed text-zinc-500">{globalTalentContent.description}</p>
+          </div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="flex flex-col gap-16 lg:flex-row">
+            <div className="flex-1 space-y-20">
+              <div>
+                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                  <span className="h-1 w-8 rounded-full bg-violet-600" />
+                  Types of Visas
+                </h2>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {globalTalentContent.types.map((type, i) => (
+                    <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
+                      <Zap size={18} className="text-violet-600" />
+                      <span className="text-sm font-bold text-zinc-700">{type}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                  <span className="h-1 w-8 rounded-full bg-violet-600" />
+                  Application Process
+                </h2>
+                <div className="relative space-y-8 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-0.5 before:bg-zinc-100">
+                  {globalTalentContent.process.map((step, i) => (
+                    <div key={i} className="relative">
+                      <div className="absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-violet-600 bg-white text-[10px] font-black text-violet-600">
+                        {i + 1}
+                      </div>
+                      <p className="text-base font-bold text-zinc-800">{step}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-lg bg-zinc-900 p-10 text-white">
+                <h2 className="mb-8 text-2xl font-black">How to Apply</h2>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  {globalTalentContent.howToApply.map((item, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="mt-1 rounded-full bg-white/10 p-1 text-violet-400">
+                        <CheckCircle2 size={16} />
+                      </div>
+                      <p className="text-sm leading-relaxed text-zinc-300">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                  <span className="h-1 w-8 rounded-full bg-violet-600" />
+                  Program Overview by Country
+                </h2>
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                  {globalTalentContent.countries.map((country, i) => (
+                    <div
+                      key={i}
+                      className="rounded-3xl border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
+                    >
+                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <ul className="space-y-3">
+                        {country.points.map((pt, j) => (
+                          <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-600" />
+                            {pt}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                  <span className="h-1 w-8 rounded-full bg-violet-600" />
+                  Who Should Apply
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {globalTalentContent.who.map((person, i) => (
+                    <div key={i} className="rounded-full bg-zinc-100 px-6 py-3 text-sm font-bold text-zinc-700">
+                      {person}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-t border-zinc-100 pt-10">
+                <p className="text-2xl font-black text-zinc-900 italic">
+                  If you have exceptional talent, the world is open to you—move faster, work freely, and achieve more
+                  globally.
+                </p>
+              </div>
+            </div>
+
+            <aside className="lg:w-96 lg:shrink-0">
+              <div className="sticky top-32 space-y-8">
+                <div className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm">
+                  <div className="mb-6 flex items-center gap-4">
+                    <div className="rounded-2xl bg-violet-50 p-3 text-violet-600">
+                      <Clock size={24} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
+                        Processing Timeline
+                      </p>
+                      <p className="text-xl font-black text-zinc-900">{globalTalentContent.timeline}</p>
+                    </div>
+                  </div>
+                  <div className="mb-6 h-px bg-zinc-100" />
+                  <div className="space-y-4">
+                    <p className="mb-2 text-[10px] font-black tracking-widest text-zinc-400 uppercase">Key Benefits</p>
+                    {globalTalentContent.benefits.map((benefit, i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <ShieldCheck size={16} className="shrink-0 text-emerald-500" />
+                        <span className="text-sm font-bold text-zinc-700">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="group relative overflow-hidden rounded-lg bg-violet-600 p-8 text-white shadow-sm">
+                  <div className="absolute top-0 right-0 p-6 opacity-10 transition-transform group-hover:scale-110">
+                    <Sparkles size={80} />
+                  </div>
+                  <h3 className="relative z-10 mb-2 text-2xl font-black">Global Elite Access</h3>
+                  <p className="relative z-10 mb-8 text-sm text-violet-100">
+                    No job offer required. Secure your future in top economies with fast-track entry.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black text-violet-600 transition-colors hover:bg-zinc-50"
+                  >
+                    Start Endorsement <ArrowRight size={18} />
+                  </Link>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
   );
 }

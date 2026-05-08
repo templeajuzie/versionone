@@ -157,7 +157,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="absolute -bottom-8 -left-6 w-72 rounded-[2rem] border border-zinc-800 bg-zinc-900 p-7 shadow-2xl"
+              className="absolute -bottom-8 -left-6 w-72 rounded-lg border border-zinc-800 bg-zinc-900 p-7 shadow-2xl"
             >
               <p className="text-sm leading-relaxed text-zinc-300 italic">
                 Our mission is to bridge the gap between where you are and where you deserve to be.
@@ -195,9 +195,10 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-8 max-w-2xl text-lg leading-relaxed text-zinc-500 mb-5"
+          className="mt-8 mb-5 max-w-2xl text-lg leading-relaxed text-zinc-500"
         >
-          At Version One Travels, our values are the foundation of every successful migration with unwavering commitment to 3 core principles:
+          At Version One Travels, our values are the foundation of every successful migration with unwavering commitment
+          to 3 core principles:
         </motion.p>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -210,7 +211,7 @@ const About = () => {
               transition={{ delay: idx * 0.12 }}
               className="group"
             >
-              <div className="relative mb-6 aspect-[4/5] overflow-hidden rounded-[2rem] bg-zinc-100">
+              <div className="relative mb-6 aspect-[4/5] overflow-hidden rounded-lg bg-zinc-100">
                 <Image
                   src={d.img}
                   alt={d.title}
@@ -250,7 +251,7 @@ const About = () => {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="group relative overflow-hidden rounded-xl bg-blue-600 p-10 text-white shadow-xl"
+          className="group relative overflow-hidden rounded-xl bg-blue-600 p-10 text-white shadow-sm"
         >
           <div className="pointer-events-none absolute -top-8 -right-8 h-48 w-48 rounded-full bg-white/5" />
           <div className="pointer-events-none absolute -bottom-12 -left-8 h-64 w-64 rounded-full bg-white/5" />
@@ -278,7 +279,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.12 }}
-          className="group relative overflow-hidden rounded-xl bg-zinc-900 p-10 text-white shadow-xl"
+          className="group relative overflow-hidden rounded-xl bg-zinc-900 p-10 text-white shadow-sm"
         >
           <div className="pointer-events-none absolute -top-8 -right-8 h-48 w-48 rounded-full bg-white/5" />
           <div className="pointer-events-none absolute -bottom-12 -left-8 h-64 w-64 rounded-full bg-blue-600/10" />
@@ -322,7 +323,7 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group rounded-xl border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
+              className="group rounded-xl border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-sm"
             >
               {/* <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-full text-white ${val.bg}`}>
                 {val.icon}

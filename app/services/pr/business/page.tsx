@@ -5,7 +5,7 @@ export default function BusinessEntrepreneurPermanentResidencyPage() {
         <h1 className="mb-8 text-4xl font-bold text-[#2D3E75] uppercase">
           Business / Entrepreneur Permanent Residency
         </h1>
-        <div className="flex min-h-[400px] items-center justify-center rounded-lg border border-gray-100 bg-white p-8 text-gray-400 shadow-xl">
+        <div className="flex min-h-[400px] items-center justify-center rounded-lg border border-gray-100 bg-white p-8 text-gray-400 shadow-sm">
           Content for Business / Entrepreneur Permanent Residency is coming soon...
         </div>
       </div>

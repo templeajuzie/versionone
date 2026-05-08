@@ -9,83 +9,63 @@ import { Header } from "@/components/Header";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Building,
-  Calendar,
+  Building2,
   CheckCircle2,
   ChevronRight,
   Clock,
   FileText,
   Globe2,
   ShieldCheck,
+  TrendingUp,
   UserCheck,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 
 const content = {
-  title: "Temporary Work Permit",
+  title: "Commercial Investment Visa (Worldwide)",
   description:
-    "A flexible short-term pathway that allows individuals to live and work abroad for a defined period in countries like Canada, United Kingdom, Australia, Germany, and United Arab Emirates. Ideal for professionals, semi-skilled, and entry-level workers looking to gain international experience or start a global career.",
+    "A premium business pathway designed for high-net-worth individuals and corporate investors to obtain residency by investing in commercial enterprises, large-scale projects, or established businesses abroad.",
   types: [
-    "Temporary Work Permit",
-    "Short-Term Work Visa",
-    "Employer-Sponsored Temporary Permit",
-    "LMIA-Based Work Permit",
-    "LMIA-Exempt Work Permit",
-    "Contract / Project-Based Work Visa",
-  ],
-  process: [
-    "Secure job offer (in most cases)",
-    "Employer sponsorship / approval",
-    "Work permit application submission",
-    "Document verification",
-    "Biometrics & background checks",
-    "Permit approval",
+    "Commercial Investment Visa",
+    "Large-Scale Project Residency",
+    "Corporate Investment Visa",
+    "Strategic Business Investment Visa",
+    "High-Value Investor Permit",
   ],
   howToApply: [
-    "Find job opportunities abroad",
-    "Obtain a valid job offer from an employer",
-    "Prepare documents (CV, passport, certificates)",
-    "Employer initiates or supports permit process",
-    "Submit work permit application",
-    "Complete biometrics and checks",
-    "Receive approval and relocate",
+    "Identify qualifying commercial investment opportunity",
+    "Meet minimum capital / investment threshold",
+    "Prepare documents (passport, proof of funds, business plan, financial records)",
+    "Secure investment approval or confirmation",
+    "Submit visa application",
+    "Attend interview or assessment (if required)",
+    "Receive visa/residency approval",
   ],
-  timeline: "2 – 12 weeks (average)",
+  timeline: "8 – 24 weeks (average worldwide)",
   benefits: [
-    "Quick entry into international workforce",
-    "Lower requirements compared to permanent visas",
-    "Opportunity to gain global work experience",
-    "Earn income abroad",
-    "Possibility to extend or switch to long-term visas",
-    "Pathway to permanent residency (in some cases)",
+    "Obtain residency through capital investment",
+    "Access to high-growth international markets",
+    "Family inclusion (spouse & children)",
+    "Potential for high returns on investment",
+    "Pathway to permanent residency and citizenship",
+    "Flexible stay requirements (in some cases)",
   ],
   countries: [
-    {
-      name: "Canada",
-      points: ["LMIA-based and LMIA-exempt permits", "Wide range of industries", "Transition to PR possible"],
-    },
-    {
-      name: "United Kingdom",
-      points: ["Temporary Worker visas (various categories)", "Requires sponsorship", "Short-term employment options"],
-    },
-    {
-      name: "Australia",
-      points: ["Temporary Skill Shortage Visa (subclass 482)", "Employer-sponsored", "Pathway to PR"],
-    },
-    {
-      name: "Germany",
-      points: ["Short-term work permits", "Strong demand in technical sectors", "Transition to long-term residence"],
-    },
-    {
-      name: "United Arab Emirates",
-      points: ["Employer-sponsored work permits", "Fast processing", "High demand across multiple sectors"],
-    },
+    "United States",
+    "Canada",
+    "Australia",
+    "United Kingdom",
+    "United Arab Emirates",
+    "Germany",
+    "Portugal",
+    "Spain",
   ],
   who: [
-    "Professionals seeking short-term overseas jobs",
-    "Entry-level and semi-skilled workers",
-    "Individuals exploring international opportunities",
-    "Applicants planning transition to long-term visas",
+    "Corporate investors and high-net-worth individuals",
+    "Business leaders seeking global expansion",
+    "Investors targeting large-scale commercial projects",
+    "Applicants aiming for residency via capital contribution",
   ],
 };
 
@@ -95,15 +75,15 @@ const GridPattern = () => (
     aria-hidden="true"
   >
     <defs>
-      <pattern id="grid-pattern-temp" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
+      <pattern id="grid-pattern-commercial" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
         <path d="M.5 200V.5H200" fill="none" />
       </pattern>
     </defs>
-    <rect width="100%" height="100%" strokeWidth={0} fill="url(#grid-pattern-temp)" />
+    <rect width="100%" height="100%" strokeWidth={0} fill="url(#grid-pattern-commercial)" />
   </svg>
 );
 
-export default function TemporaryWorkPermitPage() {
+export default function CommercialInvestmentVisaPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -118,11 +98,11 @@ export default function TemporaryWorkPermitPage() {
                 Services
               </Link>
               <ChevronRight size={10} />
-              <Link href="/services/work-permits" className="hover:text-[#2D3E75]">
-                Work Permits
+              <Link href="/services/business" className="hover:text-[#2D3E75]">
+                Business
               </Link>
               <ChevronRight size={10} />
-              <span className="text-zinc-900">Temporary Permit</span>
+              <span className="text-zinc-900">Commercial Investment</span>
             </nav>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -146,31 +126,13 @@ export default function TemporaryWorkPermitPage() {
               <div>
                 <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
                   <span className="h-1 w-8 rounded-full bg-[#2D3E75]" />
-                  Types of Permits
+                  Types of Visas
                 </h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {content.types.map((type, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
-                      <Calendar size={18} className="text-[#2D3E75]" />
+                      <Building2 size={18} className="text-[#2D3E75]" />
                       <span className="text-sm font-bold text-zinc-700">{type}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Application Process */}
-              <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
-                  <span className="h-1 w-8 rounded-full bg-[#2D3E75]" />
-                  Application Process
-                </h2>
-                <div className="relative space-y-8 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-0.5 before:bg-zinc-100">
-                  {content.process.map((step, i) => (
-                    <div key={i} className="relative">
-                      <div className="absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[#2D3E75] bg-white text-[10px] font-black text-[#2D3E75]">
-                        {i + 1}
-                      </div>
-                      <p className="text-base font-bold text-zinc-800">{step}</p>
                     </div>
                   ))}
                 </div>
@@ -191,27 +153,17 @@ export default function TemporaryWorkPermitPage() {
                 </div>
               </div>
 
-              {/* Country Overview */}
+              {/* Countries */}
               <div>
                 <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
                   <span className="h-1 w-8 rounded-full bg-[#2D3E75]" />
-                  Program Overview by Country
+                  Countries Offering This Visa
                 </h2>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
                   {content.countries.map((country, i) => (
-                    <div
-                      key={i}
-                      className="rounded-3xl border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
-                    >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
-                      <ul className="space-y-3">
-                        {country.points.map((pt, j) => (
-                          <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
-                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2D3E75]" />
-                            {pt}
-                          </li>
-                        ))}
-                      </ul>
+                    <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-white p-4">
+                      <Globe2 size={16} className="text-[#2D3E75]" />
+                      <span className="text-sm font-bold text-zinc-700">{country}</span>
                     </div>
                   ))}
                 </div>
@@ -234,7 +186,7 @@ export default function TemporaryWorkPermitPage() {
 
               <div className="border-t border-zinc-100 pt-10">
                 <p className="text-2xl font-black text-zinc-900 italic">
-                  Start working abroad quickly—your global opportunity begins with a temporary work permit.
+                  Invest at scale—secure residency and unlock global commercial potential.
                 </p>
               </div>
             </div>
@@ -270,11 +222,11 @@ export default function TemporaryWorkPermitPage() {
                 {/* CTA Card */}
                 <div className="group relative overflow-hidden rounded-lg bg-[#2D3E75] p-8 text-white shadow-sm">
                   <div className="absolute top-0 right-0 p-6 opacity-10 transition-transform group-hover:scale-110">
-                    <Building size={80} />
+                    <TrendingUp size={80} />
                   </div>
-                  <h3 className="relative z-10 mb-2 text-2xl font-black">Apply for a Permit</h3>
+                  <h3 className="relative z-10 mb-2 text-2xl font-black">Strategic Investment</h3>
                   <p className="relative z-10 mb-8 text-sm text-zinc-400">
-                    Get an assessment for your temporary work permit and relocation to top global destinations.
+                    Get an expert assessment for your commercial investment visa and secure your global business future.
                   </p>
                   <Link
                     href="/contact"

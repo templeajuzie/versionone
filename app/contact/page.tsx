@@ -72,7 +72,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="rounded-[2.5rem] border border-gray-100 bg-gray-50 p-8 shadow-sm md:p-12 lg:w-2/3">
+            <div className="rounded-lg border border-gray-100 bg-gray-50 p-8 shadow-sm md:p-12 lg:w-2/3">
               <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold text-[#2D3E75]">
                 <MessageSquare className="text-red-500" />
                 Send us a Message
@@ -123,7 +123,7 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 <div className="pt-4 md:col-span-2">
-                  <button className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#D32F2F] py-4 font-bold text-white shadow-lg transition-all hover:bg-[#B71C1C] hover:shadow-xl active:scale-95">
+                  <button className="flex w-full items-center justify-center gap-3 rounded-lg bg-[#D32F2F] py-4 font-bold text-white shadow-lg transition-all hover:bg-[#B71C1C] hover:shadow-sm active:scale-95">
                     <Send size={18} />
                     Submit Application
                   </button>

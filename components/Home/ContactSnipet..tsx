@@ -83,7 +83,7 @@ const ContactSnipet = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl">
+            <div className="relative overflow-hidden rounded-3xl bg-white shadow-sm">
               <img
                 src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?q=80&w=2000&auto=format&fit=crop"
                 alt="Global Travel and Visa"

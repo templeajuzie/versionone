@@ -170,7 +170,7 @@ const OurServices = () => {
                       </span>
                     </div>
 
-                    <h3 className="mb-2 text-2xl leading-tight font-black text-white drop-shadow-xl">
+                    <h3 className="mb-2 text-2xl leading-tight font-black text-white drop-shadow-sm">
                       {category.title}
                     </h3>
 
