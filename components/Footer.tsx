@@ -1,17 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 
+
+
 import { immigrationMegaMenu } from "@/data/headerData";
-import {
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandWhatsapp,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconBrandYoutube } from "@tabler/icons-react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Footer = () => {
   // Helper to flatten nested items from headerData
@@ -319,7 +328,8 @@ const Footer = () => {
                           <p className="truncate font-medium tracking-tight text-neutral-900">Ava Kim</p>
                         </div>
                         <a
-                          href="mailto:hello@solace.dev"
+                          href="https://wa.me/2348170000169"
+                          target="_blank"
                           className="ml-1 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                         >
                           Ask directly
@@ -351,7 +361,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 border-t border-white/10 pt-16 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
             {immigrationMegaMenu.map((category) => (
               <div key={category.title} className="flex flex-col">
-                <h4 className="mb-6 text-sm font-black text-secondary">{category.title}</h4>
+                <h4 className="text-secondary mb-6 text-sm font-black">{category.title}</h4>
                 <ul className="space-y-2.5">
                   {getFlattenedItems(category.items).map((item) => (
                     <li key={item.name}>
@@ -369,7 +379,7 @@ const Footer = () => {
 
             {/* Quick Links Column */}
             <div className="flex flex-col">
-              <h4 className="mb-6 text-sm font-black text-secondary">Quick Links</h4>
+              <h4 className="text-secondary mb-6 text-sm font-black">Quick Links</h4>
               <ul className="space-y-2.5">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
