@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         "X-Title": "Global Workgate AI"
       },
       body: JSON.stringify({
-        model: process.env.OPENROUTER_MODEL || "google/gemma-2-9b-it:free",
+        model: process.env.OPENROUTER_MODEL || "openai/gpt-4o-mini",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: message }
@@ -43,9 +43,20 @@ export async function POST(req: Request) {
     });
 
     if (!response.ok) {
-      const errorData = await response.text();
-      console.error("OpenRouter Error Body:", errorData);
-      throw new Error(`OpenRouter error: ${response.status}`);
+      const errorText = await response.text();
+      let errorMessage = `OpenRouter error: ${response.status}`;
+      
+      try {
+        const errorJson = JSON.parse(errorText);
+        if (errorJson.error && errorJson.error.message) {
+          errorMessage = errorJson.error.message;
+        }
+      } catch (e) {
+        // Fallback to response status if JSON parsing fails
+      }
+      
+      console.error("OpenRouter Error Body:", errorText);
+      return NextResponse.json({ reply: `⚠️ AI Error: ${errorMessage}` }, { status: response.status });
     }
 
     return new Response(response.body, {
@@ -58,6 +69,8 @@ export async function POST(req: Request) {
 
   } catch (error) {
     console.error("Chat Error:", error);
-    return NextResponse.json({ reply: "Connection failed. Check server logs." }, { status: 500 });
+    return NextResponse.json({ 
+      reply: "⚠️ I'm having trouble connecting to the AI brain. Please check your internet or try again in a moment." 
+    }, { status: 500 });
   }
 }

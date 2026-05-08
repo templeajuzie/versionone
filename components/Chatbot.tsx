@@ -45,7 +45,10 @@ export default function Chatbot() {
         body: JSON.stringify({ message: text.trim() }),
       });
 
-      if (!response.ok) throw new Error("Failed to send");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.reply || "Failed to send");
+      }
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
@@ -79,8 +82,9 @@ export default function Chatbot() {
           }
         }
       }
-    } catch (error) {
-      setMessages((prev) => [...prev, { type: "ai", content: "⚠️ Sorry, I lost connection. Please try again." }]);
+    } catch (error: any) {
+      const errorMessage = error.message || "⚠️ Sorry, I lost connection. Please try again.";
+      setMessages((prev) => [...prev, { type: "ai", content: errorMessage }]);
       setIsTyping(false);
     }
   };
