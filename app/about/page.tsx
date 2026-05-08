@@ -58,7 +58,7 @@ const disciplines = [
     number: "01",
     title: "Who We Are",
     headline: "A decade of turning immigration dreams into reality.",
-    body: "Fly High Abroad is a premier immigration and global migration consultancy headquartered in Abu Dhabi, UAE. Founded on the principle that every person deserves a chance to build a better life abroad, we combine certified legal expertise with genuine human care.",
+    body: "Global Workgate is a premier immigration and global migration consultancy headquartered in Abu Dhabi, UAE. Founded on the principle that every person deserves a chance to build a better life abroad, we combine certified legal expertise with genuine human care.",
     img: "/images/stand1.jpg",
     tag: "About the Agency",
   },
@@ -93,11 +93,11 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl leading-[0.95] font-black tracking-tight text-zinc-900 sm:text-6xl lg:text-5xl"
+              className="text-primary text-3xl leading-[0.95] font-black tracking-tight sm:text-6xl lg:text-5xl"
             >
               Get to know
               <br />
-              <span className="mr-2 text-blue-600 italic">About Us</span>
+              <span className="text-primary mr-2 italic">About Us</span>
             </motion.h1>
 
             <motion.p
@@ -107,7 +107,7 @@ const About = () => {
               transition={{ delay: 0.2 }}
               className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500"
             >
-              Fly High Abroad is a premier immigration consultancy helping individuals, families, and businesses
+              Global Workgate is a premier immigration consultancy helping individuals, families, and businesses
               navigate global relocation with expert precision and genuine care. We specialize in Skilled Visas, Work
               Permits, Permanent Residency, and Business Immigration across 50+ countries.
             </motion.p>
@@ -124,7 +124,7 @@ const About = () => {
                   className="rounded-lg border border-zinc-100 bg-white p-5 shadow-sm"
                 >
                   <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-50">{stat.icon}</div>
-                  <div className="text-2xl font-black text-zinc-900">{stat.value}</div>
+                  <div className="text-primary text-2xl font-black">{stat.value}</div>
                   <div className="mt-0.5 text-[10px] font-bold tracking-wider text-zinc-400 uppercase">
                     {stat.label}
                   </div>
@@ -144,7 +144,7 @@ const About = () => {
             >
               <Image
                 src="https://i.pinimg.com/1200x/19/03/f8/1903f8ad1d75c5113366aa85cc867146.jpg"
-                alt="Fly High Abroad — Global Aviation"
+                alt="Global Workgate — Global Aviation"
                 fill
                 className="object-cover"
               />
@@ -168,7 +168,7 @@ const About = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-white">Founder & CEO</p>
-                  <p className="text-[10px] text-zinc-500">Fly High Abroad</p>
+                  <p className="text-[10px] text-zinc-500">Global Workgate</p>
                 </div>
               </div>
             </motion.div> */}
@@ -183,11 +183,11 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl leading-[0.95] font-black tracking-tight text-zinc-900 sm:text-6xl lg:text-5xl"
+          className="text-primary text-3xl leading-[0.95] font-black tracking-tight sm:text-6xl lg:text-5xl"
         >
           This is what we
           <br />
-          <span className="mr-2 text-blue-600 italic">Stand for...</span>
+          <span className="text-primary mr-2 italic">Stand for...</span>
         </motion.h1>
 
         <motion.p
@@ -197,7 +197,7 @@ const About = () => {
           transition={{ delay: 0.2 }}
           className="mt-8 mb-5 max-w-2xl text-lg leading-relaxed text-zinc-500"
         >
-          At Version One Travels, our values are the foundation of every successful migration with unwavering commitment
+          At Global Workgate, our values are the foundation of every successful migration with unwavering commitment
           to 3 core principles:
         </motion.p>
 
@@ -234,7 +234,7 @@ const About = () => {
                 <p className="mb-3 text-[10px] font-bold tracking-[0.15em] text-zinc-400 uppercase">
                   {d.number} — {d.title}
                 </p>
-                <h3 className="mb-4 text-xl leading-snug font-black tracking-tight text-zinc-900 transition-colors group-hover:text-blue-600">
+                <h3 className="group-hover:text-primary text-primary mb-4 text-xl leading-snug font-black tracking-tight transition-colors">
                   {d.headline}
                 </h3>
                 <p className="text-sm leading-7 text-zinc-500">{d.body}</p>
@@ -307,8 +307,8 @@ const About = () => {
           <span className="mb-4 inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.15em] text-zinc-400 uppercase">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-600" /> What We Stand For
           </span>
-          <h2 className="text-4xl font-black tracking-tight text-zinc-900 md:text-5xl">
-            Our Core <span className="text-blue-600">Values</span>
+          <h2 className="text-primary text-4xl font-black tracking-tight md:text-5xl">
+            Our Core <span className="text-primary">Values</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-zinc-500">
             The principles that drive our culture and define every interaction we have with our clients.
@@ -328,7 +328,7 @@ const About = () => {
               {/* <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-full text-white ${val.bg}`}>
                 {val.icon}
               </div> */}
-              <h4 className="mb-3 text-xl font-black text-zinc-900">{val.title}</h4>
+              <h4 className="text-primary mb-3 text-xl font-black">{val.title}</h4>
               <p className="text-sm leading-7 text-zinc-500">{val.desc}</p>
             </motion.div>
           ))}

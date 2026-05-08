@@ -129,74 +129,8 @@ const Footer = () => {
 
       <footer className="bg-black px-4 pt-16 pb-8 text-white md:px-8">
         <div className="mx-auto max-w-7xl">
-          {/* Top Section: Logo & Contact */}
-          {/* <div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-4">
-            <div className="lg:col-span-2">
-              <Link href="/" className="mb-6 inline-block">
-                <Image
-                  src="/fly-high-logo.png"
-                  alt="Fly High Abroad"
-                  width={220}
-                  height={60}
-                  className="h-14 w-auto object-contain brightness-0 invert"
-                />
-              </Link>
-              <p className="mb-8 max-w-lg text-base leading-relaxed text-blue-100">
-                Giving feathers to your dreams. We are your trusted partner for global migration and travel solutions.
-                With years of experience and a high success rate, we make your transition smooth and effortless.
-              </p>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="flex items-start gap-3 text-sm text-blue-100">
-                  <MapPin size={20} className="mt-1 flex-shrink-0 text-blue-400" />
-                  <span>Al Ghaith Tower, 17th Floor Hamdan Street, Abu Dhabi, UAE</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-blue-100">
-                  <Phone size={20} className="flex-shrink-0 text-blue-400" />
-                  <span>+971 58 874 4312</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-blue-100">
-                  <Mail size={20} className="flex-shrink-0 text-blue-400" />
-                  <span>sales@flyhighabroad.ae</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-blue-100">
-                  <IconBrandWhatsapp size={20} className="flex-shrink-0 text-green-400" />
-                  <span>+971 52 907 5570</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-2">
-              <div className="rounded-lg border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-                <h4 className="mb-4 text-xl font-bold">Subscribe to our Newsletter</h4>
-                <p className="mb-6 text-sm text-blue-100">
-                  Get the latest immigration news and updates deliveblue to your inbox.
-                </p>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="flex-1 rounded-lg bg-white/10 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-400"
-                  />
-                  <button className="rounded-lg bg-blue-600 px-6 py-3 font-bold transition-colors hover:bg-blue-700">
-                    <Send size={18} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
           <section className="max-w-8xl mt-10">
             <div className="relative overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-black/10">
-              {/* Background */}
-              {/* <div className="absolute inset-0">
-                <img
-                  src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/60668e31-2150-424e-b292-05bfdda254e0_1600w.jpg"
-                  alt="Abstract minimal background"
-                  className="h-full w-full object-cover opacity-40"
-                />
-                <div className="via/50 absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent" />
-              </div> */}
-              {/* Content */}
               <div className="relative z-10 pt-5 pr-5 pb-5 pl-5 sm:p-8 md:p-12">
                 <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
                   {/* Form card */}
@@ -417,7 +351,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 border-t border-white/10 pt-16 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
             {immigrationMegaMenu.map((category) => (
               <div key={category.title} className="flex flex-col">
-                <h4 className="mb-6 text-sm font-black text-blue-400">{category.title}</h4>
+                <h4 className="mb-6 text-sm font-black text-secondary">{category.title}</h4>
                 <ul className="space-y-2.5">
                   {getFlattenedItems(category.items).map((item) => (
                     <li key={item.name}>
@@ -435,7 +369,7 @@ const Footer = () => {
 
             {/* Quick Links Column */}
             <div className="flex flex-col">
-              <h4 className="mb-6 text-sm font-black text-blue-400">Quick Links</h4>
+              <h4 className="mb-6 text-sm font-black text-secondary">Quick Links</h4>
               <ul className="space-y-2.5">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
@@ -469,7 +403,7 @@ const Footer = () => {
             </div>
 
             <p className="text-sm text-blue-300">
-              © {new Date().getFullYear()} Fly High Abroad. All rights reserved.
+              © {new Date().getFullYear()} Global Workgate. All rights reserved.
               <span className="mx-3 opacity-20">|</span>
               Designed with Excellence
             </p>

@@ -159,7 +159,7 @@ export default function WorkPermitsPage() {
                           href={item.link}
                           className="group flex items-center justify-between rounded-2xl border border-zinc-100 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-indigo-100 hover:shadow-lg hover:shadow-indigo-500/5"
                         >
-                          <span className="text-sm font-bold text-zinc-700 transition-colors group-hover:text-zinc-900">
+                          <span className="group-hover:text-primary text-sm font-bold text-zinc-700 transition-colors">
                             {item.name}
                           </span>
                           <div className="rounded-lg bg-zinc-50 p-2 text-zinc-300 transition-all group-hover:bg-indigo-50 group-hover:text-indigo-600">

@@ -38,7 +38,7 @@ const GallerySnippet = () => {
       <div className="mb-10 flex flex-col items-end justify-between gap-6 md:flex-row">
         <div className="max-w-xl">
           <h2 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-4xl">
-            Traveler <span className="text-blue-600">Moments</span>
+            Traveler <span className="text-primary">Moments</span>
           </h2>
           <p className="leading-relaxed text-gray-500">
             Every journey tells a story. Explore our collection of breathtaking moments captured by travelers across the

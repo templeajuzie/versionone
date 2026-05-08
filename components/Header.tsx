@@ -12,7 +12,7 @@ import {
   IconBrandYoutube,
 } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ChevronDown, Mail, Menu, Phone, Rocket, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, ChevronRight, Mail, Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
@@ -185,120 +185,94 @@ export function Header() {
             {/* Mobile Sheet Trigger */}
             <Sheet>
               <SheetTrigger asChild>
-                <button className="group relative flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] xl:hidden">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <Menu size={22} className="relative z-10 text-white" />
+                <button className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-700 transition-colors hover:bg-zinc-50 xl:hidden">
+                  <Menu size={20} />
                 </button>
               </SheetTrigger>
 
               <SheetContent
                 side="right"
                 showCloseButton={false}
-                className="w-full border-l border-white/10 bg-[#050816]/95 p-0 text-white backdrop-blur-3xl sm:max-w-md"
+                className="w-full border-l border-zinc-100 bg-white p-0 text-zinc-900 sm:max-w-sm"
               >
-                <div className="relative flex h-full flex-col overflow-hidden">
-                  {/* Ambient Background */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute top-[-120px] right-[-80px] h-[300px] w-[300px] rounded-full bg-violet-600/20 blur-3xl" />
-                    <div className="absolute bottom-[-100px] left-[-80px] h-[250px] w-[250px] rounded-full bg-blue-500/20 blur-3xl" />
-                  </div>
+                <div className="flex h-full flex-col">
 
                   {/* Header */}
-                  <div className="relative z-10 flex items-center justify-between border-b border-white/10 px-6 py-5">
-                    <div>
-                      <p className="text-xs font-medium tracking-[0.2em] text-white/40 uppercase">Navigation</p>
-                      <h2 className="mt-1 text-xl font-semibold tracking-tight text-white">Explore Fly High</h2>
-                    </div>
-
+                  <div className="flex items-center justify-between border-b border-zinc-100 px-6 py-5">
+                    <NavbarLogo />
                     <SheetClose asChild>
-                      {/* <button className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.08]">
-                        <X size={18} className="text-white/70" />
-                      </button> */}
+                      <button className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-700">
+                        <X size={18} />
+                      </button>
                     </SheetClose>
                   </div>
 
                   {/* Navigation */}
-                  <div className="relative z-10 flex-1 overflow-y-auto px-4 py-6">
-                    <div className="space-y-2">
+                  <div className="flex-1 overflow-y-auto px-4 py-6">
+                    <p className="mb-3 px-2 text-[10px] font-bold tracking-[0.18em] text-zinc-400 uppercase">Menu</p>
+                    <nav className="flex flex-col">
                       {navLinks.map((link) =>
                         link.hasMegaMenu ? (
                           <Accordion
                             key={link.name}
                             type="single"
                             collapsible
-                            className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl"
                           >
                             <AccordionItem value="services" className="border-none">
-                              <AccordionTrigger className="group px-5 py-4 text-left hover:no-underline">
-                                <div className="flex items-center gap-3">
-                                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-blue-500/20 ring-1 ring-white/10">
-                                    <Sparkles className="h-4 w-4 text-violet-300" />
-                                  </div>
-
-                                  <div>
-                                    <p className="text-base font-semibold text-white">{link.name}</p>
-                                    <p className="text-xs text-white/40">Immigration & relocation</p>
-                                  </div>
-                                </div>
+                              <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
+                                <span>{link.name}</span>
+                                <ChevronRight size={15} className="text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
                               </AccordionTrigger>
 
-                              <AccordionContent className="px-3 pb-3">
-                                <div className="space-y-3">
+                              <AccordionContent className="pb-2 pt-1">
+                                <Accordion type="multiple" className="space-y-0.5">
                                   {immigrationMegaMenu.map((category) => (
-                                    <div
+                                    <AccordionItem
                                       key={category.title}
-                                      className="rounded-2xl border border-white/5 bg-white/[0.03] p-4"
+                                      value={category.title}
+                                      className="border-none"
                                     >
-                                      <div className="mb-3 flex items-center justify-between">
-                                        <h4 className="text-sm font-semibold text-white">{category.title}</h4>
-
-                                        <div className="h-1 w-1 rounded-full bg-white/30" />
-                                      </div>
-
-                                      <div className="space-y-1">
-                                        {category.items.map((item, idx) =>
-                                          "subtitle" in item ? (
-                                            <div key={idx} className="space-y-2 pt-2">
-                                              <p className="px-2 text-[10px] font-semibold tracking-[0.18em] text-white/30 uppercase">
-                                                {item.subtitle}
-                                              </p>
-
-                                              <div className="space-y-1">
+                                      <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold text-zinc-800 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
+                                        <span>{category.title}</span>
+                                        <ChevronRight size={14} className="shrink-0 text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                                      </AccordionTrigger>
+                                      <AccordionContent className="pb-1 pl-3">
+                                        <div className="border-l border-zinc-100 pl-3">
+                                          {category.items.map((item, idx) =>
+                                            "subtitle" in item ? (
+                                              <div key={idx} className="mb-2 mt-1">
+                                                <p className="mb-1 px-1 text-[9px] font-semibold tracking-widest text-zinc-400 uppercase">
+                                                  {item.subtitle}
+                                                </p>
                                                 {item.items?.map((subItem, sIdx) => (
                                                   <SheetClose asChild key={sIdx}>
                                                     <Link
                                                       href={subItem.link}
-                                                      className="group flex items-center justify-between rounded-xl px-3 py-3 transition-all duration-300 hover:bg-white/[0.06]"
+                                                      className="flex items-center justify-between rounded-md px-2 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
                                                     >
-                                                      <span className="text-sm text-white/75 transition-colors group-hover:text-white">
-                                                        {subItem.name}
-                                                      </span>
-
-                                                      <ArrowUpRight className="h-4 w-4 text-white/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white/70" />
+                                                      {subItem.name}
+                                                      <ArrowUpRight size={13} className="shrink-0 text-zinc-300" />
                                                     </Link>
                                                   </SheetClose>
                                                 ))}
                                               </div>
-                                            </div>
-                                          ) : (
-                                            <SheetClose asChild key={idx}>
-                                              <Link
-                                                href={item.link || "#"}
-                                                className="group flex items-center justify-between rounded-xl px-3 py-3 transition-all duration-300 hover:bg-white/[0.06]"
-                                              >
-                                                <span className="text-sm text-white/75 transition-colors group-hover:text-white">
+                                            ) : (
+                                              <SheetClose asChild key={idx}>
+                                                <Link
+                                                  href={item.link || "#"}
+                                                  className="flex items-center justify-between rounded-md px-2 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
+                                                >
                                                   {item.name}
-                                                </span>
-
-                                                <ArrowUpRight className="h-4 w-4 text-white/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white/70" />
-                                              </Link>
-                                            </SheetClose>
-                                          )
-                                        )}
-                                      </div>
-                                    </div>
+                                                  <ArrowUpRight size={13} className="shrink-0 text-zinc-300" />
+                                                </Link>
+                                              </SheetClose>
+                                            )
+                                          )}
+                                        </div>
+                                      </AccordionContent>
+                                    </AccordionItem>
                                   ))}
-                                </div>
+                                </Accordion>
                               </AccordionContent>
                             </AccordionItem>
                           </Accordion>
@@ -306,64 +280,40 @@ export function Header() {
                           <SheetClose asChild key={link.name}>
                             <Link
                               href={link.link}
-                              className="group flex items-center justify-between rounded-2xl border border-transparent bg-white/[0.03] px-5 py-4 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.06]"
+                              className="flex items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
                             >
-                              <div>
-                                <p className="text-base font-medium text-white">{link.name}</p>
-                              </div>
-
-                              <ArrowRight className="h-4 w-4 text-white/30 transition-transform duration-300 group-hover:translate-x-1" />
+                              {link.name}
+                              <ChevronRight size={15} className="text-zinc-300" />
                             </Link>
                           </SheetClose>
                         )
                       )}
+                    </nav>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="border-t border-zinc-100 p-5">
+                    <SheetClose asChild>
+                      <Link
+                        href="/contact"
+                        className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
+                      >
+                        Book a Free Assessment <ArrowRight size={15} />
+                      </Link>
+                    </SheetClose>
+                    <div className="mt-4 flex items-center gap-4">
+                      <a href="https://wa.me/971529075570" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                        <IconBrandWhatsapp size={14} />
+                        WhatsApp
+                      </a>
+                      <span className="h-3 w-px bg-zinc-200" />
+                      <a href="mailto:sales@globalworkgate.com" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                        <Mail size={13} />
+                        Email Us
+                      </a>
                     </div>
                   </div>
 
-                  {/* Footer CTA */}
-                  <div className="relative z-10 border-t border-white/10 p-5">
-                    <div className="overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-violet-600/20 via-blue-600/10 to-transparent p-5 backdrop-blur-2xl">
-                      <div className="mb-5 flex items-start justify-between">
-                        <div>
-                          <p className="text-lg font-semibold text-white">Ready to move abroad?</p>
-                          <p className="mt-1 text-sm leading-relaxed text-white/50">
-                            Speak with our team and start your relocation journey.
-                          </p>
-                        </div>
-
-                        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10">
-                          <Rocket className="h-5 w-5 text-white" />
-                        </div>
-                      </div>
-
-                      <SheetClose asChild>
-                        <Link
-                          href="#"
-                          className="flex h-12 items-center justify-center rounded-2xl bg-white text-sm font-semibold text-[#050816] transition-all duration-300 hover:scale-[0.98]"
-                        >
-                          Contact Us
-                        </Link>
-                      </SheetClose>
-
-                      <div className="mt-5 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          {[IconBrandWhatsapp, IconBrandInstagram, IconBrandLinkedin, IconBrandYoutube].map(
-                            (Icon, i) => (
-                              <a
-                                key={i}
-                                href="#"
-                                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/60 transition-all duration-300 hover:bg-white/[0.08] hover:text-white"
-                              >
-                                <Icon size={18} />
-                              </a>
-                            )
-                          )}
-                        </div>
-
-                        <p className="text-[11px] text-white/30">© {new Date().getFullYear()}</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>

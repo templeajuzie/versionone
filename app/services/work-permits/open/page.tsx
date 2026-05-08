@@ -165,7 +165,7 @@ export default function OpenWorkPermitPage() {
           <div className="flex flex-col gap-16 lg:flex-row">
             <div className="flex-1 space-y-20">
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-indigo-600" />
                   Types of Permits
                 </h2>
@@ -180,7 +180,7 @@ export default function OpenWorkPermitPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-indigo-600" />
                   Application Process
                 </h2>
@@ -211,7 +211,7 @@ export default function OpenWorkPermitPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-indigo-600" />
                   Program Overview by Country
                 </h2>
@@ -221,7 +221,7 @@ export default function OpenWorkPermitPage() {
                       key={i}
                       className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <h3 className="text-primary mb-4 text-xl font-black">{country.name}</h3>
                       <ul className="space-y-3">
                         {country.points.map((pt, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
@@ -235,7 +235,7 @@ export default function OpenWorkPermitPage() {
                 </div>
 
                 <div className="mt-12 rounded-lg border border-zinc-100 bg-zinc-50 p-8">
-                  <h3 className="mb-6 text-lg font-black text-zinc-900">Other Flexible European Options</h3>
+                  <h3 className="text-primary mb-6 text-lg font-black">Other Flexible European Options</h3>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {openWorkContent.european.map((eu, i) => (
                       <div key={i} className="flex items-center gap-3">
@@ -249,7 +249,7 @@ export default function OpenWorkPermitPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-indigo-600" />
                   Who Should Apply
                 </h2>
@@ -263,7 +263,7 @@ export default function OpenWorkPermitPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   Work freely, explore opportunities, and grow your career globally—without limits.
                 </p>
               </div>
@@ -280,7 +280,7 @@ export default function OpenWorkPermitPage() {
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{openWorkContent.timeline}</p>
+                      <p className="text-primary text-xl font-black">{openWorkContent.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />

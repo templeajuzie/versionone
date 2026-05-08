@@ -41,7 +41,7 @@ const ContactSnipet = () => {
               </a>
               <a
                 href="#"
-                className="font-geist inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-50"
+                className="font-geist text-primary inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium transition-all hover:bg-zinc-50"
               >
                 <IconBrandWhatsapp className="text-green-600" />
                 WhatsApp Chat
@@ -51,7 +51,7 @@ const ContactSnipet = () => {
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div className="rounded-lg border border-zinc-100 bg-white p-4 shadow-sm">
                 <div className="font-geist flex items-center gap-2 text-sm font-medium">
-                  <span className="font-geist inline-flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 text-blue-600 ring-1 ring-blue-700/10">
+                  <span className="font-geist text-primary inline-flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 ring-1 ring-blue-700/10">
                     01
                   </span>
                   Free Profile Assessment
@@ -62,7 +62,7 @@ const ContactSnipet = () => {
               </div>
               <div className="rounded-lg border border-zinc-100 bg-white p-4 shadow-sm">
                 <div className="font-geist flex items-center gap-2 text-sm font-medium">
-                  <span className="font-geist inline-flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 text-blue-600 ring-1 ring-blue-700/10">
+                  <span className="font-geist text-primary inline-flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 ring-1 ring-blue-700/10">
                     02
                   </span>
                   Expert Guidance
@@ -71,7 +71,7 @@ const ContactSnipet = () => {
               </div>
               <div className="rounded-lg border border-zinc-100 bg-white p-4 shadow-sm">
                 <div className="font-geist flex items-center gap-2 text-sm font-medium">
-                  <span className="font-geist inline-flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 text-blue-600 ring-1 ring-blue-700/10">
+                  <span className="font-geist text-primary inline-flex h-6 w-6 items-center justify-center rounded-md bg-blue-50 ring-1 ring-blue-700/10">
                     03
                   </span>
                   Visa Approval
@@ -101,7 +101,7 @@ const ContactSnipet = () => {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-4 w-4 text-blue-600"
+                    className="text-primary h-4 w-4"
                   >
                     <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                     <path d="m9 11 3 3L22 4" />

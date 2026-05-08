@@ -2,18 +2,20 @@
 "use client";
 
 import React from "react";
+
+import Footer from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { immigrationMegaMenu } from "@/data/headerData";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, CheckCircle2, Globe, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Header } from "@/components/Header";
-import Footer from "@/components/Footer";
-import { immigrationMegaMenu } from "@/data/headerData";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Globe, Users } from "lucide-react";
 
-const activeCat = immigrationMegaMenu.find(c => c.title === "Permanent Residency")!;
+const activeCat = immigrationMegaMenu.find((c) => c.title === "Permanent Residency")!;
 
 const categoryMeta = {
-  description: "Secure your future with permanent residency through skilled work, family sponsorship, investment, or international Golden Visa routes.",
+  description:
+    "Secure your future with permanent residency through skilled work, family sponsorship, investment, or international Golden Visa routes.",
   accent: "bg-amber-600",
 };
 
@@ -49,7 +51,7 @@ function groupItems(flatItems: FlatItem[]) {
 
 const GridPattern = () => (
   <svg
-    className="absolute inset-0 -z-10 h-full w-full stroke-zinc-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+    className="absolute inset-0 -z-10 h-full w-full [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-zinc-200"
     aria-hidden="true"
   >
     <defs>
@@ -73,9 +75,9 @@ export default function PermanentResidencyPage() {
   const groups = groupItems(flat);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
-      <section className="relative isolate overflow-hidden border-b border-white/10 min-h-[70vh] py-32 md:py-40">
+      <section className="relative isolate min-h-[70vh] overflow-hidden border-b border-white/10 py-32 md:py-40">
         {/* Background */}
         <div className="absolute inset-0 -z-20">
           <Image
@@ -126,9 +128,7 @@ export default function PermanentResidencyPage() {
               {content.title}
             </motion.h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-              {content.description}
-            </p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">{content.description}</p>
           </div>
         </div>
       </section>
@@ -141,13 +141,13 @@ export default function PermanentResidencyPage() {
                 <div key={gIdx} className="flex flex-col gap-4">
                   {group.subtitle && (
                     <div className="flex items-center gap-4">
-                      <span className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-300 whitespace-nowrap">
+                      <span className="text-[11px] font-black tracking-[0.2em] whitespace-nowrap text-zinc-300 uppercase">
                         {group.subtitle}
                       </span>
                       <div className="h-px w-full bg-zinc-100" />
                     </div>
                   )}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
                     {group.items.map((item, iIdx) => (
                       <motion.div
                         key={item.link}
@@ -157,12 +157,12 @@ export default function PermanentResidencyPage() {
                       >
                         <Link
                           href={item.link}
-                          className="group flex items-center justify-between p-5 rounded-2xl border border-zinc-100 bg-white transition-all hover:border-amber-100 hover:shadow-lg hover:shadow-amber-500/5 hover:-translate-y-0.5"
+                          className="group flex items-center justify-between rounded-2xl border border-zinc-100 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-amber-100 hover:shadow-lg hover:shadow-amber-500/5"
                         >
-                          <span className="text-sm font-bold text-zinc-700 group-hover:text-zinc-900 transition-colors">
+                          <span className="group-hover:text-primary text-sm font-bold text-zinc-700 transition-colors">
                             {item.name}
                           </span>
-                          <div className="p-2 rounded-lg bg-zinc-50 text-zinc-300 group-hover:bg-amber-50 group-hover:text-amber-600 transition-all">
+                          <div className="rounded-lg bg-zinc-50 p-2 text-zinc-300 transition-all group-hover:bg-amber-50 group-hover:text-amber-600">
                             <ArrowUpRight size={14} />
                           </div>
                         </Link>

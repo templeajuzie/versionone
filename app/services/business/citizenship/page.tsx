@@ -143,7 +143,7 @@ export default function CitizenshipByInvestmentPage() {
             <div className="flex-1 space-y-20">
               {/* Types */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Types of Programs</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Types of Programs</h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {content.types.map((type, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
@@ -171,7 +171,7 @@ export default function CitizenshipByInvestmentPage() {
 
               {/* Featured Countries */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   Countries Offering CBI
                 </h2>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -186,7 +186,7 @@ export default function CitizenshipByInvestmentPage() {
 
               {/* Who Should Apply */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Who Should Apply</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Who Should Apply</h2>
                 <div className="flex flex-wrap gap-3">
                   {content.who.map((person, i) => (
                     <div key={i} className="rounded-full bg-zinc-100 px-6 py-3 text-sm font-bold text-zinc-700">
@@ -197,7 +197,7 @@ export default function CitizenshipByInvestmentPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   Secure a second passport—unlock global freedom, mobility, and opportunity.
                 </p>
               </div>
@@ -216,7 +216,7 @@ export default function CitizenshipByInvestmentPage() {
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{content.timeline}</p>
+                      <p className="text-primary text-xl font-black">{content.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />

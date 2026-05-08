@@ -2,56 +2,7 @@
 
 import React from "react";
 
-
-
 import Image from "next/image";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const destinations = [
   {
@@ -90,12 +41,12 @@ const InspirationSection = () => {
   return (
     <section className="">
       <div className="mb-10 text-center md:text-left">
-        <h2 className="text-3xl font-black text-zinc-900 md:text-4xl">
-          Top <span className="text-blue-600">Destinations</span> for Migration
+        <h2 className="text-primary text-3xl font-black md:text-4xl">
+          Top <span className="text-primary">Destinations</span> for Migration
         </h2>
-        <p className="mt-2 text-zinc-500 max-w-2xl">
-          Discover the most popular countries for skilled workers, investors, and students. 
-          Your journey to a new life starts here.
+        <p className="mt-2 max-w-2xl text-zinc-500">
+          Discover the most popular countries for skilled workers, investors, and students. Your journey to a new life
+          starts here.
         </p>
       </div>
 
@@ -103,7 +54,7 @@ const InspirationSection = () => {
         {destinations.map((dest) => (
           <div
             key={dest.id}
-            className="group relative aspect-[4/5] min-w-[240px] cursor-pointer overflow-hidden rounded-xl border border-zinc-100 bg-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 md:min-w-0 shadow-lg"
+            className="group relative aspect-[4/5] min-w-[240px] cursor-pointer overflow-hidden rounded-xl border border-zinc-100 bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl md:min-w-0"
           >
             <Image
               src={dest.image}
@@ -111,7 +62,7 @@ const InspirationSection = () => {
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
-            
+
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
 
@@ -121,12 +72,15 @@ const InspirationSection = () => {
             </div> */}
 
             <div className="absolute bottom-6 left-6 z-10">
-              <span className="text-2xl font-black text-white drop-shadow-lg">
-                {dest.name}
-              </span>
-              <div className="mt-2 flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-wider">
+              <span className="text-2xl font-black text-white drop-shadow-lg">{dest.name}</span>
+              <div className="mt-2 flex items-center gap-2 text-xs font-bold tracking-wider text-white/80 uppercase">
                 View Pathways
-                <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="h-3 w-3 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>

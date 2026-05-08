@@ -19,7 +19,7 @@ const SupportFloating = () => {
       </button>
 
       {/* Headset Support Icon */}
-      <button className="group rounded-full border border-gray-100 bg-white p-4 text-gray-700 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all hover:scale-110 hover:text-blue-600 active:scale-95">
+      <button className="group hover:text-primary rounded-full border border-gray-100 bg-white p-4 text-gray-700 shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all hover:scale-110 active:scale-95">
         <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"

@@ -189,14 +189,14 @@ export default function SpousalWorkPermitPage() {
             <div className="flex-1 space-y-20">
               {/* Types */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Types of Permits
                 </h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {spousalContent.types.map((type, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
-                      <FileText size={18} className="text-blue-600" />
+                      <FileText size={18} className="text-primary" />
                       <span className="text-sm font-bold text-zinc-700">{type}</span>
                     </div>
                   ))}
@@ -205,14 +205,14 @@ export default function SpousalWorkPermitPage() {
 
               {/* Application Process */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Application Process
                 </h2>
                 <div className="relative space-y-8 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-0.5 before:bg-zinc-100">
                   {spousalContent.process.map((step, i) => (
                     <div key={i} className="relative">
-                      <div className="absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-blue-600 bg-white text-[10px] font-black text-blue-600">
+                      <div className="text-primary absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-blue-600 bg-white text-[10px] font-black">
                         {i + 1}
                       </div>
                       <p className="text-base font-bold text-zinc-800">{step}</p>
@@ -238,7 +238,7 @@ export default function SpousalWorkPermitPage() {
 
               {/* Country Overview */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Program Overview by Country
                 </h2>
@@ -248,7 +248,7 @@ export default function SpousalWorkPermitPage() {
                       key={i}
                       className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <h3 className="text-primary mb-4 text-xl font-black">{country.name}</h3>
                       <ul className="space-y-3">
                         {country.points.map((pt, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
@@ -262,13 +262,13 @@ export default function SpousalWorkPermitPage() {
                 </div>
 
                 <div className="mt-12 rounded-lg border border-zinc-100 bg-zinc-50 p-8">
-                  <h3 className="mb-6 text-lg font-black text-zinc-900">
+                  <h3 className="text-primary mb-6 text-lg font-black">
                     European Countries (Similar Spousal Work Rights)
                   </h3>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {spousalContent.european.map((eu, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <Globe2 size={16} className="text-blue-600" />
+                        <Globe2 size={16} className="text-primary" />
                         <span className="text-sm font-bold text-zinc-700">{eu.name} —</span>
                         <span className="text-sm text-zinc-500">{eu.desc}</span>
                       </div>
@@ -279,7 +279,7 @@ export default function SpousalWorkPermitPage() {
 
               {/* Who Should Apply */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Who Should Apply
                 </h2>
@@ -293,7 +293,7 @@ export default function SpousalWorkPermitPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   Move together, work freely, and build your future as a family—anywhere in the world.
                 </p>
               </div>
@@ -305,14 +305,14 @@ export default function SpousalWorkPermitPage() {
                 {/* Timeline Card */}
                 <div className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm">
                   <div className="mb-6 flex items-center gap-4">
-                    <div className="rounded-2xl bg-blue-50 p-3 text-blue-600">
+                    <div className="text-primary rounded-2xl bg-blue-50 p-3">
                       <Clock size={24} />
                     </div>
                     <div>
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{spousalContent.timeline}</p>
+                      <p className="text-primary text-xl font-black">{spousalContent.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />
@@ -338,7 +338,7 @@ export default function SpousalWorkPermitPage() {
                   </p>
                   <Link
                     href="/contact"
-                    className="relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black text-blue-600 transition-colors hover:bg-zinc-50"
+                    className="text-primary relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black transition-colors hover:bg-zinc-50"
                   >
                     Free Consultation <ArrowRight size={18} />
                   </Link>

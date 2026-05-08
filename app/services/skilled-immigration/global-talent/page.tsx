@@ -182,7 +182,7 @@ export default function GlobalTalentVisaPage() {
           <div className="flex flex-col gap-16 lg:flex-row">
             <div className="flex-1 space-y-20">
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-violet-600" />
                   Types of Visas
                 </h2>
@@ -197,7 +197,7 @@ export default function GlobalTalentVisaPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-violet-600" />
                   Application Process
                 </h2>
@@ -228,7 +228,7 @@ export default function GlobalTalentVisaPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-violet-600" />
                   Program Overview by Country
                 </h2>
@@ -238,7 +238,7 @@ export default function GlobalTalentVisaPage() {
                       key={i}
                       className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <h3 className="text-primary mb-4 text-xl font-black">{country.name}</h3>
                       <ul className="space-y-3">
                         {country.points.map((pt, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
@@ -253,7 +253,7 @@ export default function GlobalTalentVisaPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-violet-600" />
                   Who Should Apply
                 </h2>
@@ -267,7 +267,7 @@ export default function GlobalTalentVisaPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   If you have exceptional talent, the world is open to you—move faster, work freely, and achieve more
                   globally.
                 </p>
@@ -285,7 +285,7 @@ export default function GlobalTalentVisaPage() {
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{globalTalentContent.timeline}</p>
+                      <p className="text-primary text-xl font-black">{globalTalentContent.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />

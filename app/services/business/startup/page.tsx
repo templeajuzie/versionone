@@ -164,7 +164,7 @@ export default function StartupInnovationPermanentResidencyPage() {
           <div className="flex flex-col gap-16 lg:flex-row">
             <div className="flex-1 space-y-20">
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Types of Programs</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Types of Programs</h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {content.types.map((type, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
@@ -176,11 +176,11 @@ export default function StartupInnovationPermanentResidencyPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Application Process</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Application Process</h2>
                 <div className="relative space-y-8 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-0.5 before:bg-zinc-100">
                   {content.process.map((step, i) => (
                     <div key={i} className="relative">
-                      <div className="absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-[10px] font-black text-zinc-900">
+                      <div className="text-primary absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-zinc-900 bg-white text-[10px] font-black">
                         {i + 1}
                       </div>
                       <p className="text-base font-bold text-zinc-800">{step}</p>
@@ -204,7 +204,7 @@ export default function StartupInnovationPermanentResidencyPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   Program Overview by Country
                 </h2>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -213,7 +213,7 @@ export default function StartupInnovationPermanentResidencyPage() {
                       key={i}
                       className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <h3 className="text-primary mb-4 text-xl font-black">{country.name}</h3>
                       <ul className="space-y-3">
                         {country.points.map((pt, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
@@ -228,7 +228,7 @@ export default function StartupInnovationPermanentResidencyPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Who Should Apply</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Who Should Apply</h2>
                 <div className="flex flex-wrap gap-3">
                   {content.who.map((person, i) => (
                     <div key={i} className="rounded-full bg-zinc-100 px-6 py-3 text-sm font-bold text-zinc-700">
@@ -239,7 +239,7 @@ export default function StartupInnovationPermanentResidencyPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   Turn your idea into a global venture—and secure your future through innovation.
                 </p>
               </div>
@@ -249,14 +249,14 @@ export default function StartupInnovationPermanentResidencyPage() {
               <div className="sticky top-32 space-y-8">
                 <div className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm">
                   <div className="mb-6 flex items-center gap-4">
-                    <div className="rounded-2xl bg-zinc-50 p-3 text-zinc-900">
+                    <div className="text-primary rounded-2xl bg-zinc-50 p-3">
                       <Clock size={24} />
                     </div>
                     <div>
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{content.timeline}</p>
+                      <p className="text-primary text-xl font-black">{content.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />
@@ -264,7 +264,7 @@ export default function StartupInnovationPermanentResidencyPage() {
                     <p className="mb-2 text-[10px] font-black tracking-widest text-zinc-400 uppercase">Key Benefits</p>
                     {content.benefits.map((benefit, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <ShieldCheck size={16} className="shrink-0 text-zinc-900" />
+                        <ShieldCheck size={16} className="text-primary shrink-0" />
                         <span className="text-sm font-bold text-zinc-700">{benefit}</span>
                       </div>
                     ))}
@@ -281,7 +281,7 @@ export default function StartupInnovationPermanentResidencyPage() {
                   </p>
                   <Link
                     href="/contact"
-                    className="relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black text-zinc-900 transition-colors hover:bg-zinc-50"
+                    className="text-primary relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black transition-colors hover:bg-zinc-50"
                   >
                     Contact Expert <ArrowRight size={18} />
                   </Link>

@@ -182,7 +182,7 @@ export default function UnskilledWorkVisaPage() {
           <div className="flex flex-col gap-16 lg:flex-row">
             <div className="flex-1 space-y-20">
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-zinc-400" />
                   Types of Programs
                 </h2>
@@ -197,7 +197,7 @@ export default function UnskilledWorkVisaPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-zinc-400" />
                   Application Process
                 </h2>
@@ -228,7 +228,7 @@ export default function UnskilledWorkVisaPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-zinc-400" />
                   Program Overview by Country
                 </h2>
@@ -238,7 +238,7 @@ export default function UnskilledWorkVisaPage() {
                       key={i}
                       className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <h3 className="text-primary mb-4 text-xl font-black">{country.name}</h3>
                       <ul className="space-y-3">
                         {country.points.map((pt, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
@@ -253,7 +253,7 @@ export default function UnskilledWorkVisaPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-zinc-400" />
                   Who Should Apply
                 </h2>
@@ -267,7 +267,7 @@ export default function UnskilledWorkVisaPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   Start your journey today—your opportunity to work abroad is closer than you think.
                 </p>
               </div>
@@ -284,7 +284,7 @@ export default function UnskilledWorkVisaPage() {
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{unskilledContent.timeline}</p>
+                      <p className="text-primary text-xl font-black">{unskilledContent.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />
@@ -309,7 +309,7 @@ export default function UnskilledWorkVisaPage() {
                   </p>
                   <Link
                     href="/contact"
-                    className="relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black text-zinc-900 transition-colors hover:bg-zinc-50"
+                    className="text-primary relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black transition-colors hover:bg-zinc-50"
                   >
                     Free Assessment <ArrowRight size={18} />
                   </Link>

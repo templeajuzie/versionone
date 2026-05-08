@@ -179,14 +179,14 @@ export default function HighlySkilledMigrantPage() {
           <div className="flex flex-col gap-16 lg:flex-row">
             <div className="flex-1 space-y-20">
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Types of Visas
                 </h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {highlySkilledContent.types.map((type, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
-                      <Award size={18} className="text-blue-600" />
+                      <Award size={18} className="text-primary" />
                       <span className="text-sm font-bold text-zinc-700">{type}</span>
                     </div>
                   ))}
@@ -194,14 +194,14 @@ export default function HighlySkilledMigrantPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Application Process
                 </h2>
                 <div className="relative space-y-8 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-0.5 before:bg-zinc-100">
                   {highlySkilledContent.process.map((step, i) => (
                     <div key={i} className="relative">
-                      <div className="absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-blue-600 bg-white text-[10px] font-black text-blue-600">
+                      <div className="text-primary absolute top-1 -left-[31px] z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-blue-600 bg-white text-[10px] font-black">
                         {i + 1}
                       </div>
                       <p className="text-base font-bold text-zinc-800">{step}</p>
@@ -225,7 +225,7 @@ export default function HighlySkilledMigrantPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Program Overview by Country
                 </h2>
@@ -235,7 +235,7 @@ export default function HighlySkilledMigrantPage() {
                       key={i}
                       className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
-                      <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
+                      <h3 className="text-primary mb-4 text-xl font-black">{country.name}</h3>
                       <ul className="space-y-3">
                         {country.points.map((pt, j) => (
                           <li key={j} className="flex items-start gap-3 text-sm leading-relaxed text-zinc-500">
@@ -250,7 +250,7 @@ export default function HighlySkilledMigrantPage() {
               </div>
 
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">
                   <span className="h-1 w-8 rounded-full bg-blue-600" />
                   Who Should Apply
                 </h2>
@@ -264,7 +264,7 @@ export default function HighlySkilledMigrantPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   If you are highly skilled, the world’s top economies are looking for you—step into global success
                   today.
                 </p>
@@ -275,14 +275,14 @@ export default function HighlySkilledMigrantPage() {
               <div className="sticky top-32 space-y-8">
                 <div className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm">
                   <div className="mb-6 flex items-center gap-4">
-                    <div className="rounded-2xl bg-blue-50 p-3 text-blue-600">
+                    <div className="text-primary rounded-2xl bg-blue-50 p-3">
                       <Clock size={24} />
                     </div>
                     <div>
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{highlySkilledContent.timeline}</p>
+                      <p className="text-primary text-xl font-black">{highlySkilledContent.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />
@@ -307,7 +307,7 @@ export default function HighlySkilledMigrantPage() {
                   </p>
                   <Link
                     href="/contact"
-                    className="relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black text-blue-600 transition-colors hover:bg-zinc-50"
+                    className="text-primary relative z-10 flex w-full items-center justify-center gap-3 rounded-2xl bg-white py-4 font-black transition-colors hover:bg-zinc-50"
                   >
                     Apply Now <ArrowRight size={18} />
                   </Link>

@@ -152,7 +152,7 @@ export default function MedicalTreatmentVisaPage() {
             <div className="flex-1 space-y-20">
               {/* Types */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Types of Visas</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Types of Visas</h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {content.types.map((type, i) => (
                     <div key={i} className="flex items-center gap-3 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
@@ -165,7 +165,7 @@ export default function MedicalTreatmentVisaPage() {
 
               {/* Application Process */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Application Process</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Application Process</h2>
                 <div className="relative space-y-8 pl-8 before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-0.5 before:bg-zinc-100">
                   {content.process.map((step, i) => (
                     <div key={i} className="relative">
@@ -195,7 +195,7 @@ export default function MedicalTreatmentVisaPage() {
 
               {/* Who Should Apply */}
               <div>
-                <h2 className="mb-8 flex items-center gap-3 text-2xl font-black text-zinc-900">Who Should Apply</h2>
+                <h2 className="text-primary mb-8 flex items-center gap-3 text-2xl font-black">Who Should Apply</h2>
                 <div className="flex flex-wrap gap-3">
                   {content.who.map((person, i) => (
                     <div key={i} className="rounded-full bg-zinc-100 px-6 py-3 text-sm font-bold text-zinc-700">
@@ -206,7 +206,7 @@ export default function MedicalTreatmentVisaPage() {
               </div>
 
               <div className="border-t border-zinc-100 pt-10">
-                <p className="text-2xl font-black text-zinc-900 italic">
+                <p className="text-primary text-2xl font-black italic">
                   Get the care you need—access world-class healthcare without borders.
                 </p>
               </div>
@@ -225,7 +225,7 @@ export default function MedicalTreatmentVisaPage() {
                       <p className="text-[10px] font-black tracking-widest text-zinc-400 uppercase">
                         Processing Timeline
                       </p>
-                      <p className="text-xl font-black text-zinc-900">{content.timeline}</p>
+                      <p className="text-primary text-xl font-black">{content.timeline}</p>
                     </div>
                   </div>
                   <div className="mb-6 h-px bg-zinc-100" />

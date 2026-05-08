@@ -127,7 +127,7 @@ export default function ServicesPage() {
                           className={`group relative flex items-center justify-between rounded-lg px-5 py-4 transition-all duration-300 ${
                             isActive
                               ? "translate-x-2 bg-zinc-900 text-white shadow-sm"
-                              : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900"
+                              : "hover:text-primary text-zinc-500 hover:bg-zinc-50"
                           }`}
                         >
                           <span className="text-sm font-black">{cat.title}</span>
@@ -151,7 +151,7 @@ export default function ServicesPage() {
                   </p>
                   <Link
                     href="/contact"
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-white py-3 text-xs font-black text-blue-600 shadow-lg transition-colors hover:bg-zinc-50"
+                    className="text-primary flex w-full items-center justify-center gap-2 rounded-lg bg-white py-3 text-xs font-black shadow-lg transition-colors hover:bg-zinc-50"
                   >
                     Get Started <ArrowRight size={14} />
                   </Link>
@@ -171,7 +171,7 @@ export default function ServicesPage() {
                 >
                   <div className="mb-12">
                     <div className={`h-1.5 w-12 rounded-full ${meta.accent} mb-6`} />
-                    <h2 className="mb-4 text-4xl font-black text-zinc-900">{activeCat.title}</h2>
+                    <h2 className="text-primary mb-4 text-4xl font-black">{activeCat.title}</h2>
                     <p className="max-w-2xl text-lg leading-relaxed text-zinc-500">{meta.description}</p>
                   </div>
 
@@ -198,10 +198,10 @@ export default function ServicesPage() {
                                 href={item.link}
                                 className="group flex items-center justify-between rounded-lg border border-zinc-100 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-blue-100 hover:shadow-lg hover:shadow-blue-500/5"
                               >
-                                <span className="text-sm font-bold text-zinc-700 transition-colors group-hover:text-zinc-900">
+                                <span className="group-hover:text-primary text-sm font-bold text-zinc-700 transition-colors">
                                   {item.name}
                                 </span>
-                                <div className="rounded-lg bg-zinc-50 p-2 text-zinc-300 transition-all group-hover:bg-blue-50 group-hover:text-blue-600">
+                                <div className="group-hover:text-primary rounded-lg bg-zinc-50 p-2 text-zinc-300 transition-all group-hover:bg-blue-50">
                                   <ArrowUpRight size={14} />
                                 </div>
                               </Link>
@@ -222,8 +222,8 @@ export default function ServicesPage() {
       <section className="border-t border-zinc-100 bg-zinc-50 py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <div className="mb-16 text-center">
-            <h2 className="text-4xl font-black tracking-tight text-zinc-900 md:text-5xl">
-              Global <span className="text-blue-600 italic">Opportunities</span>
+            <h2 className="text-primary text-4xl font-black tracking-tight md:text-5xl">
+              Global <span className="text-primary italic">Opportunities</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl font-medium text-zinc-500">
               Explore all our service categories and find the pathway that suits your professional profile.
@@ -253,11 +253,11 @@ export default function ServicesPage() {
                       {count} Programs
                     </span>
                   </div>
-                  <h3 className="mb-3 text-2xl font-black text-zinc-900 transition-colors group-hover:text-blue-600">
+                  <h3 className="group-hover:text-primary text-primary mb-3 text-2xl font-black transition-colors">
                     {cat.title}
                   </h3>
                   <p className="mb-8 text-sm leading-relaxed text-zinc-500">{m.description}</p>
-                  <div className="flex items-center gap-2 text-xs font-black text-zinc-300 transition-colors group-hover:text-blue-600">
+                  <div className="group-hover:text-primary flex items-center gap-2 text-xs font-black text-zinc-300 transition-colors">
                     Explore Pathway <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </motion.button>

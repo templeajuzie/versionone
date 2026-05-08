@@ -37,7 +37,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="rounded-lg bg-blue-50 p-3 text-blue-600">
+                  <div className="text-primary rounded-lg bg-blue-50 p-3">
                     <Phone size={24} />
                   </div>
                   <div>
