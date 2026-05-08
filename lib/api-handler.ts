@@ -50,8 +50,6 @@ export const apiHandler = <TBody = any, TParams = any, TQuery = any>(config: Han
 
       const accessToken = req.cookies.get("accessToken")?.value || req.headers.get("x-access-token");
       const refreshToken = req.cookies.get("refreshToken")?.value || req.headers.get("x-refresh-token");
-      console.log("accessToken:", accessToken);
-      console.log("refreshToken:", refreshToken);
       const allowedScopes = config.auth?.length ? config.auth : null;
 
       if (allowedScopes) {

@@ -23,16 +23,9 @@ export const GetSingleJob = async (id: string) => {
 };
 
 export const UpdateJob = async (body: Partial<Job> & Pick<Job, "id">) => {
-  return db
-    .update(Jobs)
-    .set(body)
-    .where(eq(Jobs.id, body.id))
-    .returning();
+  return db.update(Jobs).set(body).where(eq(Jobs.id, body.id)).returning();
 };
 
 export const DeleteJob = async (body: Pick<Job, "id">) => {
-  return db
-    .delete(Jobs)
-    .where(eq(Jobs.id, body.id))
-    .returning();
+  return db.delete(Jobs).where(eq(Jobs.id, body.id)).returning();
 };

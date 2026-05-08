@@ -6,7 +6,8 @@ import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "@/components/ui/sidebar";
-import { AudioLinesIcon, BookOpenIcon, GalleryVerticalEndIcon, TerminalIcon, LayoutDashboard} from "lucide-react";
+import { AudioLinesIcon, BookOpenIcon, GalleryVerticalEndIcon, LayoutDashboard, TerminalIcon } from "lucide-react";
+
 import { NavbarLogo } from "./ui/resizable-navbar";
 
 // This is sample data.
@@ -54,7 +55,6 @@ const data = {
       url: "#",
       icon: <BookOpenIcon />,
       items: [
-
         {
           title: "Create Jobs",
           url: "/admin/dashboard/create",
@@ -80,9 +80,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <div className=" px-4 pt-1">
-
-        <NavbarLogo />
+        <div className="px-4 pt-1">
+          <NavbarLogo />
         </div>
       </SidebarHeader>
       <SidebarContent>

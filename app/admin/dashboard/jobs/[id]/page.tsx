@@ -89,7 +89,6 @@ export default function JobDetailsPage() {
   async function onSubmit(values: JobFormInput) {
     if (!jobId) return;
     try {
-
       updateJob(jobId, {
         title: values.title,
         company: values.company,
@@ -106,7 +105,7 @@ export default function JobDetailsPage() {
         isCoverletterRequired: values.isCoverletterRequired,
         isCVRequired: values.isCVRequired,
       } as any);
-      setIsEditing(false); 
+      setIsEditing(false);
     } catch (err: unknown) {
       const errorMsg =
         err && typeof err === "object" && "message" in err ? (err as { message?: string }).message : undefined;
@@ -136,7 +135,7 @@ export default function JobDetailsPage() {
   }
 
   return (
-    <div className="mx-auto flex w-full  flex-col gap-8 p-4 md:p-8">
+    <div className="mx-auto flex w-full flex-col gap-8 p-4 md:p-8">
       {/* Header */}
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex items-center gap-4">

@@ -6,7 +6,6 @@ export default async function proxy(req: NextRequest): Promise<NextResponse> {
   if (!host) return new NextResponse("Missing Host header", { status: 400 });
 
   const url = req.nextUrl.clone();
-  console.log("Host header:", host);
   //   let prefix = "";
 
   //   if (host === new URL(process.env.NEXT_PUBLIC_API_URL!).host) {

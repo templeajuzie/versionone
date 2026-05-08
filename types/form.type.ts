@@ -6,8 +6,6 @@ export enum JobType {
   Internship = "internship",
 }
 
-
-
 // Job Status Enum
 export enum JobStatus {
   Draft = "draft",

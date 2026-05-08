@@ -1,7 +1,7 @@
+import { Result } from "better-result";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import z from "zod";
-import { Result } from "better-result";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

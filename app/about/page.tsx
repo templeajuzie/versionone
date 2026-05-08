@@ -197,8 +197,8 @@ const About = () => {
           transition={{ delay: 0.2 }}
           className="mt-8 mb-5 max-w-2xl text-lg leading-relaxed text-zinc-500"
         >
-          At Global Workgate, our values are the foundation of every successful migration with unwavering commitment
-          to 3 core principles:
+          At Global Workgate, our values are the foundation of every successful migration with unwavering commitment to
+          3 core principles:
         </motion.p>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

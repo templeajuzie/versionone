@@ -371,7 +371,7 @@ export function Header() {
                       </a>
                       <span className="h-3 w-px bg-zinc-200" />
                       <a
-                        href="mailto:Versiononeinvestment@gmail.com"
+                        href="mailto:sales@globalworkgate.com"
                         className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700"
                       >
                         <Mail size={13} />

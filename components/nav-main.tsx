@@ -12,7 +12,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link"
+import Link from "next/link";
 
 export function NavMain({
   items,

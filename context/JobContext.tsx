@@ -4,11 +4,10 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
 import { ApiClient } from "@/app/api-client";
-import { mockApplications, mockJobs } from "@/constant/mockData";
+import { mockApplications } from "@/constant/mockData";
 // import { getCookie } from "@/integration/cookiemanager";
 import { Application, Job } from "@/types/form.type";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 interface JobContextType {
@@ -30,7 +29,7 @@ interface JobContextType {
 const JobContext = createContext<JobContextType | undefined>(undefined);
 
 export function JobProvider({ children }: { children: ReactNode }) {
-  const [jobs, setJobs] = useState<Job[]>(mockJobs);
+  const [jobs, setJobs] = useState<Job[]>([]);
   const [applications, setApplications] = useState<Application[]>(mockApplications);
   const client = new QueryClient();
   function getCookieValue(key: string): string | undefined {
@@ -71,7 +70,8 @@ export function JobProvider({ children }: { children: ReactNode }) {
 
   const displayJobs: Job[] =
     (jobsResponse as any)?.value || (jobsResponse as any)?.data || (Array.isArray(jobsResponse) ? jobsResponse : jobs);
-
+   console.log("Fetched jobs:", displayJobs);
+   console.log("Raw jobs response:", jobsResponse);
   function UpdateJobApi(jobData: Partial<Job> & Pick<Job, "id">) {
     const api = new ApiClient({
       baseUrl: process.env.NEXT_PUBLIC_API_URL || "",
@@ -108,6 +108,7 @@ export function JobProvider({ children }: { children: ReactNode }) {
       if (result.isErr()) {
         toast.error(result.error?.message || "Failed to create job posting.");
       } else {
+        client.invalidateQueries({ queryKey: ["get-jobs"] });
         toast.success("Your job posting has been created successfully.");
       }
     },
@@ -120,9 +121,11 @@ export function JobProvider({ children }: { children: ReactNode }) {
     mutationKey: ["update-job"],
     mutationFn: UpdateJobApi,
     onSuccess: (result) => {
+   
       if (result.isErr()) {
         toast.error(result.error?.message || "Failed to update job.");
       } else {
+        client.invalidateQueries({ queryKey: ["get-jobs"] });
         toast.success("Job updated successfully.");
       }
     },
