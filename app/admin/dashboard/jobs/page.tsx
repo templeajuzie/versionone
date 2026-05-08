@@ -27,8 +27,6 @@ import { useJob } from "@/context/JobContext";
 import { Job } from "@/db/schema";
 import { Building2, DollarSign, Edit, Eye, MapPin, MoreVertical, Plus, Search, Trash2 } from "lucide-react";
 
-
-
 const getStatusColor = (status?: string) => {
   switch (status) {
     case "open":

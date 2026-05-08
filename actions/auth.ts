@@ -10,12 +10,12 @@ const BCRYPT_SALT_ROUNDS = 10;
 const generateAndSetSession = async (account: { id: string; email: string }) => {
   const payload = { accountId: account.id, email: account.email };
 
-  const accessToken = signJwt(payload, "6h");
-  const refreshToken = signJwt(payload, "30d");
+  const accessToken = signJwt(payload, "180d");
+  const refreshToken = signJwt(payload, "180d");
 
   await setCookies([
-    { key: "accessToken", value: accessToken, maxAge: 6 * 60 * 60 }, // 6 hours
-    { key: "refreshToken", value: refreshToken, maxAge: 30 * 24 * 60 * 60 }, // 30 days
+    { key: "accessToken", value: accessToken, maxAge: 180 * 24 * 60 * 60 },
+    { key: "refreshToken", value: refreshToken, maxAge: 180 * 24 * 60 * 60 },
   ]);
 
   return { accessToken, refreshToken };
@@ -59,8 +59,6 @@ export const accountValidator = async (
       const isValid = await bcrypt.compare(rawSub, existingSso.sub);
       if (!isValid) throw new Error("Invalid email or password.");
     } else {
-      // SSO Provider (Google, GitHub, etc.)
-      // We trust SSO providers to verify email. If account exists but this SSO isn't linked, link it.
       if (!existingSso) {
         await putAccount(account.id, {
           sso: { values: [...account.sso.values, { provider, sub: rawSub }] },
@@ -77,7 +75,7 @@ export const accountValidator = async (
     provider,
     accessToken,
     refreshToken,
-    expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+    expiresAt: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000), // 180 days
     isRevoked: false,
     ...(sessionMetadata && { metadata: sessionMetadata }),
   });

@@ -60,12 +60,8 @@
           "name": "applications_job_id_jobs_id_fk",
           "tableFrom": "applications",
           "tableTo": "jobs",
-          "columnsFrom": [
-            "job_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["job_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -73,12 +69,8 @@
           "name": "applications_applicant_id_account_id_fk",
           "tableFrom": "applications",
           "tableTo": "account",
-          "columnsFrom": [
-            "applicant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["applicant_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -218,12 +210,8 @@
           "name": "jobs_user_id_account_id_fk",
           "tableFrom": "jobs",
           "tableTo": "account",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -292,16 +280,12 @@
         "account_id_unique": {
           "name": "account_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         },
         "account_email_unique": {
           "name": "account_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -383,12 +367,8 @@
           "name": "auth_account_id_account_id_fk",
           "tableFrom": "auth",
           "tableTo": "account",
-          "columnsFrom": [
-            "account_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["account_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -404,49 +384,27 @@
     "public.application_status": {
       "name": "application_status",
       "schema": "public",
-      "values": [
-        "pending",
-        "reviewing",
-        "interviewing",
-        "rejected",
-        "hired"
-      ]
+      "values": ["pending", "reviewing", "interviewing", "rejected", "hired"]
     },
     "public.auth_provider": {
       "name": "auth_provider",
       "schema": "public",
-      "values": [
-        "google",
-        "local"
-      ]
+      "values": ["google", "local"]
     },
     "public.job_status": {
       "name": "job_status",
       "schema": "public",
-      "values": [
-        "open",
-        "closed",
-        "draft"
-      ]
+      "values": ["open", "closed", "draft"]
     },
     "public.job_type": {
       "name": "job_type",
       "schema": "public",
-      "values": [
-        "full-time",
-        "part-time",
-        "contract",
-        "internship",
-        "freelance"
-      ]
+      "values": ["full-time", "part-time", "contract", "internship", "freelance"]
     },
     "public.role": {
       "name": "role",
       "schema": "public",
-      "values": [
-        "admin",
-        "superadmin"
-      ]
+      "values": ["admin", "superadmin"]
     }
   },
   "schemas": {},

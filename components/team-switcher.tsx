@@ -48,7 +48,7 @@ export function TeamSwitcher({
               </div>
               <ChevronsUpDownIcon className="ml-auto" />
             </SidebarMenuButton>
-          </DropdownMenuTrigger >
+          </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             align="start"

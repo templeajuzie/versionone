@@ -18,6 +18,7 @@ export const GET = apiHandler({
   handler: async () => {
     try {
       const jobs = await GetJobs();
+      console.log(jobs);
       return Result.ok(jobs);
     } catch (error) {
       return Result.err(error instanceof Error ? error : new Error("Failed to retrieve jobs"));
@@ -26,6 +27,7 @@ export const GET = apiHandler({
 });
 
 export const PATCH = apiHandler({
+  auth: ["session"],
   handler: async ({ body }) => {
     try {
       const response = await UpdateJob(body);
@@ -37,6 +39,7 @@ export const PATCH = apiHandler({
 });
 
 export const DELETE = apiHandler({
+  auth: ["session"],
   handler: async ({ body }) => {
     try {
       const response = await DeleteJob(body);

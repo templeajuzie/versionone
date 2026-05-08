@@ -19,11 +19,45 @@ export const jobFormSchema = z.object({
   isCVRequired: z.boolean().optional(),
   isCoverletterRequired: z.boolean().optional(),
 });
+
+export const applicationStatusEnum = z.enum(["pending", "reviewing", "interviewing", "rejected", "hired"]);
+
 export const applicationFormSchema = z.object({
-  applicantEmail: z.string().email("Invalid email address"),
-  resumeUrl: z.string().url("Resume must be a valid URL"),
-  coverLetter: z.string().min(50, "Cover letter must be at least 50 characters"),
-  country: z.string().min(2, "Please select a country"),
+  id: z.string().optional(),
+
+  full_name: z.string().min(2, "Full name must be at least 2 characters"),
+
+  email: z.string().email("Invalid email address"),
+
+  phone: z.string().min(10, "Phone number must be at least 10 characters"),
+   country_code: z.string().min(1, "Country code is required"),
+  country: z.string().min(2, "Country must be at least 2 characters"),
+
+  job_id: z.string({ message: "Job ID is required" }),
+
+  resume_url: z.string().url("Resume must be a valid URL"),
+
+  cover_letter: z.string().optional().nullable(),
+
+  linkedin_url: z.string().url().optional().nullable(),
+
+  portfolio_url: z.string().url().optional().nullable(),
+
+  github_url: z.string().url().optional().nullable(),
+
+  years_of_experience: z.number().optional(),
+
+  expected_salary: z.number().optional(),
+
+  availability_date: z.string().optional(),
+
+  recruiter_notes: z.string().optional().nullable(),
+
+  status: applicationStatusEnum.optional().default("pending"),
+
+  created_at: z.date().optional(),
+
+  updated_at: z.date().optional(),
 });
 
 export type JobFormInput = z.infer<typeof jobFormSchema>;

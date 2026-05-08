@@ -8,6 +8,7 @@ import InspirationSection from "@/components/InspirationSection";
 import OurServices from "@/components/OurServices";
 import Testimonials from "@/components/Testimonials";
 import TravelHero from "@/components/TravelHero";
+
 import About from "./about/page";
 
 export default function Home() {

@@ -17,7 +17,7 @@ import { toast } from "sonner";
 export function JobForm() {
   const router = useRouter();
   const { createJob, isError, isPending, error } = useJob();
- const userid = 'ac_E2F9Zd-ZrkGHCJBAc_Xgkc22e'
+  const userid = "ac_E2F9Zd-ZrkGHCJBAc_Xgkc22e";
   const form = useForm<JobFormInput>({
     resolver: zodResolver(jobFormSchema),
     defaultValues: {
@@ -39,7 +39,6 @@ export function JobForm() {
   });
 
   async function onSubmit(values: JobFormInput) {
-
     try {
       createJob({
         title: values.title,
@@ -55,14 +54,13 @@ export function JobForm() {
         status: values.status,
         isSponsored: values.isSponsored,
         isCoverletterRequired: values.isCoverletterRequired,
-        isCVRequired: values.isCVRequired, 
+        isCVRequired: values.isCVRequired,
         user_id: userid,
       });
       if (isError) {
         toast.error(error?.message || "Failed to create job posting. Please try again.");
       } else {
         toast.success("Your job posting has been created successfully.");
-      
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

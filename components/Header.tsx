@@ -196,7 +196,6 @@ export function Header() {
                 className="w-full border-l border-zinc-100 bg-white p-0 text-zinc-900 sm:max-w-sm"
               >
                 <div className="flex h-full flex-col">
-
                   {/* Header */}
                   <div className="flex items-center justify-between border-b border-zinc-100 px-6 py-5">
                     <NavbarLogo />
@@ -213,34 +212,32 @@ export function Header() {
                     <nav className="flex flex-col">
                       {navLinks.map((link) =>
                         link.hasMegaMenu ? (
-                          <Accordion
-                            key={link.name}
-                            type="single"
-                            collapsible
-                          >
+                          <Accordion key={link.name} type="single" collapsible>
                             <AccordionItem value="services" className="border-none">
                               <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
                                 <span>{link.name}</span>
-                                <ChevronRight size={15} className="text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                                <ChevronRight
+                                  size={15}
+                                  className="text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90"
+                                />
                               </AccordionTrigger>
 
-                              <AccordionContent className="pb-2 pt-1">
+                              <AccordionContent className="pt-1 pb-2">
                                 <Accordion type="multiple" className="space-y-0.5">
                                   {immigrationMegaMenu.map((category) => (
-                                    <AccordionItem
-                                      key={category.title}
-                                      value={category.title}
-                                      className="border-none"
-                                    >
+                                    <AccordionItem key={category.title} value={category.title} className="border-none">
                                       <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold text-zinc-800 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
                                         <span>{category.title}</span>
-                                        <ChevronRight size={14} className="shrink-0 text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                                        <ChevronRight
+                                          size={14}
+                                          className="shrink-0 text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90"
+                                        />
                                       </AccordionTrigger>
                                       <AccordionContent className="pb-1 pl-3">
                                         <div className="border-l border-zinc-100 pl-3">
                                           {category.items.map((item, idx) =>
                                             "subtitle" in item ? (
-                                              <div key={idx} className="mb-2 mt-1">
+                                              <div key={idx} className="mt-1 mb-2">
                                                 <p className="mb-1 px-1 text-[9px] font-semibold tracking-widest text-zinc-400 uppercase">
                                                   {item.subtitle}
                                                 </p>
@@ -302,18 +299,23 @@ export function Header() {
                       </Link>
                     </SheetClose>
                     <div className="mt-4 flex items-center gap-4">
-                      <a href="https://wa.me/971529075570" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                      <a
+                        href="https://wa.me/971529075570"
+                        className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700"
+                      >
                         <IconBrandWhatsapp size={14} />
                         WhatsApp
                       </a>
                       <span className="h-3 w-px bg-zinc-200" />
-                      <a href="mailto:sales@globalworkgate.com" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                      <a
+                        href="mailto:sales@globalworkgate.com"
+                        className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700"
+                      >
                         <Mail size={13} />
                         Email Us
                       </a>
                     </div>
                   </div>
-
                 </div>
               </SheetContent>
             </Sheet>

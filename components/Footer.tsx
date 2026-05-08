@@ -351,7 +351,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 border-t border-white/10 pt-16 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
             {immigrationMegaMenu.map((category) => (
               <div key={category.title} className="flex flex-col">
-                <h4 className="mb-6 text-sm font-black text-secondary">{category.title}</h4>
+                <h4 className="text-secondary mb-6 text-sm font-black">{category.title}</h4>
                 <ul className="space-y-2.5">
                   {getFlattenedItems(category.items).map((item) => (
                     <li key={item.name}>
@@ -369,7 +369,7 @@ const Footer = () => {
 
             {/* Quick Links Column */}
             <div className="flex flex-col">
-              <h4 className="mb-6 text-sm font-black text-secondary">Quick Links</h4>
+              <h4 className="text-secondary mb-6 text-sm font-black">Quick Links</h4>
               <ul className="space-y-2.5">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
