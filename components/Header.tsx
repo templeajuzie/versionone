@@ -34,6 +34,27 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
@@ -51,7 +72,7 @@ export function Header() {
     { name: "About", link: "/about" },
     { name: "Services", link: "/services", hasMegaMenu: true },
     { name: "Success Stories", link: "/success-story" },
-    { name: "Blogs", link: "/blogs" },
+    { name: "Blogs", link: "https://medium.com/@globalworkgate" },
     { name: "Job Offers", link: "/job-offers" },
   ];
 
@@ -81,11 +102,11 @@ export function Header() {
               <span>+971 58 874 4312</span>
             </a>
             <a
-              href="mailto:sales@flyhighabroad.ae"
+              href="mailto:Versiononeinvestment@gmail.com"
               className="hidden items-center gap-1.5 transition-colors hover:text-blue-200 lg:flex"
             >
               <Mail size={13} />
-              <span>sales@flyhighabroad.ae</span>
+              <span>Versiononeinvestment@gmail.com</span>
             </a>
           </div>
           <div className="flex items-center gap-3">
@@ -145,7 +166,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
             <Link
-              href="#"
+              href="/contact"
               className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300"
               style={{
                 borderColor: "rgba(255, 255, 255, 0.3)",
@@ -350,7 +371,7 @@ export function Header() {
                       </a>
                       <span className="h-3 w-px bg-zinc-200" />
                       <a
-                        href="mailto:sales@globalworkgate.com"
+                        href="mailto:Versiononeinvestment@gmail.com"
                         className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700"
                       >
                         <Mail size={13} />
