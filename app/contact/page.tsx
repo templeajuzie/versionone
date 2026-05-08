@@ -2,10 +2,23 @@
 
 import React from "react";
 
+
+
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
 import { Clock, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
+
+
+
+
+
+
+
+
+
+
+
 
 const Contact = () => {
   return (
@@ -42,8 +55,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="mb-1 font-bold text-[#2D3E75]">Phone Numbers</h3>
-                    <p className="text-sm text-gray-600">+971 52 907 5570 (WhatsApp)</p>
-                    <p className="text-sm text-gray-600">+971 58 874 4312 (Sales)</p>
+                    <p className="text-sm text-gray-600">+2348170000169(WhatsApp)</p>
+                    <p className="text-sm text-gray-600">+2348170000169 (Sales)</p>
                   </div>
                 </div>
 
