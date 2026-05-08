@@ -1,3 +1,6 @@
+# Global Workgate AI Brain Knowledge Base
+
+```typescript
 export const rootUrl = "https://www.globalworkgate.com"
 
   const navLinks = [
@@ -150,6 +153,10 @@ export const immigrationMegaMenu = [
     ],
   },
 ];
+```
+
+## Detailed Service Pages Content
+
 
 
 
