@@ -157,15 +157,7 @@ export default function JobsPage() {
                           <span>View Details</span>
                         </a>
                       </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <a
-                          href={`/admin/dashboard/jobs/${job.id}/edit`}
-                          className="flex w-full cursor-pointer items-center"
-                        >
-                          <Edit className="mr-2 h-4 w-4" />
-                          <span>Edit Job</span>
-                        </a>
-                      </DropdownMenuItem>
+                     
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
                         className="text-destructive focus:bg-destructive/10 focus:text-destructive cursor-pointer"

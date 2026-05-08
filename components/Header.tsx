@@ -73,7 +73,7 @@ export function Header() {
     { name: "Services", link: "/services", hasMegaMenu: true },
     { name: "Success Stories", link: "/success-story" },
     { name: "Blogs", link: "https://medium.com/@globalworkgate" },
-    { name: "Job Offers", link: "/job-offers" },
+    { name: "Job Offers", link: "/jobs" },
   ];
 
   return (

@@ -1,13 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { createContext, useContext, ReactNode } from "react";
 import { ApplicationFormInput } from "@/lib/validation";
 import { ApiClient } from "@/app/api-client";
 import { toast } from "sonner";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 interface ApplicationContextType {
+  applications: any[];
+  isLoadingApplications: boolean;
   createApplication: (data: ApplicationFormInput, resumeFile?: File) => Promise<void>;
+  getApplicationById: (id: string) => Promise<any>;
   isPending: boolean;
   isError: boolean;
   error: Error | null;
@@ -33,36 +37,41 @@ export function ApplicationContextProvider({ children }: { children: ReactNode }
     },
   });
 
+  const { data: applicationsResponse, isLoading: isLoadingApplications } = useQuery({
+    queryKey: ["get-applications"],
+    queryFn: () => api.get("/application"),
+  });
+
+  const applications: any[] = (applicationsResponse as any)?.value || (applicationsResponse as any)?.data || (Array.isArray(applicationsResponse) ? applicationsResponse : []);
+
   const submitApplicationMutation = useMutation({
     mutationFn: async ({ data, resumeFile }: { data: ApplicationFormInput; resumeFile?: File }) => {
-      let resume_url = data.resume_url;
-
-      // 1. Upload file if exists
+      // 1. Prepare data
       if (resumeFile) {
         const formData = new FormData();
-        formData.append("file", resumeFile);
+        formData.append("resume", resumeFile);
+        formData.append("data", JSON.stringify(data));
         
-        const uploadResult = await api.postFormData<{ url: string }>("/upload", formData);
+        const applicationResult = await api.postFormData("/application", formData);
         
-        if (uploadResult.isErr()) {
-          throw uploadResult.error;
+        if (applicationResult.isErr()) {
+          throw applicationResult.error;
         }
         
-        resume_url = uploadResult.value.url;
+        return applicationResult.value;
+      } else {
+        // Just send JSON if no file
+        const applicationResult = await api.post("/application", {
+          ...data,
+          id: data.id || crypto.randomUUID(),
+        });
+
+        if (applicationResult.isErr()) {
+          throw applicationResult.error;
+        }
+
+        return applicationResult.value;
       }
-
-      // 2. Submit application
-      const applicationResult = await api.post("/application", {
-        ...data,
-        resume_url,
-        id: data.id || crypto.randomUUID(),
-      });
-
-      if (applicationResult.isErr()) {
-        throw applicationResult.error;
-      }
-
-      return applicationResult.value;
     },
     onSuccess: () => {
       toast.success("Application submitted successfully!");
@@ -72,6 +81,16 @@ export function ApplicationContextProvider({ children }: { children: ReactNode }
     },
   });
 
+  const getApplicationById = async (id: string) => {
+    try {
+      const response = await api.get(`/application/${id}`);
+      return (response as any)?.value || (response as any)?.data || response;
+    } catch (err) {
+      console.error("Failed to fetch application by ID", err);
+      return applications.find((app) => app.id === id);
+    }
+  };
+
   const createApplication = async (data: ApplicationFormInput, resumeFile?: File) => {
     await submitApplicationMutation.mutateAsync({ data, resumeFile });
   };
@@ -79,7 +98,10 @@ export function ApplicationContextProvider({ children }: { children: ReactNode }
   return (
     <ApplicationContext.Provider 
       value={{ 
+        applications,
+        isLoadingApplications,
         createApplication, 
+        getApplicationById,
         isPending: submitApplicationMutation.isPending, 
         isError: submitApplicationMutation.isError, 
         error: submitApplicationMutation.error 

@@ -35,7 +35,10 @@ export const applicationFormSchema = z.object({
 
   job_id: z.string({ message: "Job ID is required" }),
 
-  resume_url: z.string().url("Resume must be a valid URL").optional().nullable(),
+  resume_url: z.union([
+    z.string().url("Resume must be a valid URL"),
+    z.literal(""),
+  ]).optional().nullable(),
 
   cover_letter: z.string().optional().nullable(),
 
@@ -43,7 +46,6 @@ export const applicationFormSchema = z.object({
 
   portfolio_url: z.string().url().optional().nullable(),
 
-  github_url: z.string().url().optional().nullable(),
 
   years_of_experience: z.number().optional(),
 

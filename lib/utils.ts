@@ -22,3 +22,12 @@ export const validateSchema = <T>(schema: z.ZodType<T>, data: unknown): Result<T
 
   return Result.ok(result.data);
 };
+export const copyToClipboard = async (text: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    console.error("Failed to copy text: ", err);
+    return false;
+  }
+};

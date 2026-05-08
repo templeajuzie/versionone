@@ -3,12 +3,14 @@ import { apiHandler } from "@/lib/api-handler";
 import { Result } from "better-result";
 
 export const POST = apiHandler({
-  auth: ["session"],
+
   handler: async ({ body }) => {
     try {
       const response = await PostJob(body);
+      console.log("resssss", response);
       return Result.ok(response);
     } catch (error) {
+      console.log("errror", error);
       return Result.err(error instanceof Error ? error : new Error("Failed to create job"));
     }
   },

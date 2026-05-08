@@ -83,23 +83,18 @@ export const Applications = pgTable(
       .notNull()
       .references(() => Jobs.id),
 
-    applicant_id: text("applicant_id")
-      .notNull()
-      .references(() => accounts.id),
-
     full_name: text("full_name").notNull(),
 
     email: text("email").notNull(),
 
     phone: text("phone").notNull(),
-   country_code: text("country_code").notNull(),
+    country_code: text("country_code").notNull(),
     country: text("country").notNull(),
 
     linkedin_url: text("linkedin_url"),
 
     portfolio_url: text("portfolio_url"),
 
-    github_url: text("github_url"),
 
     years_of_experience: integer("years_of_experience"),
 
@@ -119,9 +114,7 @@ export const Applications = pgTable(
 
     updated_at: timestamp("updated_at").defaultNow(),
   },
-  (table) => ({
-    uniqueApplication: unique().on(table.job_id, table.applicant_id),
-  })
+
 );
 export type Account = InferSelectModel<typeof accounts>;
 export type Auth = InferSelectModel<typeof auth>;

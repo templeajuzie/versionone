@@ -70,8 +70,6 @@ export function JobProvider({ children }: { children: ReactNode }) {
 
   const displayJobs: Job[] =
     (jobsResponse as any)?.value || (jobsResponse as any)?.data || (Array.isArray(jobsResponse) ? jobsResponse : jobs);
-   console.log("Fetched jobs:", displayJobs);
-   console.log("Raw jobs response:", jobsResponse);
   function UpdateJobApi(jobData: Partial<Job> & Pick<Job, "id">) {
     const api = new ApiClient({
       baseUrl: process.env.NEXT_PUBLIC_API_URL || "",

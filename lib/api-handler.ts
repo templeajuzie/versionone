@@ -64,7 +64,12 @@ export const apiHandler = <TBody = any, TParams = any, TQuery = any>(config: Han
 
       let rawBody: any = {};
       if (["POST", "PUT", "PATCH", "DELETE"].includes(req.method)) {
-        rawBody = await req.json().catch(() => ({}));
+        const contentType = req.headers.get("content-type") || "";
+        if (contentType.includes("multipart/form-data")) {
+          rawBody = await req.formData().catch(() => new FormData());
+        } else {
+          rawBody = await req.json().catch(() => ({}));
+        }
       }
 
       let body: TBody = rawBody as TBody;

@@ -1,8 +1,15 @@
 import { Application, Applications, db } from "@/db";
 import { eq } from "drizzle-orm";
+import { nanoid } from "nanoid";
 
 export const PostApplication = async (data: Application) => {
-  const [application] = await db.insert(Applications).values(data).returning();
+  const [application] = await db
+    .insert(Applications)
+    .values({
+      ...data,
+      id: `apl_${nanoid(10)}`,
+    })
+    .returning();
   return application;
 };
 

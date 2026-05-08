@@ -7,10 +7,24 @@ CREATE TABLE "applications" (
 	"id" text PRIMARY KEY NOT NULL,
 	"job_id" text NOT NULL,
 	"applicant_id" text NOT NULL,
+	"full_name" text NOT NULL,
+	"email" text NOT NULL,
+	"phone" text NOT NULL,
+	"country_code" text NOT NULL,
+	"country" text NOT NULL,
+	"linkedin_url" text,
+	"portfolio_url" text,
+	"github_url" text,
+	"years_of_experience" integer,
+	"expected_salary" integer,
+	"availability_date" text,
+	"recruiter_notes" text,
 	"resume_url" text NOT NULL,
 	"cover_letter" text,
 	"status" "application_status" DEFAULT 'pending' NOT NULL,
-	"applied_at" timestamp DEFAULT now()
+	"applied_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now(),
+	CONSTRAINT "applications_job_id_applicant_id_unique" UNIQUE("job_id","applicant_id")
 );
 --> statement-breakpoint
 CREATE TABLE "jobs" (

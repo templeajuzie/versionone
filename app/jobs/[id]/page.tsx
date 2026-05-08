@@ -29,8 +29,14 @@ import {
   Upload,
   FileText,
   X,
-  AlertCircle
+  AlertCircle,
+  Link,
+  
+  Mail,
+  Copy,
+  Check
 } from "lucide-react";
+import { IconBrandFacebook, IconBrandX,  IconBrandLinkedin } from "@tabler/icons-react";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -45,6 +51,8 @@ import {
   DropzoneTrigger, 
   useDropzone 
 } from "@/components/ui/dropzone";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { copyToClipboard } from "@/lib/utils";
 
 const formatCurrency = (amount: number | null | undefined) => {
   if (!amount) return null;
@@ -100,6 +108,7 @@ export default function PublicJobDetailsPage() {
       country: "",
       country_code: "",
       phone: "",
+      portfolio_url: "",
       job_id: jobId,
     },
   });
@@ -109,7 +118,7 @@ export default function PublicJobDetailsPage() {
       if (!jobId) return;
       setIsLoading(true);
       try {
-        const fetchedJob = await getJobById(jobId);
+        const fetchedJob = await getJobById(jobId); 
         setJob(fetchedJob);
       } catch (err) {
         console.error(err);
@@ -125,8 +134,13 @@ export default function PublicJobDetailsPage() {
   };
 
   const onSubmitApplication = async (values: z.infer<typeof applicationFormSchema>) => {
-    if (job?.isCVRequired && !resumeFile) {
-      toast.error("Please upload your resume");
+    if (job?.isCVRequired && !resumeFile && !values.resume_url) {
+      toast.error("Please upload your resume or provide a resume link");
+      return;
+    }
+
+    if (job?.isCoverletterRequired && !values.cover_letter?.trim()) {
+      toast.error("A cover letter is required for this position");
       return;
     }
 
@@ -139,29 +153,56 @@ export default function PublicJobDetailsPage() {
         },
         resumeFile || undefined
       );
+
       setIsModalOpen(false);
       form.reset();
       setResumeFile(null);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error("Application failed", err);
+      toast.error(err.message || "Something went wrong. Please try again.");
     } finally {
       setIsApplying(false);
     }
   };
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: job?.title,
-        text: `Check out this job at ${job?.company}`,
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyLink = async () => {
+    const success = await copyToClipboard(window.location.href);
+    if (success) {
+      setIsCopied(true);
       toast.success("Link copied to clipboard!");
+      setTimeout(() => setIsCopied(false), 2000);
     }
   };
+
+  const shareLinks = [
+    {
+      name: "LinkedIn",
+      icon: <IconBrandLinkedin className="h-4 w-4" />,
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`,
+      color: "hover:bg-blue-600 hover:text-white"
+    },
+    {
+      name: "Twitter",
+      icon: <IconBrandX className="h-4 w-4" />,
+      url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Check out this job: ${job?.title} at ${job?.company}`)}&url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`,
+      color: "hover:bg-sky-500 hover:text-white"
+    },
+    {
+      name: "Facebook",
+      icon: <IconBrandFacebook className="h-4 w-4" />,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`,
+      color: "hover:bg-blue-700 hover:text-white"
+    },
+    {
+      name: "Email",
+      icon: <Mail className="h-4 w-4" />,
+      url: `mailto:?subject=${encodeURIComponent(`Job Opportunity: ${job?.title}`)}&body=${encodeURIComponent(`Check out this job posting: ${typeof window !== "undefined" ? window.location.href : ""}`)}`,
+      color: "hover:bg-gray-600 hover:text-white"
+    }
+  ];
 
   if (isLoading) {
     return (
@@ -188,15 +229,15 @@ export default function PublicJobDetailsPage() {
     );
   }
 
-  if (!job || job.status?.toLowerCase() !== "open") {
+  if (!job) {
     return (
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-center p-12 pt-32 text-center">
         <div className="bg-muted mb-6 rounded-full p-6">
           <Briefcase className="text-muted-foreground h-12 w-12" />
         </div>
-        <h2 className="text-3xl font-bold tracking-tight">Job Not Found or Closed</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Job Not Found</h2>
         <p className="text-muted-foreground mt-3 text-lg">
-          The position you are looking for has either been filled, removed, or doesn&apos;t exist.
+          The position you are looking for doesn&apos;t exist or has been removed.
         </p>
         <Button size="lg" className="mt-8" onClick={() => router.push("/jobs")}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Browse Open Jobs
@@ -225,6 +266,11 @@ export default function PublicJobDetailsPage() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="space-y-4">
             <div className="flex flex-wrap gap-2">
+              {job.status?.toLowerCase() !== "open" && (
+                <Badge variant="destructive" className="px-3 py-1 text-sm font-medium">
+                  Closed
+                </Badge>
+              )}
               {job.is_remote && (
                 <Badge className="border-blue-500/20 bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-500/20">
                   Remote
@@ -252,12 +298,50 @@ export default function PublicJobDetailsPage() {
           </div>
 
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <Button variant="outline" size="lg" className="h-12 w-full gap-2 sm:w-auto" onClick={handleShare}>
-              <Share2 className="h-4 w-4" />
-              Share
-            </Button>
-            <Button size="lg" className="h-12 w-full px-8 text-base shadow-sm sm:w-auto" onClick={handleApplyClick}>
-              Apply Now
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" size="lg" className="h-12 w-full gap-2 sm:w-auto">
+                  <Share2 className="h-4 w-4" />
+                  Share
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent align="end" className="w-64 p-3">
+                <div className="space-y-3">
+                  <h4 className="px-2 text-sm font-semibold">Share this job</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {shareLinks.map((link) => (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-2 rounded-md border p-2 text-xs font-medium transition-colors ${link.color}`}
+                      >
+                        {link.icon}
+                        {link.name}
+                      </a>
+                    ))}
+                  </div>
+                  <Separator />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start gap-2 text-xs font-medium"
+                    onClick={handleCopyLink}
+                  >
+                    {isCopied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                    {isCopied ? "Copied!" : "Copy Link"}
+                  </Button>
+                </div>
+              </PopoverContent>
+            </Popover>
+            <Button 
+              size="lg" 
+              className="h-12 w-full px-8 text-base shadow-sm sm:w-auto" 
+              onClick={handleApplyClick}
+              disabled={job.status?.toLowerCase() !== "open"}
+            >
+              {job.status?.toLowerCase() === "open" ? "Apply Now" : "Position Closed"}
             </Button>
           </div>
         </div>
@@ -360,8 +444,12 @@ export default function PublicJobDetailsPage() {
                 </div>
 
                 <div className="border-border/40 mt-8 border-t pt-6">
-                  <Button className="h-12 w-full text-base font-medium shadow-sm" onClick={handleApplyClick}>
-                    Apply for this job
+                  <Button 
+                    className="h-12 w-full text-base font-medium shadow-sm" 
+                    onClick={handleApplyClick}
+                    disabled={job.status?.toLowerCase() !== "open"}
+                  >
+                    {job.status?.toLowerCase() === "open" ? "Apply for this job" : "Position Closed"}
                   </Button>
                 </div>
               </CardContent>
@@ -383,7 +471,7 @@ export default function PublicJobDetailsPage() {
             </DialogHeader>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmitApplication)} className="space-y-8 pb-24">
+              <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit(onSubmitApplication)(e); }} className="space-y-8 pb-24">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <FormField
                     control={form.control}
@@ -468,13 +556,19 @@ export default function PublicJobDetailsPage() {
                   />
                 </div>
 
+                {/* Resume / CV — always shown; required indicator based on job flag */}
                 <FormField
                   control={form.control}
                   name="resume_url"
                   render={() => (
                     <FormItem>
                       <FormLabel>
-                        Resume / CV {job?.isCVRequired && <span className="text-destructive">*</span>}
+                        Resume / CV{" "}
+                        {job?.isCVRequired ? (
+                          <span className="text-destructive">*</span>
+                        ) : (
+                          <span className="text-muted-foreground font-normal">(Optional)</span>
+                        )}
                       </FormLabel>
                       <FormControl>
                         <div className="space-y-4">
@@ -496,7 +590,7 @@ export default function PublicJobDetailsPage() {
                               </div>
                             </DropZoneArea>
                             <DropzoneMessage className="mt-2" />
-                            
+
                             <DropzoneFileList className="mt-4">
                               {dropzone.fileStatuses.map((fileStatus) => (
                                 <DropzoneFileListItem key={fileStatus.id} file={fileStatus}>
@@ -525,7 +619,7 @@ export default function PublicJobDetailsPage() {
                             </DropzoneFileList>
                           </Dropzone>
 
-                          {/* Fallback URL input for those who prefer links */}
+                          {/* Fallback URL input */}
                           <div className="relative">
                             <div className="absolute inset-0 flex items-center">
                               <span className="w-full border-t" />
@@ -537,8 +631,8 @@ export default function PublicJobDetailsPage() {
                             </div>
                           </div>
 
-                          <Input 
-                            placeholder="https://link-to-your-resume.com" 
+                          <Input
+                            placeholder="https://link-to-your-resume.com"
                             {...form.register("resume_url")}
                           />
                         </div>
@@ -548,6 +642,7 @@ export default function PublicJobDetailsPage() {
                   )}
                 />
 
+                {/* Cover Letter — always shown; required indicator based on job flag */}
                 <FormField
                   control={form.control}
                   name="cover_letter"
@@ -555,7 +650,11 @@ export default function PublicJobDetailsPage() {
                     <FormItem>
                       <FormLabel>
                         Cover Letter{" "}
-                        {job?.isCoverletterRequired ? <span className="text-destructive">*</span> : "(Optional)"}
+                        {job?.isCoverletterRequired ? (
+                          <span className="text-destructive">*</span>
+                        ) : (
+                          <span className="text-muted-foreground font-normal">(Optional)</span>
+                        )}
                       </FormLabel>
                       <FormControl>
                         <Textarea
@@ -566,6 +665,32 @@ export default function PublicJobDetailsPage() {
                           onChange={field.onChange}
                           onBlur={field.onBlur}
                           value={field.value ?? ""}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Portfolio URL */}
+                <FormField
+                  control={form.control}
+                  name="portfolio_url"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center gap-1.5">
+                        <Link className="h-3.5 w-3.5" />
+                        Portfolio / Personal Website{" "}
+                        <span className="text-muted-foreground font-normal">(Optional)</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="https://yourportfolio.com"
+                          value={field.value ?? ""}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          name={field.name}
+                          ref={field.ref}
                         />
                       </FormControl>
                       <FormMessage />

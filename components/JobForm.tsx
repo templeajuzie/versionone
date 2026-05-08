@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -17,7 +18,7 @@ import { toast } from "sonner";
 export function JobForm() {
   const router = useRouter();
   const { createJob, isError, isPending, error } = useJob();
-  const userid = "ac_E2F9Zd-ZrkGHCJBAc_Xgkc22e";
+  const userid = "ac_MDFqjTIPKO0bvL7tjYvxNen0N";
   const form = useForm<JobFormInput>({
     resolver: zodResolver(jobFormSchema),
     defaultValues: {
@@ -57,20 +58,16 @@ export function JobForm() {
         isCVRequired: values.isCVRequired,
         user_id: userid,
       });
-      if (isError) {
-        toast.error(error?.message || "Failed to create job posting. Please try again.");
-      } else {
-        toast.success("Your job posting has been created successfully.");
-      }
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      toast.error(err?.message || "Failed to create job posting. Please try again.");
+      console.log(err);
     }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto space-y-10">
+      <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit(onSubmit)(e); }} className="mx-auto space-y-10">
         {/* Section: Job Details */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div className="space-y-1">
@@ -340,8 +337,15 @@ export function JobForm() {
           <Button type="button" variant="outline" className="w-full sm:w-auto">
             Cancel
           </Button>
-          <Button type="submit" className="w-full sm:w-auto">
-            Post Job
+          <Button type="submit" className="w-full sm:w-auto" disabled={isPending}>
+            {isPending ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Posting...
+              </>
+            ) : (
+              "Post Job"
+            )}
           </Button>
         </div>
       </form>

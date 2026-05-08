@@ -19,6 +19,7 @@ export const useAuth = () => {
       const newParams = new URLSearchParams(searchParams.toString());
       newParams.delete("error");
       router.replace(`${pathname}?${newParams.toString()}`);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDismissedError(false);
     }
   }, [dismissedError, error, router, searchParams, pathname]);
