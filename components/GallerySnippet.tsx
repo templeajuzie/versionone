@@ -55,7 +55,7 @@ const GallerySnippet = () => {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {galleryImages.map((item) => (
-          <div key={item.id} className="group relative h-96 overflow-hidden rounded-3xl shadow-lg">
+          <div key={item.id} className="group relative h-96 overflow-hidden rounded-lg shadow-lg">
             <Image
               src={item.url}
               alt={item.title}

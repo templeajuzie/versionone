@@ -8,6 +8,7 @@ import { Header } from "@/components/Header";
 import { immigrationMegaMenu } from "@/data/headerData";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, CheckCircle2, Globe, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const activeCat = immigrationMegaMenu.find((c) => c.title === "Business Immigration")!;
@@ -74,21 +75,61 @@ export default function BusinessImmigrationPage() {
   const groups = groupItems(flat);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-background min-h-screen">
       <Header />
+      <section className="relative isolate min-h-[70vh] overflow-hidden border-b border-white/10 py-32 md:py-40">
+        {/* Background */}
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Travel Hero"
+            fill
+            priority
+            className="object-cover"
+          />
 
-      <section className="relative overflow-hidden pt-44 pb-20">
-        <GridPattern />
-        <div className="absolute inset-0 -z-10 bg-zinc-50/50" />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/55" />
 
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-6">
-            <h1 className="max-w-3xl text-5xl leading-[0.95] font-black tracking-tight text-zinc-900 md:text-7xl">
-              {activeCat.title} <br />
-              <span className="text-zinc-600 italic">Expand Globally.</span>
-            </h1>
-            <p className="max-w-2xl text-lg leading-relaxed text-zinc-500">{categoryMeta.description}</p>
-          </motion.div>
+          {/* Gradient fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        </div>
+
+        {/* Grid */}
+        <div className="absolute inset-0 -z-10 opacity-20">
+          <GridPattern />
+        </div>
+
+        {/* Content */}
+        <div className="mx-auto flex min-h-[70vh] max-w-7xl items-center px-6 md:px-10">
+          <div className="max-w-4xl">
+            <nav className="mb-6 flex flex-wrap items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-white/60 uppercase">
+              <Link href="/services" className="transition hover:text-white">
+                Services
+              </Link>
+
+              <ChevronRight size={12} />
+
+              <Link href="/services/business" className="transition hover:text-white">
+                Business
+              </Link>
+
+              <ChevronRight size={12} />
+
+              <span className="text-white">{content.title}</span>
+            </nav>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-5xl leading-[0.95] font-black tracking-tight text-white md:text-7xl"
+            >
+              {content.title}
+            </motion.h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">{content.description}</p>
+          </div>
         </div>
       </section>
 

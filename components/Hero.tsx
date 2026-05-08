@@ -80,7 +80,7 @@ const Hero = () => {
       </div>
       <img
         src="https://i.pinimg.com/736x/3e/7d/d5/3e7dd5d5c1b97db6fe0b8efa430507f3.jpg"
-        className="h-[50vh] w-full rounded-3xl object-cover px-2 transition-all duration-300 sm:max-w-md md:max-w-2xl lg:max-w-lg 2xl:max-w-xl"
+        className="h-[50vh] w-full rounded-lg object-cover px-2 transition-all duration-300 sm:max-w-md md:max-w-2xl lg:max-w-lg 2xl:max-w-xl"
       />
     </main>
   );

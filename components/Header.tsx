@@ -2,79 +2,22 @@
 
 import { useEffect, useState } from "react";
 
-
-
 import { immigrationMegaMenu } from "@/data/headerData";
 import { cn } from "@/lib/utils";
-import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconBrandYoutube } from "@tabler/icons-react";
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandWhatsapp,
+  IconBrandYoutube,
+} from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ChevronDown, Mail, Menu, Phone, Rocket, Sparkles } from "lucide-react";
 import Link from "next/link";
 
-
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { NavbarLogo } from "./ui/resizable-navbar";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -379,7 +322,7 @@ export function Header() {
 
                   {/* Footer CTA */}
                   <div className="relative z-10 border-t border-white/10 p-5">
-                    <div className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-blue-600/10 to-transparent p-5 backdrop-blur-2xl">
+                    <div className="overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-violet-600/20 via-blue-600/10 to-transparent p-5 backdrop-blur-2xl">
                       <div className="mb-5 flex items-start justify-between">
                         <div>
                           <p className="text-lg font-semibold text-white">Ready to move abroad?</p>

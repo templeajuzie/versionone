@@ -9,7 +9,7 @@ export default function LearnMore() {
                 }
             `}</style>
       <div className="px-4 py-20">
-        <div className="relative mx-auto flex h-fit w-full max-w-5xl flex-col items-center justify-between overflow-hidden rounded-3xl bg-linear-to-b from-violet-100 to-[#FFE8E9] px-6 pt-20 md:flex-row md:items-center md:p-18">
+        <div className="relative mx-auto flex h-fit w-full max-w-5xl flex-col items-center justify-between overflow-hidden rounded-lg bg-linear-to-b from-violet-100 to-[#FFE8E9] px-6 pt-20 md:flex-row md:items-center md:p-18">
           <div className="mb-8 flex-1 px-2 text-center md:mt-4 md:mb-0 md:pl-5 md:text-left">
             <h1 className="text-3xl font-medium text-balance text-gray-900 md:text-4xl/12">
               Meet the team Shaping the future.

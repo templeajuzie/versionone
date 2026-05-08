@@ -186,7 +186,7 @@ const Footer = () => {
           </div> */}
 
           <section className="max-w-8xl mt-10">
-            <div className="relative overflow-hidden rounded-3xl bg-neutral-900 ring-1 ring-black/10">
+            <div className="relative overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-black/10">
               {/* Background */}
               {/* <div className="absolute inset-0">
                 <img

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { motion } from "framer-motion";
 import { ArrowRight, Briefcase, CheckCircle2, ChevronRight, Clock, FileText, Globe2, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const openWorkContent = {
@@ -99,32 +100,62 @@ const GridPattern = () => (
 
 export default function OpenWorkPermitPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-background min-h-screen">
       <Header />
+      <section className="relative isolate min-h-[70vh] overflow-hidden border-b border-white/10 py-32 md:py-40">
+        {/* Background */}
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Travel Hero"
+            fill
+            priority
+            className="object-cover"
+          />
 
-      <section className="relative overflow-hidden border-b border-zinc-100 pt-44 pb-20">
-        <GridPattern />
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="flex flex-col gap-6">
-            <nav className="flex items-center gap-2 text-[10px] font-black tracking-widest text-zinc-400 uppercase">
-              <Link href="/services" className="hover:text-blue-600">
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/55" />
+
+          {/* Gradient fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        </div>
+
+        {/* Grid */}
+        <div className="absolute inset-0 -z-10 opacity-20">
+          <GridPattern />
+        </div>
+
+        {/* Content */}
+        <div className="mx-auto flex min-h-[70vh] max-w-7xl items-center px-6 md:px-10">
+          <div className="max-w-4xl">
+            <nav className="mb-6 flex flex-wrap items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-white/60 uppercase">
+              <Link href="/services" className="transition hover:text-white">
                 Services
               </Link>
-              <ChevronRight size={10} />
-              <Link href="/services/work-permits" className="hover:text-blue-600">
+
+              <ChevronRight size={12} />
+
+              <Link href="/services/work-permits" className="transition hover:text-white">
                 Work Permits
               </Link>
-              <ChevronRight size={10} />
-              <span className="text-zinc-900">Open Permit</span>
+
+              <ChevronRight size={12} />
+
+              <span className="text-white">{openWorkContent.title}</span>
             </nav>
+
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              className="max-w-4xl text-4xl leading-tight font-black text-zinc-900 md:text-6xl"
+              transition={{ duration: 0.6 }}
+              className="text-5xl leading-[0.95] font-black tracking-tight text-white md:text-7xl"
             >
               {openWorkContent.title}
             </motion.h1>
-            <p className="max-w-3xl text-lg leading-relaxed text-zinc-500">{openWorkContent.description}</p>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+              {openWorkContent.description}
+            </p>
           </div>
         </div>
       </section>
@@ -188,7 +219,7 @@ export default function OpenWorkPermitPage() {
                   {openWorkContent.countries.map((country, i) => (
                     <div
                       key={i}
-                      className="rounded-3xl border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
+                      className="rounded-lg border border-zinc-100 bg-white p-8 shadow-sm transition-all hover:shadow-sm"
                     >
                       <h3 className="mb-4 text-xl font-black text-zinc-900">{country.name}</h3>
                       <ul className="space-y-3">
@@ -203,7 +234,7 @@ export default function OpenWorkPermitPage() {
                   ))}
                 </div>
 
-                <div className="mt-12 rounded-3xl border border-zinc-100 bg-zinc-50 p-8">
+                <div className="mt-12 rounded-lg border border-zinc-100 bg-zinc-50 p-8">
                   <h3 className="mb-6 text-lg font-black text-zinc-900">Other Flexible European Options</h3>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {openWorkContent.european.map((eu, i) => (

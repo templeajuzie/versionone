@@ -9,7 +9,7 @@ import { Clock, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-background min-h-screen">
       <Header />
 
       <main className="pt-32 pb-20">

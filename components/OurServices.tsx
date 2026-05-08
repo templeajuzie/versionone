@@ -127,7 +127,7 @@ const OurServices = () => {
             className="scroll-snap-align-start relative min-w-[280px] flex-none transition-all duration-500 sm:min-w-[320px] md:min-w-[350px] lg:w-[calc(25%-18px)]"
           >
             <Link href={serviceLinks[category.title] || "#"}>
-              <div className="group relative transform cursor-pointer overflow-hidden rounded-3xl bg-white shadow-sm transition-all duration-300 hover:shadow-2xl">
+              <div className="group relative transform cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all duration-300 hover:shadow-2xl">
                 <div className="relative aspect-[3/4] w-full">
                   <Image
                     src={
