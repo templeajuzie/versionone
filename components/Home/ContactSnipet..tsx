@@ -1,6 +1,26 @@
 import React from "react";
 
+
+
 import { IconBrandWhatsapp } from "@tabler/icons-react";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const ContactSnipet = () => {
   return (
@@ -17,7 +37,7 @@ const ContactSnipet = () => {
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#"
+                href="https://cal.com/globalworkgate/30min?overlayCalendar=true"
                 className="font-geist inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-blue-800"
               >
                 <svg
@@ -40,7 +60,8 @@ const ContactSnipet = () => {
                 Book Consultation
               </a>
               <a
-                href="#"
+                href="https://wa.me/2348170000169"
+                target="_blank"
                 className="font-geist text-primary inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium transition-all hover:bg-zinc-50"
               >
                 <IconBrandWhatsapp className="text-green-600" />

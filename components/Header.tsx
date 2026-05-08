@@ -2,22 +2,58 @@
 
 import { useEffect, useState } from "react";
 
+
+
 import { immigrationMegaMenu } from "@/data/headerData";
 import { cn } from "@/lib/utils";
-import {
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandWhatsapp,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconBrandYoutube } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, ChevronDown, ChevronRight, Mail, Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 
+
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { NavbarLogo } from "./ui/resizable-navbar";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +72,7 @@ export function Header() {
     { name: "About", link: "/about" },
     { name: "Services", link: "/services", hasMegaMenu: true },
     { name: "Success Stories", link: "/success-story" },
-    { name: "Blogs", link: "/blogs" },
+    { name: "Blogs", link: "https://medium.com/@globalworkgate" },
     { name: "Job Offers", link: "/job-offers" },
   ];
 
@@ -66,11 +102,11 @@ export function Header() {
               <span>+971 58 874 4312</span>
             </a>
             <a
-              href="mailto:sales@flyhighabroad.ae"
+              href="mailto:Versiononeinvestment@gmail.com"
               className="hidden items-center gap-1.5 transition-colors hover:text-blue-200 lg:flex"
             >
               <Mail size={13} />
-              <span>sales@flyhighabroad.ae</span>
+              <span>Versiononeinvestment@gmail.com</span>
             </a>
           </div>
           <div className="flex items-center gap-3">
@@ -130,7 +166,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
             <Link
-              href="#"
+              href="/contact"
               className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300"
               style={{
                 borderColor: "rgba(255, 255, 255, 0.3)",
@@ -291,12 +327,39 @@ export function Header() {
                   {/* Footer */}
                   <div className="border-t border-zinc-100 p-5">
                     <SheetClose asChild>
-                      <Link
-                        href="/contact"
-                        className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
-                      >
-                        Book a Free Assessment <ArrowRight size={15} />
-                      </Link>
+                      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                        <a
+                          href="https://cal.com/globalworkgate/30min?overlayCalendar=true"
+                          className="font-geist inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-blue-800"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="h-4 w-4"
+                          >
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                          </svg>
+                          Book Consultation
+                        </a>
+                        <a
+                          href="https://wa.me/2348170000169"
+                          target="_blank"
+                          className="font-geist text-primary inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium transition-all hover:bg-zinc-50"
+                        >
+                          <IconBrandWhatsapp className="text-green-600" />
+                          WhatsApp Chat
+                        </a>
+                      </div>
                     </SheetClose>
                     <div className="mt-4 flex items-center gap-4">
                       <a

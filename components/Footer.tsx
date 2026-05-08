@@ -1,19 +1,87 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+
+
 
 import { immigrationMegaMenu } from "@/data/headerData";
-import {
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandWhatsapp,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconBrandYoutube } from "@tabler/icons-react";
+import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Footer = () => {
+  const [footerForm, setFooterForm] = useState({ name: "", email: "", message: "" });
+  const [footerStatus, setFooterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [footerError, setFooterError] = useState("");
+
+  const handleFooterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFooterStatus("loading");
+    setFooterError("");
+    try {
+      const res = await fetch("/api/footer-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(footerForm),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const firstError = data.issues
+          ? Object.values(data.issues as Record<string, string[]>).flat()[0]
+          : data.error || "Something went wrong.";
+        setFooterError(firstError);
+        setFooterStatus("error");
+        return;
+      }
+      setFooterStatus("success");
+      setFooterForm({ name: "", email: "", message: "" });
+    } catch {
+      setFooterError("Network error. Please try again.");
+      setFooterStatus("error");
+    }
+  };
   // Helper to flatten nested items from headerData
   const getFlattenedItems = (items: any[]) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,7 +100,7 @@ const Footer = () => {
     { name: "About Us", link: "/about" },
     { name: "Contact Us", link: "/contact" },
     { name: "Services", link: "/services" },
-    { name: "Blogs", link: "/blogs" },
+    { name: "Blogs", link: "https://medium.com/@globalworkgate" },
     { name: "Privacy Policy", link: "/privacy" },
     { name: "Terms & Conditions", link: "/terms" },
   ];
@@ -161,90 +229,107 @@ const Footer = () => {
                           </svg>
                         </div>
                       </div>
-                      <form action="#" method="POST" className="mt-4 space-y-3">
-                        <div className="">
-                          <label htmlFor="ct-name" className="block text-xs text-neutral-600">
-                            Your name<span className="text-neutral-400"> *</span>
-                          </label>
-                          <input
-                            id="ct-name"
-                            name="name"
-                            type="text"
-                            // requiblue=""
-                            placeholder="Jane Doe"
-                            className="mt-1 w-full rounded-lg bg-white py-2.5 pr-3 pl-3 text-sm ring-1 ring-black/10 outline-none placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900"
-                          />
-                        </div>
-                        <div className="">
-                          <label htmlFor="ct-email" className="block text-xs text-neutral-600">
-                            E‑mail<span className="text-neutral-400"> *</span>
-                          </label>
-                          <div className="relative mt-1">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={24}
-                              height={24}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              data-lucide="mail"
-                              className="lucide lucide-mail absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400"
-                            >
-                              <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-                              <rect x={2} y={4} width={20} height={16} rx={2} />
-                            </svg>
-                            <input
-                              id="ct-email"
-                              name="email"
-                              type="email"
-                              // requiblue=""
-                              placeholder="you@solace.com"
-                              className="w-full rounded-lg bg-white py-2.5 pr-3 pl-9 text-sm ring-1 ring-black/10 outline-none placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900"
-                            />
+                      {footerStatus === "success" ? (
+                        <div className="mt-4 flex items-start gap-3 rounded-lg border border-green-200 bg-green-50 p-4">
+                          <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-green-600" />
+                          <div>
+                            <p className="text-sm font-bold text-green-800">Message sent!</p>
+                            <p className="mt-0.5 text-xs text-green-600">We'll get back to you within 24–48 hours.</p>
                           </div>
                         </div>
-                        <div className="">
-                          <label htmlFor="ct-msg" className="block text-xs text-neutral-600">
-                            Message
-                          </label>
-                          <textarea
-                            id="ct-msg"
-                            name="message"
-                            rows={4}
-                            placeholder="How can we help?"
-                            className="mt-1 w-full resize-y rounded-lg bg-white py-2.5 pr-3 pl-3 text-sm ring-1 ring-black/10 outline-none placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900"
-                            defaultValue={""}
-                          />
-                        </div>
-                        <button
-                          type="submit"
-                          className="inline-flex w-full items-center justify-center rounded-lg bg-neutral-900 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
-                        >
-                          Send message
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={24}
-                            height={24}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            data-lucide="arrow-right"
-                            className="lucide lucide-arrow-right ml-2 h-4 w-4"
+                      ) : (
+                        <form onSubmit={handleFooterSubmit} className="mt-4 space-y-3">
+                          {footerStatus === "error" && footerError && (
+                            <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
+                              {footerError}
+                            </p>
+                          )}
+                          <div>
+                            <label htmlFor="ct-name" className="block text-xs text-neutral-600">
+                              Your name<span className="text-neutral-400"> *</span>
+                            </label>
+                            <input
+                              id="ct-name"
+                              name="name"
+                              type="text"
+                              required
+                              value={footerForm.name}
+                              onChange={(e) => setFooterForm((p) => ({ ...p, name: e.target.value }))}
+                              placeholder="Jane Doe"
+                              className="mt-1 w-full rounded-lg bg-white py-2.5 pr-3 pl-3 text-sm text-black ring-1 ring-black/10 outline-none placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900"
+                              disabled={footerStatus === "loading"}
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="ct-email" className="block text-xs text-neutral-600">
+                              E‑mail<span className="text-neutral-400"> *</span>
+                            </label>
+                            <div className="relative mt-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={24}
+                                height={24}
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                data-lucide="mail"
+                                className="lucide lucide-mail absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400"
+                              >
+                                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                                <rect x={2} y={4} width={20} height={16} rx={2} />
+                              </svg>
+                              <input
+                                id="ct-email"
+                                name="email"
+                                type="email"
+                                required
+                                value={footerForm.email}
+                                onChange={(e) => setFooterForm((p) => ({ ...p, email: e.target.value }))}
+                                placeholder="you@example.com"
+                                className="w-full rounded-lg bg-white py-2.5 pr-3 pl-9 text-sm text-black ring-1 ring-black/10 outline-none placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900"
+                                disabled={footerStatus === "loading"}
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <label htmlFor="ct-msg" className="block text-xs text-neutral-600">
+                              Message
+                            </label>
+                            <textarea
+                              id="ct-msg"
+                              name="message"
+                              rows={4}
+                              required
+                              value={footerForm.message}
+                              onChange={(e) => setFooterForm((p) => ({ ...p, message: e.target.value }))}
+                              placeholder="How can we help?"
+                              className="mt-1 w-full resize-y rounded-lg bg-white py-2.5 pr-3 pl-3 text-sm text-black ring-1 ring-black/10 outline-none placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900"
+                              disabled={footerStatus === "loading"}
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            disabled={footerStatus === "loading"}
+                            className="inline-flex w-full items-center justify-center rounded-lg bg-neutral-900 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
                           >
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                          </svg>
-                        </button>
-                        <p className="text-[11px] text-neutral-500">
-                          By submitting, you agree to our Terms and Privacy Policy.
-                        </p>
-                      </form>
+                            {footerStatus === "loading" ? (
+                              <>
+                                <Loader2 size={15} className="mr-2 animate-spin" /> Sending...
+                              </>
+                            ) : (
+                              <>
+                                Send message <Send size={14} className="ml-2" />
+                              </>
+                            )}
+                          </button>
+                          <p className="text-[11px] text-neutral-500">
+                            By submitting, you agree to our Terms and Privacy Policy.
+                          </p>
+                        </form>
+                      )}
                     </div>
                   </div>
                   {/* Copy + highlights */}
@@ -319,7 +404,8 @@ const Footer = () => {
                           <p className="truncate font-medium tracking-tight text-neutral-900">Ava Kim</p>
                         </div>
                         <a
-                          href="mailto:hello@solace.dev"
+                          href="https://wa.me/2348170000169"
+                          target="_blank"
                           className="ml-1 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
                         >
                           Ask directly
