@@ -7,7 +7,7 @@ const ServicesSnipet = () => {
         <div className="flex flex-col items-start gap-4 p-8 pb-14 transition duration-300 hover:bg-gray-50">
           <img
             src="https://i.pinimg.com/736x/3e/7d/d5/3e7dd5d5c1b97db6fe0b8efa430507f3.jpg"
-            className="h-[30vh] w-full max-w-2xl rounded-3xl object-cover transition-all duration-300 sm:max-w-md"
+            className="h-[30vh] w-full max-w-2xl rounded-lg object-cover transition-all duration-300 sm:max-w-md"
           />
           <div className="flex items-center gap-2 text-gray-500">
             <svg
@@ -36,7 +36,7 @@ const ServicesSnipet = () => {
         <div className="flex flex-col items-start gap-4 p-8 pb-14 transition duration-300 hover:bg-gray-50">
           <img
             src="https://i.pinimg.com/736x/3e/7d/d5/3e7dd5d5c1b97db6fe0b8efa430507f3.jpg"
-            className="h-[30vh] w-full max-w-2xl rounded-3xl object-cover transition-all duration-300 sm:max-w-md"
+            className="h-[30vh] w-full max-w-2xl rounded-lg object-cover transition-all duration-300 sm:max-w-md"
           />
           <div className="flex items-center gap-2 text-gray-500">
             <svg
@@ -68,7 +68,7 @@ const ServicesSnipet = () => {
         <div className="flex flex-col items-start gap-4 p-8 pb-14 transition duration-300 hover:bg-gray-50">
           <img
             src="https://i.pinimg.com/736x/3e/7d/d5/3e7dd5d5c1b97db6fe0b8efa430507f3.jpg"
-            className="h-[30vh] w-full max-w-2xl rounded-3xl object-cover transition-all duration-300 sm:max-w-md"
+            className="h-[30vh] w-full max-w-2xl rounded-lg object-cover transition-all duration-300 sm:max-w-md"
           />
           <div className="flex items-center gap-2 text-gray-500">
             <svg

@@ -82,7 +82,7 @@ const OurServices = () => {
     <section className="">
       <div className="mb-8 flex items-end justify-between px-4 md:px-0">
         <div>
-          <span className="mb-2 block text-sm font-bold tracking-widest text-blue-600 uppercase">Expert Guidance</span>
+          <span className="text-primary mb-2 block text-sm font-bold tracking-widest uppercase">Expert Guidance</span>
           <h2 className="text-3xl font-extrabold text-gray-900 md:text-4xl">Our Immigration Services</h2>
         </div>
 
@@ -127,7 +127,7 @@ const OurServices = () => {
             className="scroll-snap-align-start relative min-w-[280px] flex-none transition-all duration-500 sm:min-w-[320px] md:min-w-[350px] lg:w-[calc(25%-18px)]"
           >
             <Link href={serviceLinks[category.title] || "#"}>
-              <div className="group relative transform cursor-pointer overflow-hidden rounded-3xl bg-white shadow-sm transition-all duration-300 hover:shadow-2xl">
+              <div className="group relative transform cursor-pointer overflow-hidden rounded-lg bg-white shadow-sm transition-all duration-300 hover:shadow-2xl">
                 <div className="relative aspect-[3/4] w-full">
                   <Image
                     src={
@@ -146,8 +146,8 @@ const OurServices = () => {
                   {/* Badges */}
                   <div className="absolute top-5 left-5 flex flex-col gap-2">
                     <div className="flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 shadow-lg backdrop-blur-md">
-                      <span className="text-[10px] font-black tracking-tight text-blue-600 uppercase">
-                        Fly High Abroad
+                      <span className="text-primary text-[10px] font-black tracking-tight uppercase">
+                        Global Workgate
                       </span>
                       <div className="flex gap-0.5">
                         {[...Array(3)].map((_, i) => (
@@ -170,7 +170,7 @@ const OurServices = () => {
                       </span>
                     </div>
 
-                    <h3 className="mb-2 text-2xl leading-tight font-black text-white drop-shadow-xl">
+                    <h3 className="mb-2 text-2xl leading-tight font-black text-white drop-shadow-sm">
                       {category.title}
                     </h3>
 

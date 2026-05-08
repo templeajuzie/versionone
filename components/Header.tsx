@@ -12,7 +12,7 @@ import {
   IconBrandYoutube,
 } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Mail, Menu, Phone } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, ChevronRight, Mail, Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
@@ -114,7 +114,7 @@ export function Header() {
               >
                 <Link
                   href={link.link}
-                  className="flex items-center gap-1 text-sm font-semibold text-gray-700 transition-colors hover:text-[#2D3E75]"
+                  className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-[#2D3E75]"
                 >
                   {link.name}
                   {link.hasMegaMenu && (
@@ -130,139 +130,190 @@ export function Header() {
           <div className="flex items-center gap-3">
             {/* Desktop CTA */}
             <Link
-              href="/contact"
-              className="hidden items-center gap-2 rounded-full bg-[#2D3E75] px-5 py-2 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-[#1a2a5c] active:scale-95 sm:inline-flex"
+              href="#"
+              className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300"
+              style={{
+                borderColor: "rgba(255, 255, 255, 0.3)",
+                cursor: "pointer",
+                transform: "scale(1)",
+              }}
             >
+              <div
+                className="shine-effect"
+                style={{
+                  content: '""',
+                  position: "absolute",
+                  width: 100,
+                  height: "100%",
+                  backgroundImage:
+                    "linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%)",
+                  top: 0,
+                  left: "-100px",
+                  opacity: "0.6",
+                  pointerEvents: "none",
+                  animation: "auto ease 0s 1 normal none running none",
+                }}
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                data-lucide="rocket"
+                className="lucide lucide-rocket h-4 w-4"
+                style={{ transform: "translateX(0px)" }}
+              >
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+              </svg>
               Contact Us
-              <ArrowUpRight size={15} />
+              <style
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "\n    @keyframes shine {\n      0% { left: -100px; }\n      60% { left: 100%; }\n      to { left: 100%; }\n    }\n  ",
+                }}
+              />
             </Link>
 
             {/* Mobile Sheet Trigger */}
             <Sheet>
               <SheetTrigger asChild>
-                <button className="rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100 xl:hidden">
-                  <Menu size={26} />
+                <button className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-700 transition-colors hover:bg-zinc-50 xl:hidden">
+                  <Menu size={20} />
                 </button>
               </SheetTrigger>
 
-              <SheetContent side="right" showCloseButton={true} className="w-full overflow-y-auto p-0 sm:max-w-md">
-                <SheetHeader className="border-b border-gray-100 px-5 py-4">
-                  <SheetTitle className="text-lg font-bold text-[#2D3E75]">Menu</SheetTitle>
-                </SheetHeader>
+              <SheetContent
+                side="right"
+                showCloseButton={false}
+                className="w-full border-l border-zinc-100 bg-white p-0 text-zinc-900 sm:max-w-sm"
+              >
+                <div className="flex h-full flex-col">
 
-                {/* Mobile Nav Links */}
-                <div className="flex flex-col">
-                  {navLinks.map((link) =>
-                    link.hasMegaMenu ? (
-                      /* Services with Accordion Sub-menus */
-                      <div key={link.name} className="border-b border-gray-50">
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="services" className="border-0">
-                            <AccordionTrigger className="px-5 py-4 text-base font-bold text-[#2D3E75] hover:bg-gray-50 hover:no-underline">
-                              {link.name}
-                            </AccordionTrigger>
-                            <AccordionContent className="px-0 pb-0">
-                              {/* Nested Accordion for each category */}
-                              <Accordion type="single" collapsible className="w-full">
-                                {immigrationMegaMenu.map((category) => (
-                                  <AccordionItem
-                                    key={category.title}
-                                    value={category.title}
-                                    className="border-0 border-t border-gray-50"
-                                  >
-                                    <AccordionTrigger className="px-7 py-3 text-sm font-bold text-red-600 hover:bg-red-50/50 hover:no-underline">
-                                      {category.title}
-                                    </AccordionTrigger>
-                                    <AccordionContent className="pb-2">
-                                      <div className="flex flex-col">
-                                        {category.items.map((item, idx) =>
-                                          "subtitle" in item ? (
-                                            <div key={idx} className="px-9 py-2">
-                                              <p className="mb-2 text-[10px] font-bold tracking-wider text-gray-400 uppercase">
-                                                {item.subtitle}
-                                              </p>
-                                              <div className="flex flex-col gap-0.5">
+                  {/* Header */}
+                  <div className="flex items-center justify-between border-b border-zinc-100 px-6 py-5">
+                    <NavbarLogo />
+                    <SheetClose asChild>
+                      <button className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-700">
+                        <X size={18} />
+                      </button>
+                    </SheetClose>
+                  </div>
+
+                  {/* Navigation */}
+                  <div className="flex-1 overflow-y-auto px-4 py-6">
+                    <p className="mb-3 px-2 text-[10px] font-bold tracking-[0.18em] text-zinc-400 uppercase">Menu</p>
+                    <nav className="flex flex-col">
+                      {navLinks.map((link) =>
+                        link.hasMegaMenu ? (
+                          <Accordion
+                            key={link.name}
+                            type="single"
+                            collapsible
+                          >
+                            <AccordionItem value="services" className="border-none">
+                              <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
+                                <span>{link.name}</span>
+                                <ChevronRight size={15} className="text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                              </AccordionTrigger>
+
+                              <AccordionContent className="pb-2 pt-1">
+                                <Accordion type="multiple" className="space-y-0.5">
+                                  {immigrationMegaMenu.map((category) => (
+                                    <AccordionItem
+                                      key={category.title}
+                                      value={category.title}
+                                      className="border-none"
+                                    >
+                                      <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold text-zinc-800 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
+                                        <span>{category.title}</span>
+                                        <ChevronRight size={14} className="shrink-0 text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                                      </AccordionTrigger>
+                                      <AccordionContent className="pb-1 pl-3">
+                                        <div className="border-l border-zinc-100 pl-3">
+                                          {category.items.map((item, idx) =>
+                                            "subtitle" in item ? (
+                                              <div key={idx} className="mb-2 mt-1">
+                                                <p className="mb-1 px-1 text-[9px] font-semibold tracking-widest text-zinc-400 uppercase">
+                                                  {item.subtitle}
+                                                </p>
                                                 {item.items?.map((subItem, sIdx) => (
                                                   <SheetClose asChild key={sIdx}>
                                                     <Link
                                                       href={subItem.link}
-                                                      className="rounded-md px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-50 hover:text-[#2D3E75]"
+                                                      className="flex items-center justify-between rounded-md px-2 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
                                                     >
                                                       {subItem.name}
+                                                      <ArrowUpRight size={13} className="shrink-0 text-zinc-300" />
                                                     </Link>
                                                   </SheetClose>
                                                 ))}
                                               </div>
-                                            </div>
-                                          ) : (
-                                            <SheetClose asChild key={idx}>
-                                              <Link
-                                                href={item.link || "#"}
-                                                className="rounded-md px-9 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-50 hover:text-[#2D3E75]"
-                                              >
-                                                {item.name}
-                                              </Link>
-                                            </SheetClose>
-                                          )
-                                        )}
-                                      </div>
-                                    </AccordionContent>
-                                  </AccordionItem>
-                                ))}
-                              </Accordion>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
-                    ) : (
-                      <SheetClose asChild key={link.name}>
-                        <Link
-                          href={link.link}
-                          className="border-b border-gray-50 px-5 py-4 text-base font-bold text-[#2D3E75] transition-colors hover:bg-gray-50"
-                        >
-                          {link.name}
-                        </Link>
-                      </SheetClose>
-                    )
-                  )}
-                </div>
-
-                {/* Mobile Footer */}
-                <div className="mt-auto border-t border-gray-100 bg-gray-50 p-5">
-                  <SheetClose asChild>
-                    <Link
-                      href="/contact"
-                      className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#2D3E75] px-6 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:bg-[#1a2a5c] active:scale-[0.98]"
-                    >
-                      Contact Us
-                      <ArrowUpRight size={16} />
-                    </Link>
-                  </SheetClose>
-
-                  <div className="mt-5 flex items-center justify-center gap-5">
-                    <a
-                      href="https://wa.me/971529075570"
-                      className="text-[#2D3E75] transition-colors hover:text-green-600"
-                    >
-                      <IconBrandWhatsapp size={22} />
-                    </a>
-                    <Link href="#" className="text-[#2D3E75] transition-colors hover:text-blue-600">
-                      <IconBrandFacebook size={22} />
-                    </Link>
-                    <Link href="#" className="text-[#2D3E75] transition-colors hover:text-pink-600">
-                      <IconBrandInstagram size={22} />
-                    </Link>
-                    <Link href="#" className="text-[#2D3E75] transition-colors hover:text-blue-700">
-                      <IconBrandLinkedin size={22} />
-                    </Link>
-                    <Link href="#" className="text-[#2D3E75] transition-colors hover:text-red-600">
-                      <IconBrandYoutube size={22} />
-                    </Link>
+                                            ) : (
+                                              <SheetClose asChild key={idx}>
+                                                <Link
+                                                  href={item.link || "#"}
+                                                  className="flex items-center justify-between rounded-md px-2 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
+                                                >
+                                                  {item.name}
+                                                  <ArrowUpRight size={13} className="shrink-0 text-zinc-300" />
+                                                </Link>
+                                              </SheetClose>
+                                            )
+                                          )}
+                                        </div>
+                                      </AccordionContent>
+                                    </AccordionItem>
+                                  ))}
+                                </Accordion>
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        ) : (
+                          <SheetClose asChild key={link.name}>
+                            <Link
+                              href={link.link}
+                              className="flex items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
+                            >
+                              {link.name}
+                              <ChevronRight size={15} className="text-zinc-300" />
+                            </Link>
+                          </SheetClose>
+                        )
+                      )}
+                    </nav>
                   </div>
 
-                  <p className="mt-4 text-center text-[10px] text-gray-400">
-                    © {new Date().getFullYear()} Fly High Abroad
-                  </p>
+                  {/* Footer */}
+                  <div className="border-t border-zinc-100 p-5">
+                    <SheetClose asChild>
+                      <Link
+                        href="/contact"
+                        className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
+                      >
+                        Book a Free Assessment <ArrowRight size={15} />
+                      </Link>
+                    </SheetClose>
+                    <div className="mt-4 flex items-center gap-4">
+                      <a href="https://wa.me/971529075570" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                        <IconBrandWhatsapp size={14} />
+                        WhatsApp
+                      </a>
+                      <span className="h-3 w-px bg-zinc-200" />
+                      <a href="mailto:sales@globalworkgate.com" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                        <Mail size={13} />
+                        Email Us
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
               </SheetContent>
             </Sheet>
@@ -300,7 +351,7 @@ export function Header() {
                               <Link
                                 key={sIdx}
                                 href={subItem.link}
-                                className="rounded px-1.5 py-1 text-xs text-gray-500 transition-colors hover:bg-gray-50 hover:text-[#2D3E75]"
+                                className="rounded px-1.5 py-1 text-sm text-gray-500 transition-colors hover:bg-gray-50 hover:text-[#2D3E75]"
                               >
                                 {subItem.name}
                               </Link>
@@ -311,7 +362,7 @@ export function Header() {
                         <Link
                           key={idx}
                           href={item.link || "#"}
-                          className="rounded px-1.5 py-1 text-xs text-gray-500 transition-colors hover:bg-gray-50 hover:text-[#2D3E75]"
+                          className="rounded px-1.5 py-1 text-sm text-gray-500 transition-colors hover:bg-gray-50 hover:text-[#2D3E75]"
                         >
                           {item.name}
                         </Link>

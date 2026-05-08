@@ -9,7 +9,7 @@ import Image from "next/image";
 const testimonials = [
   {
     id: 1,
-    text: "Fly High Abroad made my Canadian PR process seamless. Their experts are truly knowledgeable and supportive throughout.",
+    text: "Global Workgate made my Canadian PR process seamless. Their experts are truly knowledgeable and supportive throughout.",
     name: "James Anderson",
     role: "Software Engineer",
     img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
@@ -59,7 +59,7 @@ const Testimonials = () => {
           Trusted by <span className="text-blue-500">10,000+</span> Global Citizens
         </h2>
         <p className="mx-auto max-w-2xl text-lg text-zinc-400">
-          Join thousands of successful migrants who&#39;ve transformed their lives with Fly High Abroad. Real stories
+          Join thousands of successful migrants who&#39;ve transformed their lives with Global Workgate. Real stories
           from real people.
         </p>
       </div>

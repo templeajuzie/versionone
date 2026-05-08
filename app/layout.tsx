@@ -18,30 +18,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Version One | Travel and Explore the World",
+  title: "Global Workgate | Your Gateway to Global Work & Immigration",
   description:
-    "Experience a new version of travel with Version One. From hidden gems to iconic landmarks, we curate the perfect journey for your next adventure.",
+    "Global Workgate is your trusted partner for immigration, work permits, visas, and permanent residency. We help skilled professionals, businesses, and families relocate with confidence.",
   openGraph: {
     type: "website",
-    siteName: "Version One Travel",
-    title: "Version One | Travel and Explore the World",
+    siteName: "Global Workgate",
+    title: "Global Workgate | Your Gateway to Global Work & Immigration",
     description:
-      "Experience a new version of travel with Version One. Discover destinations that stay with you forever.",
+      "Expert immigration services for work permits, visas, permanent residency, and business migration. Start your global journey with Global Workgate.",
     locale: "en_US",
     images: [
       {
         url: "/OG-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Version One Travel - Explore the World",
+        alt: "Global Workgate - Your Gateway to Global Work & Immigration",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Version One | Travel and Explore the World",
+    title: "Global Workgate | Your Gateway to Global Work & Immigration",
     description:
-      "Experience a new version of travel with Version One. Discover destinations that stay with you forever.",
+      "Expert immigration services for work permits, visas, permanent residency, and business migration. Start your global journey with Global Workgate.",
     images: ["/OG-image.jpg"],
   },
   robots: {

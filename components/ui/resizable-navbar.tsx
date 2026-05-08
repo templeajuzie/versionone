@@ -221,7 +221,7 @@ export const NavbarLogo = () => {
       <span className="text-2xl font-black tracking-tighter text-white italic">
         Version<span className="text-blue-100">One</span>
       </span> */}
-      <Image src="/logo.png" alt="Logo" width={100} height={100} className="" />
+      <Image src="/logo.png" alt="Logo" width={100} height={100} className="h-[36px] w-auto" />
     </Link>
   );
 };
