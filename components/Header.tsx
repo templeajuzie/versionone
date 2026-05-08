@@ -196,7 +196,6 @@ export function Header() {
                 className="w-full border-l border-zinc-100 bg-white p-0 text-zinc-900 sm:max-w-sm"
               >
                 <div className="flex h-full flex-col">
-
                   {/* Header */}
                   <div className="flex items-center justify-between border-b border-zinc-100 px-6 py-5">
                     <NavbarLogo />
@@ -213,34 +212,32 @@ export function Header() {
                     <nav className="flex flex-col">
                       {navLinks.map((link) =>
                         link.hasMegaMenu ? (
-                          <Accordion
-                            key={link.name}
-                            type="single"
-                            collapsible
-                          >
+                          <Accordion key={link.name} type="single" collapsible>
                             <AccordionItem value="services" className="border-none">
                               <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
                                 <span>{link.name}</span>
-                                <ChevronRight size={15} className="text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                                <ChevronRight
+                                  size={15}
+                                  className="text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90"
+                                />
                               </AccordionTrigger>
 
-                              <AccordionContent className="pb-2 pt-1">
+                              <AccordionContent className="pt-1 pb-2">
                                 <Accordion type="multiple" className="space-y-0.5">
                                   {immigrationMegaMenu.map((category) => (
-                                    <AccordionItem
-                                      key={category.title}
-                                      value={category.title}
-                                      className="border-none"
-                                    >
+                                    <AccordionItem key={category.title} value={category.title} className="border-none">
                                       <AccordionTrigger className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold text-zinc-800 transition-colors hover:bg-zinc-50 hover:no-underline [&>svg]:hidden">
                                         <span>{category.title}</span>
-                                        <ChevronRight size={14} className="shrink-0 text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90" />
+                                        <ChevronRight
+                                          size={14}
+                                          className="shrink-0 text-zinc-400 transition-transform duration-200 group-data-[state=open]:rotate-90"
+                                        />
                                       </AccordionTrigger>
                                       <AccordionContent className="pb-1 pl-3">
                                         <div className="border-l border-zinc-100 pl-3">
                                           {category.items.map((item, idx) =>
                                             "subtitle" in item ? (
-                                              <div key={idx} className="mb-2 mt-1">
+                                              <div key={idx} className="mt-1 mb-2">
                                                 <p className="mb-1 px-1 text-[9px] font-semibold tracking-widest text-zinc-400 uppercase">
                                                   {item.subtitle}
                                                 </p>
@@ -294,26 +291,57 @@ export function Header() {
                   {/* Footer */}
                   <div className="border-t border-zinc-100 p-5">
                     <SheetClose asChild>
-                      <Link
-                        href="/contact"
-                        className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
-                      >
-                        Book a Free Assessment <ArrowRight size={15} />
-                      </Link>
+                      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                        <a
+                          href="https://cal.com/globalworkgate/30min?overlayCalendar=true"
+                          className="font-geist inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-5 py-3 text-sm font-medium text-white transition-all hover:bg-blue-800"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={24}
+                            height={24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="h-4 w-4"
+                          >
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                          </svg>
+                          Book Consultation
+                        </a>
+                        <a
+                          href="#"
+                          className="font-geist text-primary inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-white px-5 py-3 text-sm font-medium transition-all hover:bg-zinc-50"
+                        >
+                          <IconBrandWhatsapp className="text-green-600" />
+                          WhatsApp Chat
+                        </a>
+                      </div>
                     </SheetClose>
                     <div className="mt-4 flex items-center gap-4">
-                      <a href="https://wa.me/971529075570" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                      <a
+                        href="https://wa.me/971529075570"
+                        className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700"
+                      >
                         <IconBrandWhatsapp size={14} />
                         WhatsApp
                       </a>
                       <span className="h-3 w-px bg-zinc-200" />
-                      <a href="mailto:sales@globalworkgate.com" className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700">
+                      <a
+                        href="mailto:sales@globalworkgate.com"
+                        className="flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-700"
+                      >
                         <Mail size={13} />
                         Email Us
                       </a>
                     </div>
                   </div>
-
                 </div>
               </SheetContent>
             </Sheet>
