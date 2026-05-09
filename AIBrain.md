@@ -9,7 +9,7 @@ export const rootUrl = "https://www.globalworkgate.com"
     { name: "Services", link: "/services", hasMegaMenu: true },
     { name: "Success Stories", link: "/success-story" },
     { name: "Blogs", link: "https://medium.com/@globalworkgate" },
-    { name: "Job Offers", link: "/job-offers" },
+    { name: "Job Offers", link: "/jobs" },
   ];
 
 export const immigrationMegaMenu = [
@@ -153,6 +153,11 @@ export const immigrationMegaMenu = [
     ],
   },
 ];
+
+export const contactInfo = {
+  phone: "08170000169",
+  whatsapp: "https://wa.me/2348170000169"
+};
 ```
 
 ## Detailed Service Pages Content

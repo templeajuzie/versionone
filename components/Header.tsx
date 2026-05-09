@@ -55,6 +55,48 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
@@ -88,21 +130,22 @@ export function Header() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
           <div className="flex items-center gap-3 md:gap-5">
             <a
-              href="https://wa.me/971529075570"
+              href="https://wa.me/2348170000169"
+              target="_blank"
               className="flex items-center gap-1.5 transition-colors hover:text-green-300"
             >
               <IconBrandWhatsapp size={15} className="text-green-400" />
-              <span>+971 52 907 5570</span>
+              <span>+2348170000169</span>
             </a>
             <a
-              href="tel:+971588744312"
+              href="tel:+2348170000169"
               className="hidden items-center gap-1.5 transition-colors hover:text-blue-200 md:flex"
             >
               <Phone size={13} />
-              <span>+971 58 874 4312</span>
+              <span>+2348170000169</span>
             </a>
             <a
-              href="mailto:Versiononeinvestment@gmail.com"
+              href="mailto:versiononeinvestment@gmail.com"
               className="hidden items-center gap-1.5 transition-colors hover:text-blue-200 lg:flex"
             >
               <Mail size={13} />
@@ -130,7 +173,7 @@ export function Header() {
       <nav
         className={cn(
           "bg-background flex items-center justify-between px-4 transition-all duration-300 md:px-8",
-          isScrolled ? "py-2 shadow-sm" : "py-3"
+          isScrolled ? "py-2 shadow-sm" : "py-2"
         )}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
@@ -167,7 +210,7 @@ export function Header() {
             {/* Desktop CTA */}
             <Link
               href="/contact"
-              className="relative hidden md:inline-flex items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300"
+              className="relative hidden items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300 md:inline-flex"
               style={{
                 borderColor: "rgba(255, 255, 255, 0.3)",
                 cursor: "pointer",
