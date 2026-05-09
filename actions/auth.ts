@@ -1,14 +1,21 @@
-import { Account } from "@/db";
-import { setCookies } from "@/integration/cookiemanager";
-import { signJwt } from "@/integration/jwt";
-import bcrypt from "bcryptjs";
+"use server";
 
-import { postAccount, postAuth, putAccount, retrieveAccount } from "./account";
+import { Account, auth, db } from "@/db";
+import { setCookies, getCookie, deleteCookies } from "@/integration/cookiemanager";
+import { signJwt, verifyJwt } from "@/integration/jwt";
+import bcrypt from "bcryptjs";
+import { postAccount, postAuth, putAccount, putAuth, retrieveAccount } from "./account";
+import { desc, eq } from "drizzle-orm";
 
 const BCRYPT_SALT_ROUNDS = 10;
 
+type CurrentUserPayload = {
+  accountId: string;
+  email: string;
+};
+
 const generateAndSetSession = async (account: { id: string; email: string }) => {
-  const payload = { accountId: account.id, email: account.email };
+  const payload: CurrentUserPayload = { accountId: account.id, email: account.email };
 
   const accessToken = signJwt(payload, "180d");
   const refreshToken = signJwt(payload, "180d");
@@ -81,4 +88,79 @@ export const accountValidator = async (
   });
 
   return { accountId: account.id, accessToken, refreshToken, isNewUser };
+};
+
+export const retrieveAuth = async (params: { id: string } | { accountId: string }) => {
+  const whereClause = "id" in params ? eq(auth.id, params.id) : eq(auth.accountId, params.accountId);
+
+  const [response] = await db
+    .select()
+    .from(auth)
+    .where(whereClause)
+    .orderBy(desc(auth.createdAt))
+    .limit(1);
+
+  if (!response) return null;
+
+  return response;
+};
+
+export const getCurrentUser = async () => {
+  const accessToken = await getCookie("accessToken");
+
+  if (!accessToken) return null;
+
+  try {
+    const payload = verifyJwt<CurrentUserPayload>(accessToken);
+
+    const authRecord = await retrieveAuth({ accountId: payload.accountId });
+
+    if (!authRecord) return null;
+
+    if (authRecord.isRevoked || new Date() > authRecord.expiresAt) {
+      await deleteCookies(["accessToken", "refreshToken"]);
+      return null;
+    }
+
+    const account = await retrieveAccount({ id: payload.accountId });
+
+    if (!account) {
+      await deleteCookies(["accessToken", "refreshToken"]);
+      return null;
+    }
+
+    return {
+      id: account.id,
+      email: account.email,
+      profile: {
+        firstName: account.profile?.firstName || null,
+        lastName: account.profile?.lastName || null,
+        avatarUrl: account.profile?.avatarUrl || null,
+      },
+      createdAt: account.created_at,
+    };
+  } catch (error) {
+    console.error("Error in getCurrentUser:", error);
+    return null;
+  }
+};
+
+export const signOut = async () => {
+  const accessToken = await getCookie("accessToken");
+
+  if (accessToken) {
+    try {
+      const payload = verifyJwt<CurrentUserPayload>(accessToken);
+
+      const authRecord = await retrieveAuth({ accountId: payload.accountId });
+
+      if (authRecord) await putAuth(authRecord.id, { isRevoked: true });
+    } catch (error) {
+      console.error("Error revoking token:", error);
+    }
+  }
+
+  await deleteCookies(["accessToken", "refreshToken"]);
+
+  return { success: true };
 };

@@ -1,3 +1,5 @@
+"use server";
+
 import { Account, Auth, accounts, auth, db } from "@/db";
 import { getCookie } from "@/integration/cookiemanager";
 import { verifyJwt } from "@/integration/jwt";
@@ -66,6 +68,16 @@ export const postAuth = async (params: Partial<Auth>) => {
       id: `auth_${nanoid(25)}`,
       ...params,
     } as Auth)
+    .returning();
+
+  return response;
+};
+
+export const putAuth = async (id: string, params: Partial<Auth>) => {
+  const [response] = await db
+    .update(auth)
+    .set({ ...params, updatedAt: new Date() })
+    .where(eq(auth.id, id))
     .returning();
 
   return response;

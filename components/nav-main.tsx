@@ -1,21 +1,19 @@
 "use client";
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as React from "react";
 
 export function NavMain({
   items,
+  label = "Administration",
 }: {
   items: {
     title: string;
@@ -27,37 +25,37 @@ export function NavMain({
       url: string;
     }[];
   }[];
+  label?: string;
 }) {
+  const pathname = usePathname();
+
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
-      <SidebarMenu>
-        {items.map((item) => (
-          <Collapsible key={item.title} asChild defaultOpen={item.isActive} className="group/collapsible">
-            <SidebarMenuItem>
-              <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                  <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+    <SidebarGroup className="bg-transparent px-2">
+      <SidebarGroupLabel className="px-2 pb-3 text-[10px] font-bold uppercase tracking-[0.1em] text-muted-foreground/70">
+        {label}
+      </SidebarGroupLabel>
+      <SidebarMenu className="gap-2.5">
+        {items.map((item) => {
+          const isActive = pathname === item.url;
+          
+          return (
+            <React.Fragment key={item.title}>
+              <SidebarMenuItem>
+                <SidebarMenuButton 
+                  asChild 
+                  isActive={isActive}
+                  tooltip={item.title}
+                  className={`h-11 px-3 rounded-xl transition-all duration-200 hover:bg-muted/60 ${isActive ? "text-primary font-bold bg-primary/5" : "text-muted-foreground bg-transparent! hover:text-foreground"}`}
+                >
+                  <Link href={item.url} className="flex items-center gap-3.5">
+                    {item.icon && React.cloneElement(item.icon as React.ReactElement)}
+                    <span className="text-[15px]">{item.title}</span>
+                  </Link>
                 </SidebarMenuButton>
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                <SidebarMenuSub>
-                  {item.items?.map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild>
-                        <Link href={subItem.url}>
-                          <span>{subItem.title}</span>
-                        </Link>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ))}
-                </SidebarMenuSub>
-              </CollapsibleContent>
-            </SidebarMenuItem>
-          </Collapsible>
-        ))}
+              </SidebarMenuItem>
+            </React.Fragment>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );

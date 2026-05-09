@@ -58,7 +58,7 @@ export default function ApplicationsPage() {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 p-4 md:p-8">
+    <div className="mx-auto flex w-full max-w-8xl flex-col gap-8 p-4 md:p-8">
       {/* Header Section */}
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
@@ -68,7 +68,7 @@ export default function ApplicationsPage() {
       </div>
 
       {/* Filters / Search */}
-      <div className="bg-card flex flex-col items-center gap-4 rounded-xl border p-4 shadow-sm sm:flex-row">
+      <div className="bg-card flex flex-col items-center gap-4 rounded-xl border p-4 shadow-none sm:flex-row">
         <div className="text-muted-foreground relative w-full sm:max-w-md">
           <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <Input

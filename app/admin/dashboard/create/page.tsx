@@ -13,7 +13,7 @@ export default function NewJobPage() {
           </p>
         </div>
 
-        <div className="bg-card rounded-lg border-none p-8">
+        <div className="bg-noneupgrade rounded-lg border-none p-8">
           <JobForm />
         </div>
       </div>

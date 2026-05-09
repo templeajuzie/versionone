@@ -1,82 +1,61 @@
 "use client";
 
 import * as React from "react";
-
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "@/components/ui/sidebar";
-import { AudioLinesIcon, BookOpenIcon, GalleryVerticalEndIcon, LayoutDashboard, TerminalIcon } from "lucide-react";
-
+import { AudioLinesIcon, BookOpenIcon, BriefcaseIcon, FileTextIcon, LayoutDashboard, UsersIcon } from "lucide-react";
 import { NavbarLogo } from "./ui/resizable-navbar";
+import { useQuery } from "@tanstack/react-query";
+import { getCurrentUser } from "@/actions/auth";
 
-// This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "User",
+    email: "user@example.com",
+    avatar: "",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: <GalleryVerticalEndIcon />,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: <AudioLinesIcon />,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: <TerminalIcon />,
-      plan: "Free",
-    },
-  ],
-  NavMain: [
-    {
-      isActive: true,
-      title: "Portal",
-      url: "#",
-      icon: <LayoutDashboard />,
-      items: [
-        {
-          title: "Dashboard",
-          url: "/admin/dashboard",
-        },
-      ],
-    },
-  ],
   navMain: [
     {
-      isActive: true,
-      title: "Jobs & Applications",
-      url: "#",
-      icon: <BookOpenIcon />,
-      items: [
-        {
-          title: "Create Jobs",
-          url: "/admin/dashboard/create",
-        },
-        {
-          title: "Jobs listing",
-          url: "/admin/dashboard/jobs",
-        },
-        {
-          title: "Applications",
-          url: "/admin/dashboard/applications",
-        },
-        {
-          title: "landing page",
-          url: "/",
-        },
-      ],
+      title: "Dashboard",
+      url: "/admin/dashboard",
+      icon: <LayoutDashboard />,
+    },
+    {
+      title: "Create Jobs",
+      url: "/admin/dashboard/create",
+      icon: <BriefcaseIcon />,
+    },
+    {
+      title: "Jobs Listing",
+      url: "/admin/dashboard/jobs",
+      icon: <FileTextIcon />,
+    },
+    {
+      title: "Applications",
+      url: "/admin/dashboard/applications",
+      icon: <UsersIcon />,
+    },
+    {
+      title: "Public Site",
+      url: "/",
+      icon: <AudioLinesIcon />,
     },
   ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: user } = useQuery({
+    queryKey: ["currentUser"],
+    queryFn: getCurrentUser,
+  });
+
+  const userData = user ? {
+    name: `${user.profile.firstName ?? ""} ${user.profile.lastName ?? ""}`.trim() || "User",
+    email: user.email,
+    avatar: user.profile.avatarUrl ?? "",
+  } : data.user;
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -85,11 +64,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.NavMain} />
-        <NavMain items={data.navMain} />
+        <NavMain items={data.navMain} label="Administration" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={userData} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

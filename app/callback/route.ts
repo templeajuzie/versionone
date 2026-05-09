@@ -84,9 +84,26 @@ export async function GET(req: NextRequest) {
       { ...stateData }
     );
 
-    console.log({ account });
+    const response = NextResponse.redirect(new URL(`/admin/dashboard`, process.env.NEXT_PUBLIC_DASHBOARD_URL!));
+    
+    // Explicitly set cookies on the response object to ensure they stick in Route Handlers
+    response.cookies.set("accessToken", account.accessToken, {
+      httpOnly: true,
+      secure: process.env.NEXT_PUBLIC_APP_URL?.includes("https") ?? false,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 180 * 24 * 60 * 60,
+    });
+    
+    response.cookies.set("refreshToken", account.refreshToken, {
+      httpOnly: true,
+      secure: process.env.NEXT_PUBLIC_APP_URL?.includes("https") ?? false,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 180 * 24 * 60 * 60,
+    });
 
-    return NextResponse.redirect(new URL(`/`, process.env.NEXT_PUBLIC_DASHBOARD_URL!));
+    return response;
   } catch (error) {
     console.error("OAuth callback error:", error);
     console.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");

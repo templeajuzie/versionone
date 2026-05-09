@@ -42,9 +42,9 @@ export const applicationFormSchema = z.object({
 
   cover_letter: z.string().optional().nullable(),
 
-  linkedin_url: z.string().url().optional().nullable(),
+  linkedin_url: z.union([z.string().url(), z.literal("")]).optional().nullable(),
 
-  portfolio_url: z.string().url().optional().nullable(),
+  portfolio_url: z.union([z.string().url(), z.literal("")]).optional().nullable(),
 
 
   years_of_experience: z.number().optional(),

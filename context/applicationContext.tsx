@@ -5,14 +5,18 @@ import { createContext, useContext, ReactNode } from "react";
 import { ApplicationFormInput } from "@/lib/validation";
 import { ApiClient } from "@/app/api-client";
 import { toast } from "sonner";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface ApplicationContextType {
   applications: any[];
   isLoadingApplications: boolean;
+  dashboardStats: any;
+  isLoadingStats: boolean;
   createApplication: (data: ApplicationFormInput, resumeFile?: File) => Promise<void>;
   getApplicationById: (id: string) => Promise<any>;
+  updateStatus: (id: string, status: string) => Promise<void>;
   isPending: boolean;
+  isUpdating: boolean;
   isError: boolean;
   error: Error | null;
 }
@@ -20,6 +24,8 @@ interface ApplicationContextType {
 const ApplicationContext = createContext<ApplicationContextType | undefined>(undefined);
 
 export function ApplicationContextProvider({ children }: { children: ReactNode }) {
+  const queryClient = useQueryClient();
+
   function getCookieValue(key: string): string | undefined {
     if (typeof document === "undefined") return undefined;
     const match = document.cookie.match(new RegExp("(^| )" + key + "=([^;]+)"));
@@ -42,7 +48,22 @@ export function ApplicationContextProvider({ children }: { children: ReactNode }
     queryFn: () => api.get("/application"),
   });
 
-  const applications: any[] = (applicationsResponse as any)?.value || (applicationsResponse as any)?.data || (Array.isArray(applicationsResponse) ? applicationsResponse : []);
+  const { data: statsResponse, isLoading: isLoadingStats } = useQuery({
+    queryKey: ["get-dashboard-stats"],
+    queryFn: () => api.get("/dashboard/stats"),
+  });
+
+  const applications: any[] = 
+    (applicationsResponse as any)?.value?.value || 
+    (applicationsResponse as any)?.value?.data || 
+    (applicationsResponse as any)?.value || 
+    [];
+
+  const dashboardStats: any = 
+    (statsResponse as any)?.value?.value || 
+    (statsResponse as any)?.value?.data || 
+    (statsResponse as any)?.value || 
+    null;
 
   const submitApplicationMutation = useMutation({
     mutationFn: async ({ data, resumeFile }: { data: ApplicationFormInput; resumeFile?: File }) => {
@@ -74,10 +95,27 @@ export function ApplicationContextProvider({ children }: { children: ReactNode }
       }
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-applications"] });
       toast.success("Application submitted successfully!");
     },
     onError: (error) => {
       toast.error(error.message || "Failed to submit application.");
+    },
+  });
+
+  const updateStatusMutation = useMutation({
+    mutationFn: async ({ id, status }: { id: string; status: string }) => {
+      const result = await api.patch(`/application/${id}/status`, { status });
+      if (result.isErr()) throw result.error;
+      return result.value;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["get-applications"] });
+      queryClient.invalidateQueries({ queryKey: ["get-dashboard-stats"] });
+      toast.success("Status updated successfully!");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to update status.");
     },
   });
 
@@ -95,16 +133,24 @@ export function ApplicationContextProvider({ children }: { children: ReactNode }
     await submitApplicationMutation.mutateAsync({ data, resumeFile });
   };
 
+  const updateStatus = async (id: string, status: string) => {
+    await updateStatusMutation.mutateAsync({ id, status });
+  };
+
   return (
     <ApplicationContext.Provider 
       value={{ 
         applications,
         isLoadingApplications,
+        dashboardStats,
+        isLoadingStats,
         createApplication, 
         getApplicationById,
+        updateStatus,
         isPending: submitApplicationMutation.isPending, 
-        isError: submitApplicationMutation.isError, 
-        error: submitApplicationMutation.error 
+        isUpdating: updateStatusMutation.isPending,
+        isError: submitApplicationMutation.isError || updateStatusMutation.isError, 
+        error: submitApplicationMutation.error || (updateStatusMutation.error as Error)
       }}
     >
       {children}

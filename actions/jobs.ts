@@ -1,3 +1,5 @@
+"use server";
+
 import { Job, Jobs, db } from "@/db";
 import { desc, eq } from "drizzle-orm";
 import { nanoid } from "nanoid";
