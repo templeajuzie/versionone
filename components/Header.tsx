@@ -167,7 +167,7 @@ export function Header() {
             {/* Desktop CTA */}
             <Link
               href="/contact"
-              className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300"
+              className="relative hidden md:inline-flex items-center gap-2 overflow-hidden rounded-full border-2 bg-gradient-to-tr from-violet-600 to-blue-600 pt-2 pr-6 pb-2 pl-6 text-sm font-medium tracking-tight text-white ring-1 ring-white/10 transition-all duration-300"
               style={{
                 borderColor: "rgba(255, 255, 255, 0.3)",
                 cursor: "pointer",
