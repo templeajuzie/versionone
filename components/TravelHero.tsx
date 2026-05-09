@@ -50,7 +50,7 @@ const TravelHero = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative mx-auto mt-28 flex min-h-[300px] w-full max-w-7xl flex-col items-center justify-start px-4 md:min-h-[500px] md:px-0">
+    <section className="relative mx-auto mt-28 flex min-h-[300px] w-full max-w-7xl flex-col items-center justify-start md:min-h-[500px] md:px-0">
       {/* Background Slider */}
       <div className="absolute inset-0 -z-20 overflow-hidden rounded-lg shadow-sm">
         {heroSlides.map((slide, index) => (
