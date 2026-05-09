@@ -1,4 +1,4 @@
-export const rootUrl = "https://www.globalworkgate.com"
+export const rootUrl = "https://www.globalworkgate.com";
 
 export const immigrationMegaMenu = [
   {
