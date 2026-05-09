@@ -13,7 +13,7 @@ import About from "./about/page";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="w-screen overflow-x-hidden">
       <Header />
       <TravelHero />
 
