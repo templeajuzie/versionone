@@ -1,10 +1,12 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 
-export default function CreateAccountPage() {
+function CreateAccountPage() {
   const { handleGoogleSignIn } = useAuth();
 
   return (
@@ -64,5 +66,13 @@ export default function CreateAccountPage() {
         a
       </div>
     </div>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <CreateAccountPage />
+    </Suspense>
   );
 }
