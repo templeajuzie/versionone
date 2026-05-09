@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { immigrationMegaMenu } from "@/data/headerData";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Globe, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, ChevronRight, Globe, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -73,6 +73,11 @@ const GridPattern = () => (
 export default function WorkPermitsPage() {
   const flat = flattenItems(activeCat.items);
   const groups = groupItems(flat);
+
+  const content = {
+    title: activeCat.title,
+    description: categoryMeta.description,
+  };
 
   return (
     <div className="bg-background min-h-screen">
