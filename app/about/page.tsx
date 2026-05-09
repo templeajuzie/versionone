@@ -303,15 +303,15 @@ const About = () => {
 
       {/* ── CORE VALUES ─────────────────────────────────────────── */}
       <section>
-        <div className="mb-12 text-center">
-          <span className="mb-4 inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.15em] text-zinc-400 uppercase">
+        <div className="mb-12 text-start">
+          {/* <span className="mb-4 inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.15em] text-zinc-400 uppercase">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-blue-600" /> What We Stand For
-          </span>
+          </span> */}
           <h2 className="text-primary text-4xl font-black tracking-tight md:text-5xl">
             Our Core <span className="text-primary">Values</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-zinc-500">
-            The principles that drive our culture and define every interaction we have with our clients.
+          <p className="mt-4 max-w-xl text-zinc-500">
+            The principles that drive our culture and define every interaction we have with our clients. Get in touch with us to learn more about our services
           </p>
         </div>
 
