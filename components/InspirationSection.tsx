@@ -40,7 +40,7 @@ const destinations = [
 const InspirationSection = () => {
   return (
     <section className="">
-      <div className="mb-10 text-center md:text-left">
+      <div className="mb-10 text-start">
         <h2 className="text-primary text-3xl font-black md:text-4xl">
           Top <span className="text-primary">Destinations</span> for Migration
         </h2>
