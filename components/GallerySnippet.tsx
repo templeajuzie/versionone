@@ -5,6 +5,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+
 const galleryImages = [
   {
     id: 1,
@@ -14,19 +15,19 @@ const galleryImages = [
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1649265825072-f7dd6942baed?q=80&w=798&auto=format&fit=crop",
+    url: "https://i.pinimg.com/736x/49/03/93/490393d9d4b8bc0ec0500950abdc0504.jpg",
     title: "Crystal Waters",
     location: "Maldives",
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1555212697-194d092e3b8f?q=80&w=687&auto=format&fit=crop",
+    url: "https://i.pinimg.com/736x/48/43/26/4843262c53337717fa18d09f76e3bf46.jpg",
     title: "Urban Skyline",
     location: "Tokyo",
   },
   {
     id: 4,
-    url: "https://images.unsplash.com/photo-1729086046027-09979ade13fd?q=80&w=862&auto=format&fit=crop",
+    url: "https://i.pinimg.com/736x/da/9c/b5/da9cb525fb45848cfb22e2aa6dc1363d.jpg",
     title: "Desert Sunset",
     location: "Dubai",
   },

@@ -97,6 +97,69 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
@@ -119,11 +182,11 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 w-full bg-white transition-all duration-300">
+    <header className="fixed top-0 right-0 left-0 z-50 w-full bg-[#2F0D0C] transition-all duration-300">
       {/* Top Utility Bar */}
       <div
         className={cn(
-          "w-full bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A] px-2 py-2.5 text-center text-sm font-medium text-white",
+          "w-full bg-[#2F0D0C] px-2 py-2.5 text-center text-sm font-medium text-white",
           isScrolled && "h-0 overflow-hidden py-0 opacity-0"
         )}
       >
@@ -142,7 +205,7 @@ export function Header() {
               className="hidden items-center gap-1.5 transition-colors hover:text-blue-200 md:flex"
             >
               <Phone size={13} />
-              <span>+2348170000169</span>
+              <span>+2348170000143</span>
             </a>
             <a
               href="mailto:versiononeinvestment@gmail.com"

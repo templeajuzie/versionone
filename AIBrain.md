@@ -155,7 +155,8 @@ export const immigrationMegaMenu = [
 ];
 
 export const contactInfo = {
-  phone: "08170000169",
+  phone: "+2348170000169",
+  phone2: "+2348170000143",
   whatsapp: "https://wa.me/2348170000169"
 };
 ```

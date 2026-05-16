@@ -4,15 +4,65 @@
 
 import React, { useCallback, useSyncExternalStore } from "react";
 
+
+
 import Image from "next/image";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const testimonials = [
   {
     id: 1,
     text: "Global Workgate made my Canadian PR process seamless. Their experts are truly knowledgeable and supportive throughout.",
-    name: "James Anderson",
+    name: "James Chile",
     role: "Software Engineer",
-    img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
+    img: "https://i.pinimg.com/736x/09/98/76/099876060f60757d49a1eb7f5571d091.jpg",
   },
   {
     id: 2,
@@ -24,16 +74,16 @@ const testimonials = [
   {
     id: 3,
     text: "Professional, transparent, and efficient. I highly recommend Fly High for anyone looking to migrate to Australia.",
-    name: "Jack Harrison",
+    name: "Jacky Harrison",
     role: "Operations Lead",
-    img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+    img: "https://i.pinimg.com/736x/83/1a/d3/831ad35f453c799b257ef08941d2814d.jpg",
   },
   {
     id: 4,
     text: "They handled my family's Portuguese Golden Visa with absolute care. We are now enjoying our new life in Lisbon.",
-    name: "Sarah Williams",
+    name: "Omolade Ayomide",
     role: "Entrepreneur",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200",
+    img: "https://i.pinimg.com/736x/e9/2a/e8/e92ae8120eff7445dfd1cdc984ea6281.jpg",
   },
   {
     id: 5,
@@ -45,9 +95,9 @@ const testimonials = [
   {
     id: 6,
     text: "A truly global agency. Their knowledge of Middle Eastern work permits is unmatched. Highly professional team.",
-    name: "Maya Khan",
+    name: "Maya Peters",
     role: "Consultant",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
+    img: "https://i.pinimg.com/736x/04/24/a1/0424a1f06d569a96735d06c3c5f8723e.jpg",
   },
 ];
 

@@ -2,23 +2,25 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+
+
+
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
-import { 
-  CheckCircle2, 
-  Clock, 
-  Loader2, 
-  Mail, 
-  MapPin, 
-  MessageSquare, 
-  Phone, 
-  Send, 
-  XCircle,
-  ArrowRight,
-  Globe
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Clock, Globe, Loader2, Mail, MapPin, MessageSquare, Phone, PhoneCallIcon, Send, XCircle } from "lucide-react";
+
+
+
+
+
+
+
+
+
+
+
 
 type FormState = {
   name: string;
@@ -113,11 +115,11 @@ const Contact = () => {
 
       <main className="relative overflow-hidden pt-40 pb-24">
         {/* Abstract Background Element */}
-        <div className="pointer-events-none absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 opacity-[0.03]">
+        <div className="pointer-events-none absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 opacity-[0.03]">
           <Globe size={800} strokeWidth={0.5} />
         </div>
 
-        <motion.div 
+        <motion.div
           className="mx-auto max-w-7xl px-6 lg:px-12"
           initial="hidden"
           animate="visible"
@@ -125,25 +127,19 @@ const Contact = () => {
         >
           {/* Hero Section */}
           <div className="mb-24 max-w-3xl">
-            <motion.span 
+            <motion.span
               variants={itemVariants}
               className="mb-4 inline-block text-[10px] font-bold tracking-[0.2em] text-zinc-400 uppercase"
             >
               Contact Us
             </motion.span>
-            <motion.h1 
-              variants={itemVariants}
-              className="mb-8 text-5xl font-light tracking-tight md:text-7xl"
-            >
+            <motion.h1 variants={itemVariants} className="mb-8 text-5xl font-light tracking-tight md:text-7xl">
               Let's start your <br />
               <span className="font-medium text-[#2D3E75]">global journey.</span>
             </motion.h1>
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg leading-relaxed text-zinc-500 md:text-xl"
-            >
-              Expert guidance for your immigration needs. Reach out to our 
-              dedicated consultants for a personalized strategy.
+            <motion.p variants={itemVariants} className="text-lg leading-relaxed text-zinc-500 md:text-xl">
+              Expert guidance for your immigration needs. Reach out to our dedicated consultants for a personalized
+              strategy.
             </motion.p>
           </div>
 
@@ -154,12 +150,12 @@ const Contact = () => {
                 {/* Office */}
                 <div className="group">
                   <p className="mb-4 text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Headquarters</p>
-                  <p className="text-sm font-medium leading-loose text-zinc-600">
+                  <p className="text-sm leading-loose font-medium text-zinc-600">
                     Al Ghaith Tower, 17th Floor <br />
                     Hamdan Street, Abu Dhabi, UAE
                   </p>
-                  <a 
-                    href="#" 
+                  <a
+                    href="#"
                     className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-zinc-900 underline-offset-4 hover:underline"
                   >
                     View on Map <ArrowRight size={14} />
@@ -170,8 +166,8 @@ const Contact = () => {
                 <div className="space-y-10">
                   <div className="group">
                     <p className="mb-4 text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Email Us</p>
-                    <a 
-                      href="mailto:Versiononeinvestment@gmail.com" 
+                    <a
+                      href="mailto:Versiononeinvestment@gmail.com"
                       className="text-lg font-medium text-zinc-900 transition-colors hover:text-[#2D3E75]"
                     >
                       Versiononeinvestment@gmail.com
@@ -179,9 +175,24 @@ const Contact = () => {
                   </div>
 
                   <div className="group">
-                    <p className="mb-4 text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Call or WhatsApp</p>
-                    <a 
-                      href="https://wa.me/2348170000169" 
+                    <p className="mb-4 text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                      Active Phone Lines
+                    </p>
+                    <span className="flex items-center gap-3 text-lg font-medium text-zinc-900 transition-colors hover:text-green-600">
+                      <PhoneCallIcon size={20} className="text-green-500" />
+                      +234 817 000 0169
+                    </span>
+                    <span className="flex items-center gap-3 text-lg font-medium text-zinc-900 transition-colors hover:text-green-600">
+                      <PhoneCallIcon size={20} className="text-green-500" />
+                      +234 817 000 0143
+                    </span>
+                  </div>
+                  <div className="group">
+                    <p className="mb-4 text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                      Call or WhatsApp
+                    </p>
+                    <a
+                      href="https://wa.me/2348170000169"
                       className="flex items-center gap-3 text-lg font-medium text-zinc-900 transition-colors hover:text-green-600"
                     >
                       <IconBrandWhatsapp size={20} className="text-green-500" />
@@ -191,10 +202,14 @@ const Contact = () => {
                 </div>
 
                 {/* Social Links Snippet */}
-                <div className="pt-8 border-t border-zinc-100">
+                <div className="border-t border-zinc-100 pt-8">
                   <div className="flex gap-6">
                     {["LinkedIn", "Instagram", "Facebook"].map((social) => (
-                      <a key={social} href="#" className="text-xs font-bold tracking-wider text-zinc-400 uppercase transition-colors hover:text-zinc-900">
+                      <a
+                        key={social}
+                        href="#"
+                        className="text-xs font-bold tracking-wider text-zinc-400 uppercase transition-colors hover:text-zinc-900"
+                      >
                         {social}
                       </a>
                     ))}
@@ -205,12 +220,12 @@ const Contact = () => {
 
             {/* Right: The Form */}
             <div className="lg:col-span-8">
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="relative rounded-2xl bg-white p-8 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.03)] ring-1 ring-zinc-100 md:p-16"
               >
                 {status === "success" ? (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center py-20 text-center"
@@ -222,9 +237,9 @@ const Contact = () => {
                     <p className="max-w-xs text-sm text-zinc-500">
                       Thank you for reaching out. A consultant will review your case and contact you within 24 hours.
                     </p>
-                    <button 
+                    <button
                       onClick={() => setStatus("idle")}
-                      className="mt-8 text-xs font-bold tracking-widest text-zinc-900 underline underline-offset-8 uppercase"
+                      className="mt-8 text-xs font-bold tracking-widest text-zinc-900 uppercase underline underline-offset-8"
                     >
                       Send another message
                     </button>
@@ -234,7 +249,9 @@ const Contact = () => {
                     <div className="grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
                       {/* Name */}
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Your Name</label>
+                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                          Your Name
+                        </label>
                         <input
                           type="text"
                           name="name"
@@ -249,7 +266,9 @@ const Contact = () => {
 
                       {/* Email */}
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Email Address</label>
+                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                          Email Address
+                        </label>
                         <input
                           type="email"
                           name="email"
@@ -264,7 +283,9 @@ const Contact = () => {
 
                       {/* Phone */}
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Phone Number</label>
+                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                          Phone Number
+                        </label>
                         <input
                           type="tel"
                           name="phone"
@@ -279,7 +300,9 @@ const Contact = () => {
 
                       {/* Service */}
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">Interest</label>
+                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                          Interest
+                        </label>
                         <select
                           name="service"
                           value={form.service}
@@ -300,7 +323,9 @@ const Contact = () => {
 
                       {/* Message */}
                       <div className="space-y-1 md:col-span-2">
-                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">How can we help?</label>
+                        <label className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase">
+                          How can we help?
+                        </label>
                         <textarea
                           name="message"
                           rows={4}
@@ -318,7 +343,7 @@ const Contact = () => {
                       <p className="text-[10px] leading-relaxed text-zinc-400 md:max-w-[240px]">
                         By clicking submit, you agree to our data processing policies. We respect your privacy.
                       </p>
-                      
+
                       <button
                         type="submit"
                         disabled={status === "loading"}
@@ -336,7 +361,7 @@ const Contact = () => {
                     </div>
 
                     {status === "error" && errorMsg && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="mt-6 flex items-center gap-2 text-xs text-red-500"

@@ -2,7 +2,17 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
+
+
 import Image from "next/image";
+
+
+
+
+
+
+
+
 
 const heroSlides = [
   {
@@ -82,23 +92,6 @@ const TravelHero = () => {
 
       <section className="absolute bottom-4 z-10 mt-14 mr-auto ml-2 w-full max-w-6xl justify-start pt-14 pb-12 text-start lg:bottom-32 lg:ml-auto">
         <div className="mx-auto mt-10 mb-6 flex w-full justify-start gap-4 lg:flex-row">
-          <div className="flex -space-x-3">
-            {[
-              "https://i.pinimg.com/736x/8f/e2/79/8fe279b786f81b6fb18f27c59efd43c2.jpg",
-              "https://i.pinimg.com/736x/83/1a/d3/831ad35f453c799b257ef08941d2814d.jpg",
-              "https://i.pinimg.com/736x/ec/6a/80/ec6a80f3565d3936d355036109f5fece.jpg",
-              "https://i.pinimg.com/736x/73/61/d2/7361d2e649742a9693acb3b25fb1770d.jpg",
-              "https://i.pinimg.com/736x/3e/f0/ce/3ef0ce379294c7a841107328f2134af0.jpg",
-            ].map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt={`Client ${i + 1}`}
-                className="h-9 w-9 rounded-full object-cover ring-2 ring-black/60"
-              />
-            ))}
-          </div>
-
           <div className="hidden flex-col items-center md:flex lg:items-start">
             <div className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -123,19 +116,16 @@ const TravelHero = () => {
         </div>
 
         <h1 className="font-geist mr-auto max-w-4xl text-3xl leading-[1.1] font-bold tracking-tighter text-white md:text-5xl md:leading-[0.9]">
-          Experience a new ,
+          Experience a New Gateway
           <br />
           <span
             className="text-blue-400 italic underline-offset-8 transition-all hover:text-blue-300"
             style={{ fontFamily: '"Playfair Display", serif' }}
           >
-            Version
+            to, Global
           </span>{" "}
-          Of Travel
+          Opportunities
         </h1>
-        <p className="font-geist mt-3 max-w-2xl text-sm text-white/80">
-          We curate the perfect journey for your next adventure.
-        </p>
       </section>
     </section>
   );
