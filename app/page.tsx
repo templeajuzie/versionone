@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "@/components/Footer";
+import About from "@/components/About";
 import GallerySnippet from "@/components/GallerySnippet";
 import { Header } from "@/components/Header";
 import ContactSnipet from "@/components/Home/ContactSnipet.";
@@ -8,8 +9,6 @@ import InspirationSection from "@/components/InspirationSection";
 import OurServices from "@/components/OurServices";
 import Testimonials from "@/components/Testimonials";
 import TravelHero from "@/components/TravelHero";
-
-import About from "./about/page";
 
 export default function Home() {
   return (
